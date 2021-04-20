@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .navbar-li {
+    @apply inline-block mx-2;
+  }
+  .navbar-li:nth-child(4n + 1) {
+    @apply xl:hidden inline-block;
+  }
+
+  .navbar-li:nth-child(4n + 2) {
+    @apply hidden xl:inline-block;
+  }
+}

@@ -44,8 +44,8 @@
         </button>
       </div>
 
-      <!--- Nav bar#2 --->
       <nav class="order-2 ">
+        <!--- Nav bar#2 --->
         <ul class="flex">
           <li
             v-for="(item, index) in navbarRightItems"

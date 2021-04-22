@@ -15,6 +15,8 @@
           >Dołącz lub zaloguj się</a
         >
       </div>
+
+      <!--- Footer Accordion -->
       <div>
         <ul class="lg:flex lg:flex-row lg:justify-between">
           <li
@@ -56,6 +58,97 @@
           </li>
         </ul>
       </div>
+      <!--- Footer Accordion -->
+
+      <div>
+        <!-- Social Media Links -->
+        <div>
+          <ul>
+            <li>
+              <a href="" class="">
+                <BaseIcon
+                  imageUrl="facebook-oval"
+                  class="border border-gray-300 rounded-2xl hover:border-gray-500 fill-current text-gray-700 px-1.5 w-8 h-8"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <BaseIcon
+                  imageUrl="instagram"
+                  class="border border-gray-300 rounded-2xl hover:border-gray-500 fill-current text-gray-700  px-1.5 w-8 h-8"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <BaseIcon
+                  imageUrl="twitter-original"
+                  class="border border-gray-300 rounded-2xl hover:border-gray-500 fill-current text-gray-700 px-1.5 w-8 h-8"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <BaseIcon
+                  imageUrl="youtube"
+                  class="border border-gray-300 rounded-2xl hover:border-gray-500 fill-current text-gray-700 px-1.5 w-8 h-8"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <BaseIcon
+                  imageUrl="linkedin-original"
+                  class="border border-gray-300 rounded-2xl hover:border-gray-500 fill-current text-gray-700 px-1.5 w-8 h-8"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- Social Media Links -->
+
+        <!-- Payment Options -->
+        <div>
+          <ul>
+            <li>
+              <a href="">
+                <BaseIcon
+                  class="border border-gray-300 rounded-2xl hover:border-gray-500 fill-current text-gray-700 px-1.5 w-8 h-8"
+                  imageUrl="logo-przelewy-24"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <BaseIcon class="w-8 h-8" imageUrl="visa" />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <BaseIcon class="w-8 h-8" imageUrl="mastercard" />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <BaseIcon class="w-8 h-8" imageUrl="gift-card" />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <BaseIcon class="w-8 h-8" imageUrl="ikano-bank-logo" />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- Payment Options -->
+
+        <!-- Language Selector -->
+        <div>
+          <a href="">Zmień kraj</a>
+        </div>
+        <!-- Language Selector -->
+      </div>
     </div>
   </footer>
 </template>
@@ -79,6 +172,15 @@ export default {
             { text: 'Zmień datę dostawy zamówienia', url: '#' },
             { text: 'Anuluj zamówienie', url: '#' },
             { text: 'Faktury', url: '#' },
+            { text: 'Zwroty', url: '#' },
+            { text: 'Gwarancje', url: '#' },
+            { text: 'Reklamacje', url: '#' },
+            { text: 'Sprawdź swoją reklamację na czacie', url: '#' },
+            { text: 'Wycofane produkty', url: '#' },
+            { text: 'Bezpieczeństwo w domu', url: '#' },
+            { text: 'Wsparcie produktowe', url: '#' },
+            { text: 'Regulaminy', url: '#' },
+            { text: 'Kontakt', url: '#' },
           ],
         },
         {
@@ -90,6 +192,13 @@ export default {
             { text: 'Narzędzia do planowania online', url: '#' },
             { text: 'Sklepy IKEA', url: '#' },
             { text: 'Oferty lokalne', url: '#' },
+            { text: 'Restaurajca IKEA', url: '#' },
+            { text: 'IKEA dla Dzieci', url: '#' },
+            { text: 'Karta upominkowa', url: '#' },
+            { text: 'Klub IKEA Family', url: '#' },
+            { text: 'IKEA dla Firm', url: '#' },
+            { text: 'Panele słoneczne', url: '#' },
+            { text: 'Aplikacje mobilne IKEA', url: '#' },
           ],
         },
         {
@@ -101,6 +210,14 @@ export default {
             { text: 'Montaż i instalacja', url: '#' },
             { text: 'Planowanie i doradztwo', url: '#' },
             { text: 'Planowanie kuchni', url: '#' },
+            { text: 'Planowanie szaf PAX', url: '#' },
+            { text: 'Planowanie regałów BESTA', url: '#' },
+            { text: 'Planowanie dla Firm', url: '#' },
+            { text: 'Na raty w IKEA', url: '#' },
+            { text: 'Leasing dla Firm', url: '#' },
+            { text: 'Usługi krawieckie', url: '#' },
+            { text: 'Wynajem samochodu', url: '#' },
+            { text: 'Dłuższe życie produktów', url: '#' },
           ],
         },
         {
@@ -112,6 +229,8 @@ export default {
             { text: 'Aktualne informacje dot. COVID-19', url: '#' },
             { text: 'IKEA dla planety', url: '#' },
             { text: '60 lat IKEA w Polsce', url: '#' },
+            { text: 'Praca w IKEA', url: '#' },
+            { text: 'Podziel się opinią', url: '#' },
           ],
         },
       ],

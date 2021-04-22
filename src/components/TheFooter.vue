@@ -1,7 +1,6 @@
 <template>
   <footer class="bg-gray-50 fixed bottom-0 w-full">
-    <!--- Footer accordion --->
-    <div class="container mx-auto px-4 ">
+    <div class="container mx-auto px-4 lg:flex-row">
       <div>
         <h2 class="font-bold text-2xl mb-2">Klub IKEA Family</h2>
         <p class="mb-2 text-sm">
@@ -16,16 +15,32 @@
           >Dołącz lub zaloguj się</a
         >
       </div>
+      <!--- Footer accordion --->
       <div>
         <ul>
           <li class="border-t-2 border-gray-100">
-            <button class="flex w-full justify-between focus:outline-none py-7">
+            <span class="font-bold hidden mb-6 lg:flex">Obsługa klienta</span>
+            <button
+              @click="isActive = !isActive"
+              class="flex w-full justify-between focus:outline-none py-7 lg:hidden"
+            >
               <span class="font-bold">Obsługa klienta</span>
-              <BaseIcon imageUrl="chevron-down" />
+              <BaseIcon :imageUrl="isActive ? 'chevron-up' : 'chevron-down'" />
             </button>
-            <ul class="invisible overflow-hidden h-0">
+
+            <ul
+              class="transition duration-500 ease-in-out lg:opacity-100 lg:visible lg:h-auto"
+              :class="
+                isActive
+                  ? 'opacity-100 visible h-auto'
+                  : 'h-0 opacity-0 invisible overflow-hidden'
+              "
+            >
               <li class="mt-2 mb-6">
-                <a href="#">Zaloguj się visible opacity-0 </a>
+                <a href="#">Zaloguj się</a>
+              </li>
+              <li class="mt-2 mb-6">
+                <a href="#">Znajdz swoje zamówienie</a>
               </li>
               <li class="mt-2 mb-6">
                 <a href="#">Znajdz swoje zamówienie</a>
@@ -53,8 +68,8 @@
           </li>
         </ul>
       </div>
+      <!--- Footer accordion --->
     </div>
-    <!--- Footer accordion --->
   </footer>
 </template>
 
@@ -64,12 +79,12 @@ export default {
   components: {
     BaseIcon,
   },
+  data() {
+    return {
+      isActive: false,
+    };
+  },
 };
 </script>
 
-<style>
-html,
-body {
-  height: 100%;
-}
-</style>
+<style></style>

@@ -1,7 +1,7 @@
 <template>
-  <footer class="bg-gray-50 fixed bottom-0 w-full">
+  <footer class="bg-gray-50 relative   bottom-0 ">
     <div class="container mx-auto px-4 lg:flex-row">
-      <div>
+      <div class="mb-7 pt-9">
         <h2 class="font-bold text-2xl mb-2">Klub IKEA Family</h2>
         <p class="mb-2 text-sm">
           W Klubie IKEA Family możesz skorzystać z atrakcyjnych ofert, promocji
@@ -15,60 +15,47 @@
           >Dołącz lub zaloguj się</a
         >
       </div>
-      <!--- Footer accordion --->
       <div>
-        <ul>
-          <li class="border-t-2 border-gray-100">
-            <span class="font-bold hidden mb-6 lg:flex">Obsługa klienta</span>
+        <ul class="lg:flex lg:flex-row lg:justify-between">
+          <li
+            v-for="(item, i) in accordionItems"
+            :key="i"
+            class="border-t-2 border-gray-100 lg:border-none"
+          >
+            <span class="font-bold hidden mb-6 lg:flex">{{ item.span }}</span>
             <button
-              @click="isActive = !isActive"
+              @click="selectItem(item, i)"
               class="flex w-full justify-between focus:outline-none py-7 lg:hidden"
             >
-              <span class="font-bold">Obsługa klienta</span>
-              <BaseIcon :imageUrl="isActive ? 'chevron-up' : 'chevron-down'" />
+              <span class="font-bold">{{ item.span }}</span>
+              <BaseIcon
+                :imageUrl="
+                  i === activeItem && item.isActive
+                    ? 'chevron-up'
+                    : 'chevron-down'
+                "
+              />
             </button>
 
             <ul
               class="transition duration-500 ease-in-out lg:opacity-100 lg:visible lg:h-auto"
               :class="
-                isActive
+                i === activeItem && item.isActive
                   ? 'opacity-100 visible h-auto'
                   : 'h-0 opacity-0 invisible overflow-hidden'
               "
             >
-              <li class="mt-2 mb-6">
-                <a href="#">Zaloguj się</a>
-              </li>
-              <li class="mt-2 mb-6">
-                <a href="#">Znajdz swoje zamówienie</a>
-              </li>
-              <li class="mt-2 mb-6">
-                <a href="#">Znajdz swoje zamówienie</a>
+              <li
+                v-for="(nestedListItem, nestedListIndex) in item.nestedList"
+                :key="nestedListIndex"
+                class="mt-2 mb-6 lg:flex lg:flex-row"
+              >
+                <a :href="nestedListItem.url">{{ nestedListItem.text }}</a>
               </li>
             </ul>
           </li>
-
-          <li class="border-t-2 border-gray-100">
-            <button class="flex w-full justify-between focus:outline-none py-7">
-              <span class="font-bold">Zakupy w IKEA</span>
-              <BaseIcon imageUrl="chevron-down" />
-            </button>
-          </li>
-          <li class="border-t-2 border-gray-100">
-            <button class="flex w-full justify-between focus:outline-none py-7">
-              <span class="font-bold">Usługi</span>
-              <BaseIcon imageUrl="chevron-down" />
-            </button>
-          </li>
-          <li class="border-t-2 border-gray-100">
-            <button class="flex w-full justify-between focus:outline-none py-7">
-              <span class="font-bold">O IKEA</span>
-              <BaseIcon imageUrl="chevron-down" />
-            </button>
-          </li>
         </ul>
       </div>
-      <!--- Footer accordion --->
     </div>
   </footer>
 </template>
@@ -81,8 +68,61 @@ export default {
   },
   data() {
     return {
-      isActive: false,
+      activeItem: null,
+      accordionItems: [
+        {
+          span: 'Obsługa klienta',
+          isActive: false,
+          nestedList: [
+            { text: 'Zaloguj się', url: '#' },
+            { text: 'Znajdź swoje zamówienie', url: '#' },
+            { text: 'Zmień datę dostawy zamówienia', url: '#' },
+            { text: 'Anuluj zamówienie', url: '#' },
+            { text: 'Faktury', url: '#' },
+          ],
+        },
+        {
+          span: 'Zakupy w IKEA',
+          isActive: false,
+          nestedList: [
+            { text: 'Katalog i broszury', url: '#' },
+            { text: 'Centrum Urządzania Wnetrz', url: '#' },
+            { text: 'Narzędzia do planowania online', url: '#' },
+            { text: 'Sklepy IKEA', url: '#' },
+            { text: 'Oferty lokalne', url: '#' },
+          ],
+        },
+        {
+          span: 'Usługi',
+          isActive: false,
+          nestedList: [
+            { text: 'Dostawa', url: '#' },
+            { text: 'Zamów i odbierz', url: '#' },
+            { text: 'Montaż i instalacja', url: '#' },
+            { text: 'Planowanie i doradztwo', url: '#' },
+            { text: 'Planowanie kuchni', url: '#' },
+          ],
+        },
+        {
+          span: 'O IKEA',
+          isActive: false,
+          nestedList: [
+            { text: 'Informacje o IKEA', url: '#' },
+            { text: 'Biuro prasowe i aktualności', url: '#' },
+            { text: 'Aktualne informacje dot. COVID-19', url: '#' },
+            { text: 'IKEA dla planety', url: '#' },
+            { text: '60 lat IKEA w Polsce', url: '#' },
+          ],
+        },
+      ],
     };
+  },
+
+  methods: {
+    selectItem(item, i) {
+      item.isActive = !item.isActive;
+      this.activeItem = i;
+    },
   },
 };
 </script>

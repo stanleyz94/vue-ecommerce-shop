@@ -66,42 +66,10 @@
         <!-- Social Media Links -->
         <div class="mr-5 mt-4">
           <ul class="flex space-x-3.5 ">
-            <li>
-              <a href="" class="">
+            <li v-for="(item, index) in socialMediaItems" :key="index">
+              <a :href="item.url">
                 <BaseIcon
-                  imageUrl="facebook-oval"
-                  class="border border-gray-300 rounded-2xl hover:border-gray-500 fill-current text-gray-700 px-1.5 w-8 h-8"
-                />
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <BaseIcon
-                  imageUrl="instagram"
-                  class="border border-gray-300 rounded-2xl hover:border-gray-500 fill-current text-gray-700  px-1.5 w-8 h-8"
-                />
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <BaseIcon
-                  imageUrl="twitter-original"
-                  class="border border-gray-300 rounded-2xl hover:border-gray-500 fill-current text-gray-700 px-1.5 w-8 h-8"
-                />
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <BaseIcon
-                  imageUrl="youtube"
-                  class="border border-gray-300 rounded-2xl hover:border-gray-500 fill-current text-gray-700 px-1.5 w-8 h-8"
-                />
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <BaseIcon
-                  imageUrl="linkedin-original"
+                  :imageUrl="item.svgName"
                   class="border border-gray-300 rounded-2xl hover:border-gray-500 fill-current text-gray-700 px-1.5 w-8 h-8"
                 />
               </a>
@@ -111,36 +79,12 @@
         <!-- Social Media Links -->
 
         <!-- Payment Options -->
-        <div class="">
+        <div>
           <ul class="flex space-x-3.5 ">
-            <li>
+            <li v-for="(svgName, index) in paymentOptionsItems" :key="index">
               <BaseIcon
                 class="border border-gray-300 rounded px-1 w-11 h-8"
-                imageUrl="logo-przelewy-24"
-              />
-            </li>
-            <li>
-              <BaseIcon
-                class="border border-gray-300 rounded  px-1 w-11 h-8"
-                imageUrl="visa"
-              />
-            </li>
-            <li>
-              <BaseIcon
-                class="border border-gray-300 rounded  px-1 w-11 h-8"
-                imageUrl="mastercard"
-              />
-            </li>
-            <li>
-              <BaseIcon
-                class="border border-gray-300 rounded  px-1 w-11 h-8"
-                imageUrl="gift-card"
-              />
-            </li>
-            <li>
-              <BaseIcon
-                class="border border-gray-300 rounded  px-1 w-11 h-8"
-                imageUrl="ikano-bank-logo"
+                :imageUrl="svgName"
               />
             </li>
           </ul>
@@ -166,17 +110,12 @@
         </div>
         <div class="my-5">
           <ul class="flex flex-wrap font-medium ">
-            <li class=" mr-5">
-              <a href="">Polityka prywatności</a>
-            </li>
-            <li class="mr-5">
-              <a href="">Ustawienia plików cookie</a>
-            </li>
-            <li class=" mr-5">
-              <a href="">Responsible Disclosure</a>
-            </li>
-            <li class=" mr-5">
-              <a href="">Dla akcjonariuszy IKEA Distribution</a>
+            <li
+              v-for="(item, index) in copyrightItems"
+              :key="index"
+              class=" mr-5"
+            >
+              <a :href="item.url">{{ item.text }}</a>
             </li>
           </ul>
         </div>
@@ -266,6 +205,26 @@ export default {
             { text: 'Podziel się opinią', url: '#' },
           ],
         },
+      ],
+      copyrightItems: [
+        { text: 'Polityka prywatności', url: '#' },
+        { text: 'Ustawienia plików cookie', url: '#' },
+        { text: 'Responsible Disclosure', url: '#' },
+        { text: 'Dla akcjonariuszy IKEA Distribution', url: '#' },
+      ],
+      socialMediaItems: [
+        { svgName: 'facebook-oval', url: '#' },
+        { svgName: 'instagram', url: '#' },
+        { svgName: 'twitter-original', url: '#' },
+        { svgName: 'youtube', url: '#' },
+        { svgName: 'linkedin-original', url: '#' },
+      ],
+      paymentOptionsItems: [
+        'logo-przelewy-24',
+        'visa',
+        'mastercard',
+        'gift-card',
+        'ikano-bank-logo',
       ],
     };
   },

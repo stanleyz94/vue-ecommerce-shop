@@ -51,7 +51,7 @@
     </li>
   </ul> -->
 
-  <BaseIcon imageUrl="chevron-up" />
+  <!-- <BaseIcon imageUrl="chevron-up" /> -->
 
   <!---DZIALA  -->
   <!-- <ul>
@@ -183,7 +183,7 @@
 </template>
 
 <script>
-import BaseIcon from './BaseIcon';
+// import BaseIcon from './BaseIcon';
 
 export default {
   data() {
@@ -279,7 +279,7 @@ export default {
   //   window.addEventListener('resize', this.test, { passive: true });
   // },
   components: {
-    BaseIcon,
+    // BaseIcon,
   },
 
   // methods: {

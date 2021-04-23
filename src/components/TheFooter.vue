@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-gray-50 relative   bottom-0 ">
+  <footer class="bg-gray-50 relative bottom-0 ">
     <div class="container mx-auto px-4 lg:flex-row">
       <div class="mb-7 pt-9">
         <h2 class="font-bold text-2xl mb-2">Klub IKEA Family</h2>

@@ -60,10 +60,12 @@
       </div>
       <!--- Footer Accordion -->
 
-      <div>
+      <div
+        class="lg:border-b-2 border-gray-100 flex items-center flex-wrap justify-between space-y-4"
+      >
         <!-- Social Media Links -->
-        <div>
-          <ul>
+        <div class="mr-5 mt-4">
+          <ul class="flex space-x-3.5 ">
             <li>
               <a href="" class="">
                 <BaseIcon
@@ -109,43 +111,61 @@
         <!-- Social Media Links -->
 
         <!-- Payment Options -->
-        <div>
-          <ul>
+        <div class="">
+          <ul class="flex space-x-3.5 ">
             <li>
               <a href="">
                 <BaseIcon
-                  class="border border-gray-300 rounded-2xl hover:border-gray-500 fill-current text-gray-700 px-1.5 w-8 h-8"
+                  class="border border-gray-300 rounded px-1 w-11 h-8"
                   imageUrl="logo-przelewy-24"
                 />
               </a>
             </li>
             <li>
               <a href="">
-                <BaseIcon class="w-8 h-8" imageUrl="visa" />
+                <BaseIcon
+                  class="border border-gray-300 rounded  px-1 w-11 h-8"
+                  imageUrl="visa"
+                />
               </a>
             </li>
             <li>
               <a href="">
-                <BaseIcon class="w-8 h-8" imageUrl="mastercard" />
+                <BaseIcon
+                  class="border border-gray-300 rounded  px-1 w-11 h-8"
+                  imageUrl="mastercard"
+                />
               </a>
             </li>
             <li>
               <a href="">
-                <BaseIcon class="w-8 h-8" imageUrl="gift-card" />
+                <BaseIcon
+                  class="border border-gray-300 rounded  px-1 w-11 h-8"
+                  imageUrl="gift-card"
+                />
               </a>
             </li>
             <li>
               <a href="">
-                <BaseIcon class="w-8 h-8" imageUrl="ikano-bank-logo" />
+                <BaseIcon
+                  class="border border-gray-300 rounded  px-1 w-11 h-8"
+                  imageUrl="ikano-bank-logo"
+                />
               </a>
             </li>
           </ul>
         </div>
         <!-- Payment Options -->
 
-        <!-- Language Selector -->
-        <div>
-          <a href="">Zmień kraj</a>
+        <!-- Language Selector justify-self-end	justify-items-end	justify-start	content-end	items-end	 -->
+        <div class="xs:flex-100 lg:flex md:flex-initial lg:ml-auto">
+          <a
+            href=""
+            class="inline-flex items-center border border-gray-300 hover:border-gray-500 fill-current text-gray-700 rounded-full font-bold text-xs px-4 py-1.5"
+          >
+            <BaseIcon imageUrl="globe" class="h-6 w-6 mr-1" />
+            <span>Zmień kraj</span>
+          </a>
         </div>
         <!-- Language Selector -->
       </div>

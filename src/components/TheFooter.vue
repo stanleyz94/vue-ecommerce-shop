@@ -61,7 +61,7 @@
       <!--- Footer Accordion -->
 
       <div
-        class="lg:border-b-2 border-gray-100 flex items-center flex-wrap justify-between space-y-4"
+        class="lg:border-b-2 border-gray-100 flex items-center flex-wrap justify-between space-y-4 lg:py-7"
       >
         <!-- Social Media Links -->
         <div class="mr-5 mt-4">
@@ -114,44 +114,34 @@
         <div class="">
           <ul class="flex space-x-3.5 ">
             <li>
-              <a href="">
-                <BaseIcon
-                  class="border border-gray-300 rounded px-1 w-11 h-8"
-                  imageUrl="logo-przelewy-24"
-                />
-              </a>
+              <BaseIcon
+                class="border border-gray-300 rounded px-1 w-11 h-8"
+                imageUrl="logo-przelewy-24"
+              />
             </li>
             <li>
-              <a href="">
-                <BaseIcon
-                  class="border border-gray-300 rounded  px-1 w-11 h-8"
-                  imageUrl="visa"
-                />
-              </a>
+              <BaseIcon
+                class="border border-gray-300 rounded  px-1 w-11 h-8"
+                imageUrl="visa"
+              />
             </li>
             <li>
-              <a href="">
-                <BaseIcon
-                  class="border border-gray-300 rounded  px-1 w-11 h-8"
-                  imageUrl="mastercard"
-                />
-              </a>
+              <BaseIcon
+                class="border border-gray-300 rounded  px-1 w-11 h-8"
+                imageUrl="mastercard"
+              />
             </li>
             <li>
-              <a href="">
-                <BaseIcon
-                  class="border border-gray-300 rounded  px-1 w-11 h-8"
-                  imageUrl="gift-card"
-                />
-              </a>
+              <BaseIcon
+                class="border border-gray-300 rounded  px-1 w-11 h-8"
+                imageUrl="gift-card"
+              />
             </li>
             <li>
-              <a href="">
-                <BaseIcon
-                  class="border border-gray-300 rounded  px-1 w-11 h-8"
-                  imageUrl="ikano-bank-logo"
-                />
-              </a>
+              <BaseIcon
+                class="border border-gray-300 rounded  px-1 w-11 h-8"
+                imageUrl="ikano-bank-logo"
+              />
             </li>
           </ul>
         </div>
@@ -169,6 +159,29 @@
         </div>
         <!-- Language Selector -->
       </div>
+      <!-- Copyrights -->
+      <div class="flex items-center justify-between flex-wrap py-7 text-xs">
+        <div>
+          <p>© Inter IKEA Systems B.V 1999-2021</p>
+        </div>
+        <div class="my-5">
+          <ul class="flex flex-wrap font-medium ">
+            <li class=" mr-5">
+              <a href="">Polityka prywatności</a>
+            </li>
+            <li class="mr-5">
+              <a href="">Ustawienia plików cookie</a>
+            </li>
+            <li class=" mr-5">
+              <a href="">Responsible Disclosure</a>
+            </li>
+            <li class=" mr-5">
+              <a href="">Dla akcjonariuszy IKEA Distribution</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Copyrights -->
     </div>
   </footer>
 </template>

@@ -13,4 +13,17 @@
   .navbar-li:nth-child(4n + 2) {
     @apply hidden xl:inline-block;
   }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none !important; /* IE and Edge */
+    scrollbar-width: none !important; /* Firefox */
+  }
+
+  button {
+    @apply focus:outline-none;
+  }
 }

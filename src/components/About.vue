@@ -1,5 +1,99 @@
 <template>
   <div>
+    <div class="">
+      <section class="space-y-2">
+        <h1 class="text-2xl font-bold">Szafy do zabudowy</h1>
+        <p>
+          Chcemy pomóc ci w zaplanowaniu jak najlepszego przechowywania
+          dostosowanego do twoich ubrań i przestrzeni, jaką dysponujesz, dlatego
+          oferujemy wybór szaf dwudrzwiowych. Są dostępne w różnych rozmiarach i
+          stylach. Wiele szaf jest wyposażonych w akcesoria, takie jak drążki na
+          ubrania czy półki.
+        </p>
+        <p class="underline text-gray-700 text-sm	">
+          <a href=""><strong>Dowiedz się więcej o szafach PAX >></strong> </a>
+        </p>
+        <p class="underline text-gray-700 text-sm	">
+          <a href=""
+            ><strong>Skorzystaj z naszego planera szaf PAX >></strong></a
+          >
+        </p>
+      </section>
+    </div>
+
+    <div class="my-5 relative">
+      <button
+        @click="scrollRight"
+        :class="{ hidden: isHidden }"
+        class="absolute lg:hidden top-1 right-2 shadow bg-gray-50 hover:bg-gray-300  rounded-full  px-2 py-2"
+      >
+        <BaseIcon imageUrl="chevron-right" class="w-4 h-4" />
+      </button>
+
+      <button
+        @click="scrollLeft"
+        :class="{ hidden: !isHidden }"
+        class="absolute lg:hidden top-1 left-2 shadow bg-gray-50 hover:bg-gray-300  rounded-full  px-2 py-2"
+      >
+        <BaseIcon imageUrl="chevron-left" class="w-4 h-4" />
+      </button>
+      <div
+        ref="scrollbar"
+        class="flex  no-scrollbar overflow-x-scroll space-x-3 lg:justify-start"
+      >
+        <button
+          aria-label="Aktywuj wybór porównania produktów"
+          class=" border border-gray-300 hover:border-gray-500  rounded-full font-bold text-xs px-4 py-2.5"
+        >
+          <span> Porównaj</span>
+        </button>
+        <button
+          aria-label="Pokaż opcje sortowania moda"
+          class="inline-flex items-center  bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-4 py-2.5"
+        >
+          <span>Sortuj</span>
+          <BaseIcon class="h-5 w-5 ml-1.5" imageUrl="chevron-down" />
+        </button>
+        <button
+          aria-label="Pokaż okno filtrów"
+          class="   bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
+        >
+          <span>Rozmiar</span>
+        </button>
+        <button
+          aria-label="Aktywuj wybór porównania produktów"
+          class="   bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
+        >
+          <span>Kolor</span>
+        </button>
+        <button
+          aria-label="Aktywuj wybór porównania produktów"
+          class="  bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
+        >
+          <span>Drzwi</span>
+        </button>
+        <button
+          aria-label="Aktywuj wybór porównania produktów"
+          class="  bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
+        >
+          <span>Właściwości</span>
+        </button>
+        <button
+          aria-label="Aktywuj wybór porównania produktów"
+          class=" bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
+        >
+          <span>Cena</span>
+        </button>
+        <button
+          aria-label="Aktywuj wybór porównania produktów"
+          class=" inline-flex items-center whitespace-nowrap bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
+        >
+          <span>Wszystkie filtry</span>
+          <BaseIcon class="h-4 w-4 ml-1" imageUrl="adjustments" />
+        </button>
+      </div>
+    </div>
+
     <!-- <li v-for="(svg, index) in navbarValues.svg" :key="index" class="navbar-li">
       <a href="">
         <BaseIcon :imageUrl="svg" />
@@ -183,7 +277,7 @@
 </template>
 
 <script>
-// import BaseIcon from './BaseIcon';
+import BaseIcon from './BaseIcon';
 
 export default {
   data() {
@@ -222,6 +316,7 @@ export default {
         { svgName: 'menu-navbar', url: '#' },
         { svgName: 'cart', url: '#' },
       ],
+      isHidden: false,
 
       // accordionItems: [
       //   {
@@ -279,7 +374,7 @@ export default {
   //   window.addEventListener('resize', this.test, { passive: true });
   // },
   components: {
-    // BaseIcon,
+    BaseIcon,
   },
 
   // methods: {
@@ -288,6 +383,23 @@ export default {
   //     this.activeItem = i;
   //   },
   // },
+
+  methods: {
+    scrollLeft() {
+      const maxScrollRight =
+        this.$refs.scrollbar.scrollWidth - this.$refs.scrollbar.clientWidth;
+      this.$refs.scrollbar.scrollLeft -= maxScrollRight;
+      this.isHidden = !this.isHidden;
+    },
+    scrollRight() {
+      const maxScrollLeft =
+        this.$refs.scrollbar.scrollWidth - this.$refs.scrollbar.clientWidth;
+      this.$refs.scrollbar.scrollLeft += maxScrollLeft;
+      this.isHidden = !this.isHidden;
+    },
+  },
+
+  mounted() {},
   computed: {
     message() {
       return '$' + this.message2;

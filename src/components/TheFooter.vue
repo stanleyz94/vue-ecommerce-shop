@@ -91,7 +91,7 @@
         </div>
         <!-- Payment Options -->
 
-        <!-- Language Selector justify-self-end	justify-items-end	justify-start	content-end	items-end	 -->
+        <!-- Language Selector 	 -->
         <div class="xs:flex-100 lg:flex md:flex-initial lg:ml-auto">
           <a
             href=""

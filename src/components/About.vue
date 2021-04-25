@@ -21,11 +21,11 @@
       </section>
     </div>
 
-    <div class="my-5 relative">
+    <div class="py-5 relative border-b-2 border-gray-100">
       <button
         @click="scrollHorizontallyTo('right')"
         :class="{ hidden: isHidden }"
-        class="absolute lg:hidden top-1 right-2 shadow bg-gray-50 hover:bg-gray-300  rounded-full  px-2 py-2"
+        class="absolute lg:hidden top-auto right-2 shadow bg-gray-50 hover:bg-gray-300  rounded-full  px-2 py-2"
       >
         <BaseIcon imageUrl="chevron-right" class="w-4 h-4" />
       </button>
@@ -33,7 +33,7 @@
       <button
         @click="scrollHorizontallyTo('left')"
         :class="{ hidden: !isHidden }"
-        class="absolute lg:hidden top-1 left-2 shadow bg-gray-50 hover:bg-gray-300  rounded-full  px-2 py-2"
+        class="absolute lg:hidden top-auto left-2 shadow bg-gray-50 hover:bg-gray-300  rounded-full  px-2 py-2"
       >
         <BaseIcon imageUrl="chevron-left" class="w-4 h-4" />
       </button>
@@ -92,6 +92,45 @@
           <span>Wszystkie filtry</span>
           <BaseIcon class="h-4 w-4 ml-1" imageUrl="adjustments" />
         </button>
+      </div>
+    </div>
+
+    <div class="flex border-b-2 border-gray-100">
+      <div class="flex py-5 mr-auto">
+        <button
+          class="bg-gray-50 hover:bg-gray-300  rounded-full font-bold text-xs  px-5 py-2.5"
+        >
+          Zamknij
+        </button>
+      </div>
+      <div class="flex py-5 items-center space-x-3">
+        <div class="">
+          <span>0 wybranych </span>
+          <span>(Wybierz co najmniej 2 więcej)</span>
+        </div>
+        <button
+          disabled
+          class="bg-gray-50 hover:bg-gray-300 disabled:bg-gray-300 disabled:opacity-50 border rounded-full font-bold text-xs  px-6 py-3"
+        >
+          Porównaj produkty
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <div class="space-x-5">
+        <label for="">
+          <input type="checkbox" />
+          <span></span>
+        </label>
+        <label for="">
+          <input type="checkbox" />
+          <span></span>
+        </label>
+        <label for="">
+          <input type="checkbox" />
+          <span></span>
+        </label>
       </div>
     </div>
 

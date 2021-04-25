@@ -23,7 +23,7 @@
 
     <div class="my-5 relative">
       <button
-        @click="scrollRight"
+        @click="scrollHorizontallyTo('right')"
         :class="{ hidden: isHidden }"
         class="absolute lg:hidden top-1 right-2 shadow bg-gray-50 hover:bg-gray-300  rounded-full  px-2 py-2"
       >
@@ -31,13 +31,14 @@
       </button>
 
       <button
-        @click="scrollLeft"
+        @click="scrollHorizontallyTo('left')"
         :class="{ hidden: !isHidden }"
         class="absolute lg:hidden top-1 left-2 shadow bg-gray-50 hover:bg-gray-300  rounded-full  px-2 py-2"
       >
         <BaseIcon imageUrl="chevron-left" class="w-4 h-4" />
       </button>
       <div
+        @scroll="handleScroll"
         ref="scrollbar"
         class="flex  no-scrollbar overflow-x-scroll space-x-3 lg:justify-start"
       >
@@ -385,17 +386,24 @@ export default {
   // },
 
   methods: {
-    scrollLeft() {
-      const maxScrollRight =
-        this.$refs.scrollbar.scrollWidth - this.$refs.scrollbar.clientWidth;
-      this.$refs.scrollbar.scrollLeft -= maxScrollRight;
-      this.isHidden = !this.isHidden;
+    handleScroll(e) {
+      const isScrollbarVisible = e.target.scrollWidth > e.target.clientWidth;
+
+      if (!isScrollbarVisible) {
+        this.isHidden = false;
+      }
     },
-    scrollRight() {
+    scrollHorizontallyTo(direction) {
       const maxScrollLeft =
         this.$refs.scrollbar.scrollWidth - this.$refs.scrollbar.clientWidth;
-      this.$refs.scrollbar.scrollLeft += maxScrollLeft;
-      this.isHidden = !this.isHidden;
+      if (direction === 'right') {
+        this.$refs.scrollbar.scrollLeft += maxScrollLeft;
+        this.isHidden = !this.isHidden;
+      }
+      if (direction === 'left') {
+        this.$refs.scrollbar.scrollLeft -= maxScrollLeft;
+        this.isHidden = !this.isHidden;
+      }
     },
   },
 
@@ -405,23 +413,9 @@ export default {
       return '$' + this.message2;
     },
   },
+
+  watch: {},
 };
 </script>
 
-<style>
-/* 
-.hidden-li {
-  @apply inline-block mx-2;
-}
-.hidden-li:nth-child(4n + 1) {
-  @apply hidden xl:inline-block;
-}
-
-.hidden-li:nth-child(4n + 2) {
-  @apply xl:hidden inline-block;
-} */
-
-/* .test:nth-child(4n + 1) {
-  @apply text-blue-500;
-} */
-</style>
+<style></style>

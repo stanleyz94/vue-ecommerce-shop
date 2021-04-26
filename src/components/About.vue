@@ -122,13 +122,82 @@
       </div>
     </div>
 
-    <div>
-      <div class="space-x-5">
-        <label v-for="item in items" :key="item" for="">
-          <input type="checkbox" :value="item" v-model="products" />
-          <span></span>
-        </label>
-      </div>
+    <!---  DROPDOWN --->
+    <div class="text-sm w-64 px-5 py-8 rounded-lg  space-y-5 shadow-md">
+      <label class="flex justify-between items-center" for="">
+        <span>Najbardziej pasuje</span>
+        <input class="w-5 h-5 ml-auto" type="radio" />
+        <div></div>
+      </label>
+      <label class="flex justify-between items-center" for="">
+        <span>Od najniższej ceny</span>
+        <input class="w-5 h-5 ml-auto" type="radio" />
+        <div></div>
+      </label>
+      <label class="flex justify-between items-center" for="">
+        <span>Od najwyższej ceny</span>
+        <input class="w-5 h-5 ml-auto" type="radio" />
+        <div></div>
+      </label>
+      <label class="flex justify-between items-center" for="">
+        <span>Najnowszy</span>
+        <input class="w-5 h-5 ml-auto" type="radio" />
+        <div></div>
+      </label>
+      <label class="flex justify-between items-center" for="">
+        <span>Ocena</span>
+        <input class="w-5 h-5 ml-auto" type="radio" />
+        <div></div>
+      </label>
+      <label class="flex justify-between items-center" for="">
+        <span>Nazwa</span>
+        <input class="w-5 h-5 ml-auto" type="radio" />
+        <div></div>
+      </label>
+      <label class="flex justify-between items-center" for="">
+        <span>Najbardziej popularny</span>
+        <input class="w-5 h-5 ml-auto" type="radio" />
+        <div></div>
+      </label>
+      <label class="flex justify-between items-center" for="">
+        <span>Szerokość</span>
+        <input class="w-5 h-5 ml-auto" type="radio" />
+        <div></div>
+      </label>
+      <label class="flex justify-between items-center" for="">
+        <span>Wysokość</span>
+        <input class="w-5 h-5 ml-auto" type="radio" />
+        <div></div>
+      </label>
+      <label class="flex justify-between items-center" for="">
+        <span>Głębokość</span>
+        <input class="w-5 h-5 ml-auto" type="radio" />
+        <div></div>
+      </label>
+    </div>
+
+    <div class="flex mt-5">
+      <label
+        class="flex w-7 h-7 items-center mr-4 mb-2"
+        v-for="item in items"
+        :key="item"
+        for=""
+      >
+        <input
+          type="checkbox"
+          class="w-7 h-7 opacity-0 absolute"
+          :value="item"
+          v-model="products"
+        />
+        <div
+          class="flex w-7 h-7 justify-center items-center border rounded-md border-gray-800 "
+        >
+          <BaseIcon
+            imageUrl="check"
+            class="h-4 w-4 fill-current hidden  text-white pointer-events-none "
+          />
+        </div>
+      </label>
     </div>
 
     <div>
@@ -459,4 +528,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+input[type='radio']:checked + label {
+  background-color: red;
+}
+
+input[type='radio']:checked + label {
+  color: red;
+}
+</style>

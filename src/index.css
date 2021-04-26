@@ -27,4 +27,11 @@
   button {
     @apply focus:outline-none;
   }
+
+  input:checked + div {
+    @apply border-gray-800 bg-gray-800;
+  }
+  input:checked + div svg {
+    @apply block;
+  }
 }

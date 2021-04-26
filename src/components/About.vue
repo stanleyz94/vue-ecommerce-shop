@@ -43,8 +43,10 @@
         class="flex  no-scrollbar overflow-x-scroll space-x-3 lg:justify-start"
       >
         <button
+          @click="isContainerVisible = true"
+          :disabled="isContainerVisible ? true : false"
           aria-label="Aktywuj wybór porównania produktów"
-          class=" border border-gray-300 hover:border-gray-500  rounded-full font-bold text-xs px-4 py-2.5"
+          class=" border border-gray-300 hover:border-gray-500 disabled:bg-gray-300 disabled:opacity-50 rounded-full font-bold text-xs px-4 py-2.5"
         >
           <span> Porównaj</span>
         </button>
@@ -95,9 +97,10 @@
       </div>
     </div>
 
-    <div class="flex border-b-2 border-gray-100">
+    <div v-if="isContainerVisible" class="flex border-b-2 border-gray-100">
       <div class="flex py-5 mr-auto">
         <button
+          @click="isContainerVisible = false"
           class="bg-gray-50 hover:bg-gray-300  rounded-full font-bold text-xs  px-5 py-2.5"
         >
           Zamknij
@@ -105,11 +108,13 @@
       </div>
       <div class="flex py-5 items-center space-x-3">
         <div class="">
-          <span>0 wybranych </span>
-          <span>(Wybierz co najmniej 2 więcej)</span>
+          <span>{{ products.length }} wybranych </span>
+          <span v-if="products.length < 2"
+            >(Wybierz co najmniej {{ 2 - products.length }} więcej)</span
+          >
         </div>
         <button
-          disabled
+          :disabled="products.length >= 2 ? false : true"
           class="bg-gray-50 hover:bg-gray-300 disabled:bg-gray-300 disabled:opacity-50 border rounded-full font-bold text-xs  px-6 py-3"
         >
           Porównaj produkty
@@ -119,21 +124,16 @@
 
     <div>
       <div class="space-x-5">
-        <label for="">
-          <input type="checkbox" />
-          <span></span>
-        </label>
-        <label for="">
-          <input type="checkbox" />
-          <span></span>
-        </label>
-        <label for="">
-          <input type="checkbox" />
+        <label v-for="item in items" :key="item" for="">
+          <input type="checkbox" :value="item" v-model="products" />
           <span></span>
         </label>
       </div>
     </div>
 
+    <div>
+      <p v-for="product in products" :key="product">{{ product }}</p>
+    </div>
     <!-- <li v-for="(svg, index) in navbarValues.svg" :key="index" class="navbar-li">
       <a href="">
         <BaseIcon :imageUrl="svg" />
@@ -322,8 +322,10 @@ import BaseIcon from './BaseIcon';
 export default {
   data() {
     return {
+      isContainerVisible: false,
+      products: [],
       // isActive: false,
-      items: ['test', 'test2', 'test3', 'test'],
+      items: ['test', 'test1', 'test2', 'test3'],
       // activeItem: null,
       navbarValues2: [
         {

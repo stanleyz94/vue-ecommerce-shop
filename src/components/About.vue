@@ -21,82 +21,116 @@
       </section>
     </div>
 
-    <div class="py-5 relative border-b-2 border-gray-100">
-      <button
-        @click="scrollHorizontallyTo('right')"
-        :class="{ hidden: isHidden }"
-        class="absolute lg:hidden top-auto right-2 shadow bg-gray-50 hover:bg-gray-300  rounded-full  px-2 py-2"
-      >
-        <BaseIcon imageUrl="chevron-right" class="w-4 h-4" />
-      </button>
+    <div class="relative">
+      <!-- Carousel buttons -->
+      <div class="py-5 relative  border-b-2 border-gray-100">
+        <button
+          @click="scrollHorizontallyTo('right')"
+          :class="{ hidden: isHidden }"
+          class="absolute lg:hidden top-auto right-2 shadow bg-gray-50 hover:bg-gray-300  rounded-full  px-2 py-2"
+        >
+          <BaseIcon imageUrl="chevron-right" class="w-4 h-4" />
+        </button>
 
-      <button
-        @click="scrollHorizontallyTo('left')"
-        :class="{ hidden: !isHidden }"
-        class="absolute lg:hidden top-auto left-2 shadow bg-gray-50 hover:bg-gray-300  rounded-full  px-2 py-2"
-      >
-        <BaseIcon imageUrl="chevron-left" class="w-4 h-4" />
-      </button>
-      <div
-        @scroll="handleScroll"
-        ref="scrollbar"
-        class="flex  no-scrollbar overflow-x-scroll space-x-3 lg:justify-start"
-      >
         <button
-          @click="isContainerVisible = true"
-          :disabled="isContainerVisible ? true : false"
-          aria-label="Aktywuj wybór porównania produktów"
-          class=" border border-gray-300 hover:border-gray-500 disabled:bg-gray-300 disabled:opacity-50 rounded-full font-bold text-xs px-4 py-2.5"
+          @click="scrollHorizontallyTo('left')"
+          :class="{ hidden: !isHidden }"
+          class="absolute lg:hidden top-auto left-2 shadow bg-gray-50 hover:bg-gray-300  rounded-full  px-2 py-2"
         >
-          <span> Porównaj</span>
+          <BaseIcon imageUrl="chevron-left" class="w-4 h-4" />
         </button>
-        <button
-          aria-label="Pokaż opcje sortowania moda"
-          class="inline-flex items-center  bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-4 py-2.5"
+        <div
+          @scroll="handleScroll"
+          ref="scrollbar"
+          class="flex  no-scrollbar overflow-x-scroll space-x-3 lg:justify-start"
         >
-          <span>Sortuj</span>
-          <BaseIcon class="h-5 w-5 ml-1.5" imageUrl="chevron-down" />
-        </button>
-        <button
-          aria-label="Pokaż okno filtrów"
-          class="   bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
-        >
-          <span>Rozmiar</span>
-        </button>
-        <button
-          aria-label="Aktywuj wybór porównania produktów"
-          class="   bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
-        >
-          <span>Kolor</span>
-        </button>
-        <button
-          aria-label="Aktywuj wybór porównania produktów"
-          class="  bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
-        >
-          <span>Drzwi</span>
-        </button>
-        <button
-          aria-label="Aktywuj wybór porównania produktów"
-          class="  bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
-        >
-          <span>Właściwości</span>
-        </button>
-        <button
-          aria-label="Aktywuj wybór porównania produktów"
-          class=" bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
-        >
-          <span>Cena</span>
-        </button>
-        <button
-          aria-label="Aktywuj wybór porównania produktów"
-          class=" inline-flex items-center whitespace-nowrap bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
-        >
-          <span>Wszystkie filtry</span>
-          <BaseIcon class="h-4 w-4 ml-1" imageUrl="adjustments" />
-        </button>
+          <button
+            @click="isContainerVisible = true"
+            :disabled="isContainerVisible ? true : false"
+            aria-label="Aktywuj wybór porównania produktów"
+            class=" border border-gray-300 hover:border-gray-500 disabled:bg-gray-300 disabled:opacity-50 rounded-full font-bold text-xs px-4 py-2.5"
+          >
+            <span> Porównaj</span>
+          </button>
+          <button
+            @click="isSortContainerVisible = !isSortContainerVisible"
+            aria-label="Pokaż opcje sortowania moda"
+            :class="{
+              'bg-gray-900': isSortContainerVisible,
+              'hover:bg-gray-900': isSortContainerVisible,
+              'text-white': isSortContainerVisible,
+            }"
+            class="inline-flex items-center  bg-gray-100 hover:bg-gray-200   rounded-full font-bold text-xs px-4 py-2.5"
+          >
+            <span>Sortuj</span>
+            <BaseIcon
+              class="h-5 w-5 ml-1.5"
+              :imageUrl="isSortContainerVisible ? 'chevron-up' : 'chevron-down'"
+            />
+          </button>
+          <button
+            aria-label="Pokaż okno filtrów"
+            class="   bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
+          >
+            <span>Rozmiar</span>
+          </button>
+          <button
+            aria-label="Aktywuj wybór porównania produktów"
+            class="   bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
+          >
+            <span>Kolor</span>
+          </button>
+          <button
+            aria-label="Aktywuj wybór porównania produktów"
+            class="  bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
+          >
+            <span>Drzwi</span>
+          </button>
+          <button
+            aria-label="Aktywuj wybór porównania produktów"
+            class="  bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
+          >
+            <span>Właściwości</span>
+          </button>
+          <button
+            aria-label="Aktywuj wybór porównania produktów"
+            class=" bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
+          >
+            <span>Cena</span>
+          </button>
+          <button
+            aria-label="Aktywuj wybór porównania produktów"
+            class=" inline-flex items-center whitespace-nowrap bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
+          >
+            <span>Wszystkie filtry</span>
+            <BaseIcon class="h-4 w-4 ml-1" imageUrl="adjustments" />
+          </button>
+        </div>
       </div>
+      <!-- Carousel buttons -->
+
+      <!--- Sort dropdown --->
+      <div
+        v-if="isSortContainerVisible"
+        class="text-sm w-64 bg-white px-8 py-10 rounded-lg border border-gray-200 space-y-5 shadow-md absolute top-16 left-24 z-50"
+      >
+        <label
+          v-for="item in sortContainerItems"
+          :key="item.id"
+          class="flex cursor-pointer items-center"
+          :for="item.id"
+        >
+          <span>{{ item.text }}</span>
+          <input class="hidden" :id="item.id" name="radioSort" type="radio" />
+          <div
+            class="flex ml-auto w-5 h-5  border border-gray-600 rounded-full "
+          ></div>
+        </label>
+      </div>
+      <!--- Sort dropdown --->
     </div>
 
+    <!-- Compare container -->
     <div v-if="isContainerVisible" class="flex border-b-2 border-gray-100">
       <div class="flex py-5 mr-auto">
         <button
@@ -122,61 +156,10 @@
       </div>
     </div>
 
-    <!---  DROPDOWN --->
-    <div class="text-sm w-64 px-5 py-8 rounded-lg  space-y-5 shadow-md">
-      <label class="flex justify-between items-center" for="">
-        <span>Najbardziej pasuje</span>
-        <input class="w-5 h-5 ml-auto" type="radio" />
-        <div></div>
-      </label>
-      <label class="flex justify-between items-center" for="">
-        <span>Od najniższej ceny</span>
-        <input class="w-5 h-5 ml-auto" type="radio" />
-        <div></div>
-      </label>
-      <label class="flex justify-between items-center" for="">
-        <span>Od najwyższej ceny</span>
-        <input class="w-5 h-5 ml-auto" type="radio" />
-        <div></div>
-      </label>
-      <label class="flex justify-between items-center" for="">
-        <span>Najnowszy</span>
-        <input class="w-5 h-5 ml-auto" type="radio" />
-        <div></div>
-      </label>
-      <label class="flex justify-between items-center" for="">
-        <span>Ocena</span>
-        <input class="w-5 h-5 ml-auto" type="radio" />
-        <div></div>
-      </label>
-      <label class="flex justify-between items-center" for="">
-        <span>Nazwa</span>
-        <input class="w-5 h-5 ml-auto" type="radio" />
-        <div></div>
-      </label>
-      <label class="flex justify-between items-center" for="">
-        <span>Najbardziej popularny</span>
-        <input class="w-5 h-5 ml-auto" type="radio" />
-        <div></div>
-      </label>
-      <label class="flex justify-between items-center" for="">
-        <span>Szerokość</span>
-        <input class="w-5 h-5 ml-auto" type="radio" />
-        <div></div>
-      </label>
-      <label class="flex justify-between items-center" for="">
-        <span>Wysokość</span>
-        <input class="w-5 h-5 ml-auto" type="radio" />
-        <div></div>
-      </label>
-      <label class="flex justify-between items-center" for="">
-        <span>Głębokość</span>
-        <input class="w-5 h-5 ml-auto" type="radio" />
-        <div></div>
-      </label>
-    </div>
+    <!-- Compare container -->
 
-    <div class="flex mt-5">
+    <!-- Checkboxes-->
+    <div class="flex mt-5 ">
       <label
         class="flex w-7 h-7 items-center mr-4 mb-2"
         v-for="item in items"
@@ -199,194 +182,27 @@
         </div>
       </label>
     </div>
-
+    <!-- Checkboxes-->
     <div>
       <p v-for="product in products" :key="product">{{ product }}</p>
     </div>
-    <!-- <li v-for="(svg, index) in navbarValues.svg" :key="index" class="navbar-li">
-      <a href="">
-        <BaseIcon :imageUrl="svg" />
-      </a>
-    </li> -->
-
-    <!-- <li
-      v-for="(item, index) in navbarRightItems"
-      :key="index"
-      class="navbar-li"
-    >
-      <a :href="item.url">
-        <BaseIcon :imageUrl="item.svgName" />
-      </a>
-    </li> -->
-    <!-- 
-    <h1 v-for="(value, index) in navbarRightItems" :key="index">
-      {{ value.svgName }}
-    </h1> -->
   </div>
-  <!-- <ul>
-    <li v-for="(item, i) in 2" :key="i" class="border-t-2 border-gray-100">
-      <span class="font-bold hidden mb-6 lg:flex">Obsługa klienta</span>
-      <button
-        @click="selectItem(i)"
-        class="flex w-full justify-between focus:outline-none py-7 lg:hidden"
-      >
-        <span class="font-bold">Obsługa klienta</span>
-        <BaseIcon
-          :imageUrl="i === activeItem ? 'chevron-up' : 'chevron-down'"
-        />
-      </button>
 
-      <ul
-        class="transition duration-500 ease-in-out lg:opacity-100 lg:visible lg:h-auto"
-        :class="
-          i === activeItem
-            ? 'opacity-100 visible h-auto'
-            : 'h-0 opacity-0 invisible overflow-hidden'
-        "
-      >
-        <li class="mt-2 mb-6">
-          <a href="#">Zaloguj się</a>
-        </li>
-        <li class="mt-2 mb-6">
-          <a href="#">Znajdz swoje zamówienie</a>
-        </li>
-      </ul>
-    </li>
-  </ul> -->
+  <!-- Modal dropdown for carousel buttons  --->
 
-  <!-- <BaseIcon imageUrl="chevron-up" /> -->
+  <ModalDropdown />
 
-  <!---DZIALA  -->
-  <!-- <ul>
-    <li v-for="(item, i) in 2" :key="i" class="border-t-2 border-gray-100">
-      <span class="font-bold hidden mb-6 lg:flex">Obsługa klienta</span>
-      <button
-        @click="selectItem(i)"
-        class="flex w-full justify-between focus:outline-none py-7 lg:hidden"
-      >
-        <span class="font-bold">Obsługa klienta</span>
-        <BaseIcon
-          :imageUrl="
-            i === activeItem && isActive ? 'chevron-up' : 'chevron-down'
-          "
-        />
-      </button>
-
-      <ul
-        class="transition duration-500 ease-in-out lg:opacity-100 lg:visible lg:h-auto"
-        :class="
-          i === activeItem && isActive
-            ? 'opacity-100 visible h-auto'
-            : 'h-0 opacity-0 invisible overflow-hidden'
-        "
-      >
-        <li class="mt-2 mb-6">
-          <a href="#">Zaloguj się</a>
-        </li>
-        <li class="mt-2 mb-6">
-          <a href="#">Znajdz swoje zamówienie</a>
-        </li>
-      </ul>
-    </li>
-  </ul> -->
-  <!---DZIALA  -->
-
-  <!-- DZIAL#2 dwa v-for -->
-  <!-- <ul>
-    <li v-for="(item, i) in accordionItems" :key="i">
-      <span>{{ item.span }}</span>
-      <button class="flex w-full justify-between focus:outline-none py-7">
-        <span>{{ item.span }}</span>
-      </button>
-
-      <ul>
-        <li
-          v-for="nestedListItem in item.nestedList"
-          :key="nestedListItem"
-          class="mt-2 mb-6"
-        >
-          <a :href="nestedListItem.url" class="text-red-500">{{
-            nestedListItem.text
-          }}</a>
-        </li>
-      </ul>
-    </li>
-  </ul> -->
-
-  <!-- DZIAL#2 dwa v-for -->
-
+  <!-- Modal dropdown for carousel buttons  --->
   <div>
     <div v-for="(item, i) in 100" :key="i">
       <button>make item active</button>
     </div>
   </div>
-
-  <!-- Finalne 3-->
-
-  <!-- <footer class="bg-gray-50 relative   bottom-0 ">
-    <div class="container mx-auto px-4 lg:flex-row">
-      <div class="mb-7 pt-9">
-        <h2 class="font-bold text-2xl mb-2">Klub IKEA Family</h2>
-        <p class="mb-2 text-sm">
-          W Klubie IKEA Family możesz skorzystać z atrakcyjnych ofert, promocji
-          i niespodzianek. Jako Klubowicz możesz liczyć na dopasowane do Ciebie
-          oferty oraz mnóstwo ciekawych inspiracji i porad. Dołącz do Klubu IKEA
-          Family i poczuj się jak w domu.
-        </p>
-        <a
-          href="#"
-          class="bg-black text-white overflow-hidden px-5 py-3 inline-block rounded-full font-bold text-xs"
-          >Dołącz lub zaloguj się</a
-        >
-      </div>
-      <div>
-        <ul class="lg:flex lg:flex-row lg:justify-between">
-          <li
-            v-for="(item, i) in accordionItems"
-            :key="i"
-            class="border-t-2 border-gray-100 lg:border-none"
-          >
-            <span class="font-bold hidden mb-6 lg:flex">{{ item.span }}</span>
-            <button
-              @click="selectItem(item, i)"
-              class="flex w-full justify-between focus:outline-none py-7 lg:hidden"
-            >
-              <span class="font-bold">{{ item.span }}</span>
-              <BaseIcon
-                :imageUrl="
-                  i === activeItem && item.isActive2
-                    ? 'chevron-up'
-                    : 'chevron-down'
-                "
-              />
-            </button>
-
-            <ul
-              class="transition duration-500 ease-in-out lg:opacity-100 lg:visible lg:h-auto"
-              :class="
-                i === activeItem && item.isActive2
-                  ? 'opacity-100 visible h-auto'
-                  : 'h-0 opacity-0 invisible overflow-hidden'
-              "
-            >
-              <li
-                v-for="(nestedListItem, nestedListIndex) in item.nestedList"
-                :key="nestedListIndex"
-                class="mt-2 mb-6 lg:flex lg:flex-row"
-              >
-                <a :href="nestedListItem.url">{{ nestedListItem.text }}</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </footer> -->
-  <!-- FINALNE 3-->
 </template>
 
 <script>
 import BaseIcon from './BaseIcon';
+import ModalDropdown from './ModalDropdown';
 
 export default {
   data() {
@@ -428,7 +244,59 @@ export default {
         { svgName: 'cart', url: '#' },
       ],
       isHidden: false,
-
+      isSortContainerVisible: false,
+      sortContainerItems: [
+        {
+          text: 'Najbardziej pasuje',
+          id: 'radio1',
+          isChecked: false,
+        },
+        {
+          text: 'Od najniższej ceny',
+          id: 'radio2',
+          isChecked: false,
+        },
+        {
+          text: 'Od najwyższej ceny',
+          id: 'radio3',
+          isChecked: false,
+        },
+        {
+          text: 'Najnowszy',
+          id: 'radio4',
+          isChecked: false,
+        },
+        {
+          text: 'Ocena',
+          id: 'radio5',
+          isChecked: false,
+        },
+        {
+          text: 'Nazwa',
+          id: 'radio6',
+          isChecked: false,
+        },
+        {
+          text: 'Najbardziej popularny',
+          id: 'radio7',
+          isChecked: false,
+        },
+        {
+          text: 'Szerokość',
+          id: 'radio8',
+          isChecked: false,
+        },
+        {
+          text: 'Wysokość',
+          id: 'radio9',
+          isChecked: false,
+        },
+        {
+          text: 'Głębokość',
+          id: 'radio10',
+          isChecked: false,
+        },
+      ],
       // accordionItems: [
       //   {
       //     span: 'Obsługa klienta',
@@ -486,6 +354,7 @@ export default {
   // },
   components: {
     BaseIcon,
+    ModalDropdown,
   },
 
   // methods: {
@@ -529,11 +398,18 @@ export default {
 </script>
 
 <style>
-input[type='radio']:checked + label {
-  background-color: red;
+input[type='radio']:checked + div {
+  background-color: black;
+  box-shadow: 0px 0px 0px 3px white inset;
 }
 
-input[type='radio']:checked + label {
-  color: red;
+input[type='radio']:checked + div {
+  color: black;
+}
+input[type='radio']:hover + div {
+  opacity: 0.7;
+  background-color: black;
+  box-shadow: 0px 0px 0px 3px white inset;
+  color: black;
 }
 </style>

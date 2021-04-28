@@ -1,4 +1,4 @@
-<template class="">
+<template>
   <TheNavigation />
   <BreadcrumbNavigation />
   <main class="container mx-auto p-4">
@@ -21,4 +21,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#app {
+  position: relative;
+}
+</style>

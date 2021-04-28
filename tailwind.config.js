@@ -19,5 +19,4 @@ module.exports = {
       opacity: ['disabled', 'checked', 'hover'],
     },
   },
-  plugins: [],
 };

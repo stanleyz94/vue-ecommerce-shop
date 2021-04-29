@@ -189,7 +189,9 @@
   </div>
 
   <!-- Modal dropdown for carousel buttons  --->
+
   <ModalDropdown v-if="isModalVisible" @hide-modal="hideModal" />
+
   <!-- Modal dropdown for carousel buttons  --->
 
   <button @click="showModal" class="bg-red-500 p-3 rounded">

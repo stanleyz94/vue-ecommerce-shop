@@ -34,4 +34,8 @@
   input:checked + div svg {
     @apply block;
   }
+
+  body.modal-open {
+    @apply overflow-hidden fixed;
+  }
 }

@@ -189,8 +189,12 @@
   </div>
 
   <!-- Modal dropdown for carousel buttons  --->
-  <ModalDropdown />
+  <ModalDropdown v-if="isModalVisible" @hide-modal="hideModal" />
   <!-- Modal dropdown for carousel buttons  --->
+
+  <button @click="showModal" class="bg-red-500 p-3 rounded">
+    KLIKNIJ MNIE
+  </button>
   <div>
     <div v-for="(item, i) in 100" :key="i">
       <button>make item active</button>
@@ -245,6 +249,7 @@ export default {
       isHidden: false,
       isSortContainerVisible: false,
       sortContainerItems: this.sortContainerVariables,
+      isModalVisible: false,
       // accordionItems: [
       //   {
       //     span: 'Obsługa klienta',
@@ -331,6 +336,14 @@ export default {
         this.$refs.scrollbar.scrollLeft -= maxScrollLeft;
         this.isHidden = !this.isHidden;
       }
+    },
+    showModal() {
+      this.isModalVisible = true;
+      document.body.classList.add('modal-open');
+    },
+    hideModal() {
+      this.isModalVisible = false;
+      document.body.classList.remove('modal-open');
     },
   },
 

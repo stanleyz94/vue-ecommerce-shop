@@ -14,7 +14,7 @@ module.exports = {
   },
   variants: {
     extend: {
-      textColor: ['odd', 'hover'],
+      textColor: ['odd', 'hover', 'checked'],
       backgroundColor: ['disabled', 'checked'],
       opacity: ['disabled', 'checked', 'hover'],
     },

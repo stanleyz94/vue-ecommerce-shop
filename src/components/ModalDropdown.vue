@@ -1,20 +1,21 @@
 <template>
   <teleport to="body">
-    <transition
-      appear
-      enter-active-class="transition ease-in duration-500 "
-      enter-from-class="opacity-0"
-    >
-      <div class="bg-gray-500 bg-opacity-70 fixed inset-0">
+    <div class="bg-gray-500 bg-opacity-70 fixed inset-0">
+      <transition
+        appear
+        enter-active-class="transition duration-500 "
+        leave-active-class="transition duration-500 "
+        enter-from-class="transform translate-y-full lg:translate-x-full lg:translate-y-0"
+      >
         <div
-          class="w-full h-full border bottom-0 lg:right-0 lg:bottom-0 lg:top-auto lg:w-4/12 top-6 absolute bg-white rounded"
+          class="w-full flex flex-col border bottom-0 lg:right-0 lg:bottom-0 lg:top-0 lg:w-4/12 top-6 absolute bg-white rounded"
         >
           <div class="flex justify-end p-5 ">
             <button @click="this.$emit('hide-modal')">
               <BaseIcon class="w-5 h-5" imageUrl="close" />
             </button>
           </div>
-          <div class="h-5/6 overflow-y-auto  overflow-x-hidden ">
+          <div class="overflow-y-auto overflow-x-hidden ">
             <ul class="space-y-5 px-9">
               <li>
                 <button
@@ -115,7 +116,7 @@
               <!---T test --->
             </ul>
           </div>
-          <div class="flex justify-around p-5 border-t-2">
+          <div class="flex w-auto justify-around py-2.5  border-t-2">
             <button
               disabled
               class="bg-gray-100 hover:bg-gray-200 disabled:bg-gray-300 disabled:opacity-50 rounded-full font-bold text-xs px-9 py-2.5"
@@ -129,8 +130,8 @@
             </button>
           </div>
         </div>
-      </div>
-    </transition>
+      </transition>
+    </div>
   </teleport>
 </template>
 
@@ -182,14 +183,4 @@ export default {
 };
 </script>
 
-<style>
-/* .fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-} */
-</style>
+<style></style>

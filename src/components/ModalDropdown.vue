@@ -82,15 +82,62 @@
                       />
                     </div>
                   </label> -->
-                  <BaseCheckbox
-                    :fieldId="'volume' + index"
-                    :label="'Volume On ' + index"
-                    v-for="(item, index) in 10"
-                    :key="index"
-                  />
+
+                  <label
+                    class="flex justify-between items-center mr-4 mb-2"
+                    for="item1"
+                  >
+                    <span>Test</span>
+
+                    <input
+                      type="checkbox"
+                      class="flex w-5/6 h-7 opacity-0 absolute"
+                      value="item1"
+                      v-model="products"
+                    />
+                    <div
+                      class="flex w-7 h-7 justify-center items-center border rounded-md border-gray-800 "
+                    >
+                      <BaseIcon
+                        imageUrl="check"
+                        class="h-4 w-4 fill-current hidden  text-white pointer-events-none "
+                      />
+                    </div>
+                  </label>
+
+                  <!-- <label
+                    class="flex justify-between items-center mr-4 mb-2"
+                    for="item2"
+                  >
+                    <span>Test</span>
+
+                    <input
+                      type="checkbox"
+                      class="flex w-5/6 h-7 opacity-0 absolute"
+                      value="item2"
+                      v-model="products"
+                    />
+                    <div
+                      class="flex w-7 h-7 justify-center items-center border rounded-md border-gray-800 "
+                    >
+                      <BaseIcon
+                        imageUrl="check"
+                        class="h-4 w-4 fill-current hidden  text-white pointer-events-none "
+                      />
+                    </div>
+                  </label> -->
+
+                  <BaseCheckbox v-model="exampleArr" value="item2" />
+                  <BaseCheckbox v-model="exampleArr" value="item3" />
                 </div>
               </li>
-              <i class="fas fa-check-square ml-auto text-blue-600"></i>
+              {{
+                exampleArr
+              }}
+              {{
+                products
+              }}
+
               <!---T test --->
               <div class="bg-red-500">
                 t
@@ -149,12 +196,13 @@
 <script>
 import BaseIcon from './BaseIcon';
 import BaseCheckbox from './BaseCheckbox';
-
 export default {
   inject: ['sortContainerVariables'],
   emits: ['hide-modal'],
   data() {
     return {
+      products: [],
+      exampleArr: [],
       isListActive: false,
       sortModalContainerItems: this.sortContainerVariables,
       sizeContainerItems: [

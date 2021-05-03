@@ -5,6 +5,7 @@ import router from './router';
 import App from './App.vue';
 import './index.css';
 import { sortContainerVariables } from './variables.js';
+
 const app = createApp(App);
 
 app.provide('sortContainerVariables', sortContainerVariables);

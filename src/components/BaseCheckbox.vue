@@ -1,10 +1,13 @@
 <template>
-  <label class="flex justify-between items-center mr-4 mb-2" for="item2">
-    <span>Test</span>
-
+  <label
+    class="flex justify-between items-center mr-4 mb-2 relative"
+    :for="value"
+  >
+    <span class="flex-grow">{{ label }}</span>
+    <span class="mr-5">{{ availableProducts }}</span>
     <input
       type="checkbox"
-      class="flex w-5/6 h-7 opacity-0 absolute"
+      class="flex w-full h-7 opacity-0 absolute"
       :checked="isChecked"
       :value="value"
       @change="onChange"
@@ -32,8 +35,11 @@ export default {
   props: {
     value: {
       default: null,
+      type: String,
     },
     modelValue: [Array],
+    label: { default: '', type: String },
+    availableProducts: { default: null, type: Number },
   },
   computed: {
     isChecked() {

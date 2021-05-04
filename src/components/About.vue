@@ -197,6 +197,7 @@
   <button @click="showModal" class="bg-red-500 p-3 rounded">
     KLIKNIJ MNIE
   </button>
+
   <div>
     <div v-for="(item, i) in 100" :key="i">
       <button>make item active</button>
@@ -252,6 +253,7 @@ export default {
       isSortContainerVisible: false,
       sortContainerItems: this.sortContainerVariables,
       isModalVisible: false,
+
       // accordionItems: [
       //   {
       //     span: 'Obsługa klienta',
@@ -312,6 +314,9 @@ export default {
     ModalDropdown,
   },
 
+  provide: {
+    testNumberOfProducts: 2,
+  },
   // methods: {
   //   selectItem(item, i) {
   //     item.isActive2 = !item.isActive2;

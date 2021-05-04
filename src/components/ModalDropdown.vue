@@ -18,125 +18,12 @@
           <div class=" overflow-y-auto overflow-x-hidden ">
             <ul class="space-y-5 px-9">
               <li>
-                <button
-                  @click="isListActive = !isListActive"
-                  class="flex w-full justify-between"
-                >
-                  <span>Sortuj</span>
-                  <BaseIcon imageUrl="chevron-down" />
-                </button>
-
-                <div
-                  :class="
-                    isListActive
-                      ? 'opacity-100 visible h-auto px-8 py-10 space-y-5'
-                      : 'h-0 opacity-0 invisible overflow-hidden'
-                  "
-                  class="transition duration-500 ease-in-out text-sm  bg-white "
-                >
-                  <label
-                    v-for="item in sortModalContainerItems"
-                    :key="item.id"
-                    class="flex cursor-pointer items-center"
-                    :for="item.id"
-                  >
-                    <span>{{ item.text }}</span>
-                    <input
-                      class="hidden"
-                      :id="item.id"
-                      name="radioSort"
-                      type="radio"
-                    />
-                    <div
-                      class="flex ml-auto w-5 h-5  border border-gray-600 rounded-full "
-                    ></div>
-                  </label>
-                </div>
+                <ModalDropdownSort />
               </li>
 
               <li>
-                <button class="flex w-full justify-between">
-                  <span>Rozmiar</span>
-                  <BaseIcon imageUrl="chevron-down" />
-                </button>
-
-                <div
-                  class="transition duration-500 ease-in-out text-sm  bg-white opacity-100 visible h-auto p-7 space-y-5"
-                >
-                  <!-- <span class="font-bold">Szerokość</span>
-
-                  <label class="flex items-center text-xs" for="test">
-                    <span class="px-9 mr-auto">0.99 cm </span>
-                    <span class="mr-6">4</span>
-                    <input
-                      type="checkbox"
-                      class="w-full h-7 opacity-0 absolute cursor-pointer"
-                      value="item"
-                    />
-                    <div
-                      class="flex w-5 h-5 justify-center items-center border rounded-md border-gray-800 "
-                    >
-                      <BaseIcon
-                        imageUrl="check"
-                        class="h-3 w-3 fill-current hidden  text-white pointer-events-none "
-                      />
-                    </div>
-                  </label> -->
-
-                  <label
-                    class="flex justify-between items-center mr-4 mb-2"
-                    for="item1"
-                  >
-                    <span>Test</span>
-
-                    <input
-                      type="checkbox"
-                      class="flex w-5/6 h-7 opacity-0 absolute"
-                      value="item1"
-                      v-model="products"
-                    />
-                    <div
-                      class="flex w-7 h-7 justify-center items-center border rounded-md border-gray-800 "
-                    >
-                      <BaseIcon
-                        imageUrl="check"
-                        class="h-4 w-4 fill-current hidden  text-white pointer-events-none "
-                      />
-                    </div>
-                  </label>
-
-                  <!-- <label
-                    class="flex justify-between items-center mr-4 mb-2"
-                    for="item2"
-                  >
-                    <span>Test</span>
-
-                    <input
-                      type="checkbox"
-                      class="flex w-5/6 h-7 opacity-0 absolute"
-                      value="item2"
-                      v-model="products"
-                    />
-                    <div
-                      class="flex w-7 h-7 justify-center items-center border rounded-md border-gray-800 "
-                    >
-                      <BaseIcon
-                        imageUrl="check"
-                        class="h-4 w-4 fill-current hidden  text-white pointer-events-none "
-                      />
-                    </div>
-                  </label> -->
-
-                  <BaseCheckbox v-model="exampleArr" value="item2" />
-                  <BaseCheckbox v-model="exampleArr" value="item3" />
-                </div>
+                <ModalDropdownSize />
               </li>
-              {{
-                exampleArr
-              }}
-              {{
-                products
-              }}
 
               <!---T test --->
               <div class="bg-red-500">
@@ -195,9 +82,12 @@
 
 <script>
 import BaseIcon from './BaseIcon';
-import BaseCheckbox from './BaseCheckbox';
+
+import ModalDropdownSort from './ModalDropdownSort';
+import ModalDropdownSize from './ModalDropdownSize';
 export default {
-  inject: ['sortContainerVariables'],
+  inject: ['sortContainerVariables', 'testNumberOfProducts'],
+
   emits: ['hide-modal'],
   data() {
     return {
@@ -205,6 +95,48 @@ export default {
       exampleArr: [],
       isListActive: false,
       sortModalContainerItems: this.sortContainerVariables,
+      modalAccordionItems: [
+        {
+          span: 'Sortuj',
+          isActive: false,
+        },
+        {
+          span: 'Rozmiar',
+          isActive: false,
+        },
+        {
+          span: 'Kolor',
+          isActive: false,
+        },
+        {
+          span: 'Drzwi',
+          isActive: false,
+        },
+        {
+          span: 'Właściwości',
+          isActive: false,
+        },
+        {
+          span: 'Cena',
+          isActive: false,
+        },
+        {
+          span: 'W sprzedaży przez internet',
+          isActive: false,
+        },
+        {
+          span: 'Materiał',
+          isActive: false,
+        },
+        {
+          span: 'Nowość',
+          isActive: false,
+        },
+        {
+          span: 'Ocena',
+          isActive: false,
+        },
+      ],
       sizeContainerItems: [
         {
           header: 'Szerokość',
@@ -240,7 +172,9 @@ export default {
   },
   components: {
     BaseIcon,
-    BaseCheckbox,
+
+    ModalDropdownSort,
+    ModalDropdownSize,
   },
 };
 </script>

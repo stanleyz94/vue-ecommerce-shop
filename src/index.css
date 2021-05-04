@@ -35,6 +35,13 @@
     @apply block;
   }
 
+  #rounded-color:checked + div {
+    @apply bg-transparent;
+  }
+  #rounded-color:checked + div svg {
+    @apply block;
+  }
+
   body.modal-open {
     @apply overflow-hidden fixed;
   }

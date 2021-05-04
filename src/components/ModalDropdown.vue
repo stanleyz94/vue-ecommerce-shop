@@ -25,6 +25,10 @@
                 <ModalDropdownSize />
               </li>
 
+              <li>
+                <ModalDropdownColor />
+              </li>
+
               <!---T test --->
               <div class="bg-red-500">
                 t
@@ -85,6 +89,7 @@ import BaseIcon from './BaseIcon';
 
 import ModalDropdownSort from './ModalDropdownSort';
 import ModalDropdownSize from './ModalDropdownSize';
+import ModalDropdownColor from './ModalDropdownColor';
 export default {
   inject: ['sortContainerVariables', 'testNumberOfProducts'],
 
@@ -175,6 +180,7 @@ export default {
 
     ModalDropdownSort,
     ModalDropdownSize,
+    ModalDropdownColor,
   },
 };
 </script>

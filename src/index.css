@@ -35,10 +35,11 @@
     @apply block;
   }
 
-  #rounded-color:checked + div {
-    @apply bg-transparent;
+  .rounded-color:checked + span {
+    @apply bg-transparent ring-1 ring-gray-600 ring-offset-2;
   }
-  #rounded-color:checked + div svg {
+
+  .rounded-color:checked + span svg {
     @apply block;
   }
 

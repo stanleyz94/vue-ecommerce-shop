@@ -17,9 +17,9 @@ module.exports = {
       textColor: ['odd', 'hover', 'checked'],
       backgroundColor: ['disabled', 'checked'],
       opacity: ['disabled', 'checked', 'hover'],
-      ringWidth: ['hover'],
-      ringOffsetWidth: ['hover'],
-      ringColor: ['hover'],
+      ringWidth: ['hover', 'checked'],
+      ringOffsetWidth: ['hover', 'checked'],
+      ringColor: ['hover', 'checked'],
     },
   },
 };

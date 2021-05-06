@@ -9,9 +9,10 @@
       >
         <div
           class="w-full flex flex-col border bottom-0 lg:right-0 lg:bottom-0 lg:top-0 lg:w-4/12 top-6 absolute bg-white rounded"
+          role="dialog"
         >
           <div class="flex justify-end p-5 ">
-            <button @click="this.$emit('hide-modal')">
+            <button @click="this.$emit('hide-modal')" aria-label="Close modal">
               <BaseIcon class="w-5 h-5" imageUrl="close" />
             </button>
           </div>

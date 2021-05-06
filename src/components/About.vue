@@ -194,6 +194,8 @@
 
   <!-- Modal dropdown for carousel buttons  --->
 
+  <AppliedFilters />
+
   <button @click="showModal" class="bg-red-500 p-3 rounded">
     KLIKNIJ MNIE
   </button>
@@ -208,6 +210,7 @@
 <script>
 import BaseIcon from './BaseIcon';
 import ModalDropdown from './ModalDropdown';
+import AppliedFilters from './AppliedFilters';
 
 export default {
   inject: ['sortContainerVariables'],
@@ -312,6 +315,7 @@ export default {
   components: {
     BaseIcon,
     ModalDropdown,
+    AppliedFilters,
   },
 
   provide: {

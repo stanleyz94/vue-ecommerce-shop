@@ -3,12 +3,12 @@
     @click="isListActive = !isListActive"
     class="flex w-full justify-between"
   >
-    <div class="flex flex-col items-start	">
+    <span class="flex flex-col items-start">
       <span>Kolor</span>
-      <span v-if="testing.length >= 1" class="text-sm">
+      <span v-if="testing.length >= 1" class="text-xs text-left	">
         {{ testing.join(', ') }}
       </span>
-    </div>
+    </span>
 
     <BaseIcon :imageUrl="isListActive ? 'chevron-up' : 'chevron-down'" />
   </button>

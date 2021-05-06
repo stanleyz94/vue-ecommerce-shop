@@ -15,53 +15,45 @@
               <BaseIcon class="w-5 h-5" imageUrl="close" />
             </button>
           </div>
-          <div class=" overflow-y-auto overflow-x-hidden ">
-            <ul class="space-y-5 px-9">
-              <li>
+          <div class="overflow-y-auto overflow-x-hidden flex-grow">
+            <ul class="space-y-4 px-9">
+              <li class="py-6">
                 <ModalDropdownSort />
               </li>
 
-              <li>
+              <li class="py-6">
                 <ModalDropdownSize />
               </li>
 
-              <li>
+              <li class="py-6">
                 <ModalDropdownColor />
               </li>
 
-              <!---T test --->
-              <div class="bg-red-500">
-                t
-                <hr class="" />
-              </div>
-              <li v-for="item in 10" :key="item">
-                <button class="flex w-full justify-between">
-                  <span>Rozmiar</span>
-                  <BaseIcon imageUrl="chevron-down" />
-                </button>
+              <li class="py-6">
+                <ModalDropdownDoors />
+              </li>
 
-                <div
-                  class="transition duration-500 ease-in-out text-sm  bg-white opacity-100 visible h-auto py-7 space-y-5"
-                >
-                  <span class="font-bold">Szerokość</span>
-                  <label
-                    class="flex cursor-pointer items-center px-7"
-                    for="item.id"
-                  >
-                    <span>0.99 cm</span>
+              <li class="py-6">
+                <ModalDropdownProperties />
+              </li>
 
-                    <input
-                      class="hidden"
-                      id="item.id"
-                      name="radioSort"
-                      type="radio"
-                    />
+              <li class="py-6">
+                <ModalDropdownPrice />
+              </li>
 
-                    <div
-                      class="flex ml-auto w-5 h-5  border border-gray-600 rounded-full "
-                    ></div>
-                  </label>
-                </div>
+              <li class="py-6">
+                <ModalDropdownSaleNet />
+              </li>
+              <li class="py-6">
+                <ModalDropdownMaterial />
+              </li>
+
+              <li class="py-6">
+                <ModalDropdownNewest />
+              </li>
+
+              <li class="py-6">
+                <ModalDropdownRating />
               </li>
             </ul>
           </div>
@@ -90,6 +82,13 @@ import BaseIcon from './BaseIcon';
 import ModalDropdownSort from './ModalDropdownSort';
 import ModalDropdownSize from './ModalDropdownSize';
 import ModalDropdownColor from './ModalDropdownColor';
+import ModalDropdownDoors from './ModalDropdownDoors';
+import ModalDropdownProperties from './ModalDropdownProperties';
+import ModalDropdownPrice from './ModalDropdownPrice';
+import ModalDropdownSaleNet from './ModalDropdownSaleNet';
+import ModalDropdownMaterial from './ModalDropdownMaterial';
+import ModalDropdownNewest from './ModalDropdownNewest';
+import ModalDropdownRating from './ModalDropdownRating';
 export default {
   inject: ['sortContainerVariables', 'testNumberOfProducts'],
 
@@ -181,6 +180,13 @@ export default {
     ModalDropdownSort,
     ModalDropdownSize,
     ModalDropdownColor,
+    ModalDropdownDoors,
+    ModalDropdownProperties,
+    ModalDropdownPrice,
+    ModalDropdownSaleNet,
+    ModalDropdownMaterial,
+    ModalDropdownNewest,
+    ModalDropdownRating,
   },
 };
 </script>

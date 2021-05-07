@@ -158,6 +158,14 @@
 
     <!-- Compare container -->
 
+    <!-- Modal dropdown for carousel buttons  --->
+
+    <ModalDropdown v-if="isModalVisible" @hide-modal="hideModal" />
+
+    <!-- Modal dropdown for carousel buttons  --->
+
+    <AppliedFilters />
+
     <!-- Checkboxes-->
     <div class="flex mt-5 ">
       <label
@@ -187,14 +195,6 @@
       <p v-for="product in products" :key="product">{{ product }}</p>
     </div>
   </div>
-
-  <!-- Modal dropdown for carousel buttons  --->
-
-  <ModalDropdown v-if="isModalVisible" @hide-modal="hideModal" />
-
-  <!-- Modal dropdown for carousel buttons  --->
-
-  <AppliedFilters />
 
   <button @click="showModal" class="bg-red-500 p-3 rounded">
     KLIKNIJ MNIE

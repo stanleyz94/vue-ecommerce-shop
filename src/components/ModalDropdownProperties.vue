@@ -27,25 +27,25 @@
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Możliwość dostosowania"
-        v-model="exampleArr"
+        v-model="filtersValues.value"
         value="Możliwość dostosowania"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Półki"
-        v-model="exampleArr"
+        v-model="filtersValues.value"
         value="Półki"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Miękkie domykanie"
-        v-model="exampleArr"
+        v-model="filtersValues.value"
         value="Miękkie domykanie"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Kosze druciane i siatkowe"
-        v-model="exampleArr"
+        v-model="filtersValues.value"
         value="Kosze druciane i siatkowe"
       />
       <BaseCheckbox
@@ -110,12 +110,19 @@ export default {
     BaseIcon,
     BaseCheckbox,
   },
-  inject: ['testNumberOfProducts'],
+  inject: ['testNumberOfProducts', 'filtersValues'],
   data() {
     return {
       isListActive: false,
       exampleArr: [],
+      exampleArr2: [],
     };
+  },
+
+  beforeUpdate() {
+    this.exampleArr = this.exampleArr2;
+    // this.exampleArr.forEach((x) => this.exampleArr2.push(x));
+    console.log(this.exampleArr2);
   },
 };
 </script>

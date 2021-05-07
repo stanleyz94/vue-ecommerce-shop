@@ -51,4 +51,6 @@ export const sortContainerVariables = [
   },
 ];
 
+export const filtersValuesArray = [];
+
 export const testingPurposes = false;

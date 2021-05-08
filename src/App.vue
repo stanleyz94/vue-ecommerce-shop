@@ -8,11 +8,12 @@
 </template>
 
 <script>
-import { provide, ref } from 'vue';
+import { provide } from 'vue';
 import TheNavigation from './components/nav/TheNavigation.vue';
 import BreadcrumbNavigation from './components/nav/BreadcrumbNavigation.vue';
 import TheFooter from './components/TheFooter.vue';
-import { filtersValuesArray } from './variables.js';
+import store from '@/store';
+// import { filtersValuesArray } from './variables.js';
 export default {
   name: 'App',
   components: {
@@ -22,8 +23,9 @@ export default {
   },
 
   setup() {
-    const filtersValues = ref(filtersValuesArray);
-    provide('filtersValues', filtersValues);
+    // const filtersValues = ref(filtersValuesArray);
+    // provide('filtersValues', filtersValues);
+    provide('store', store);
   },
 };
 </script>

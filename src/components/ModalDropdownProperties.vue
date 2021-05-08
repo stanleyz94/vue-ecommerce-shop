@@ -5,8 +5,11 @@
   >
     <span class="flex flex-col items-start  flex-wrap	">
       <span>Właściwości</span>
-      <span v-if="exampleArr.length >= 1" class="text-xs text-left	break-words	">
-        {{ exampleArr.join(', ') }}</span
+      <span
+        v-if="filteredProperties.length >= 1"
+        class="text-xs text-left	break-words	"
+      >
+        {{ filteredProperties.join(', ') }}</span
       >
     </span>
     <BaseIcon
@@ -27,74 +30,74 @@
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Możliwość dostosowania"
-        v-model="filtersValues.value"
+        v-model="filteredProperties"
         value="Możliwość dostosowania"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Półki"
-        v-model="filtersValues.value"
+        v-model="filteredProperties"
         value="Półki"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Miękkie domykanie"
-        v-model="filtersValues.value"
+        v-model="filteredProperties"
         value="Miękkie domykanie"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Kosze druciane i siatkowe"
-        v-model="filtersValues.value"
+        v-model="filteredProperties"
         value="Kosze druciane i siatkowe"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Szuflady"
-        v-model="exampleArr"
+        v-model="filteredProperties"
         value="Szuflady"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Półki szklane"
-        v-model="exampleArr"
+        v-model="filteredProperties"
         value="Półki szklane"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Szuflady szklane"
-        v-model="exampleArr"
+        v-model="filteredProperties"
         value="Szuflady szklane"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Półki na buty"
-        v-model="exampleArr"
+        v-model="filteredProperties"
         value="Półki na buty"
       />
 
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Regulowane stopki"
-        v-model="exampleArr"
+        v-model="filteredProperties"
         value="Regulowane stopki"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Nogi"
-        v-model="exampleArr"
+        v-model="filteredProperties"
         value="Nogi"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Regulowane drązki na ubrania"
-        v-model="exampleArr"
+        v-model="filteredProperties"
         value="Regulowane drązki na ubrania"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Regulowane nóżki"
-        v-model="exampleArr"
+        v-model="filteredProperties"
         value="Regulowane nóżki"
       />
     </div>
@@ -110,19 +113,17 @@ export default {
     BaseIcon,
     BaseCheckbox,
   },
-  inject: ['testNumberOfProducts', 'filtersValues'],
+  inject: ['testNumberOfProducts', 'store'],
   data() {
     return {
       isListActive: false,
-      exampleArr: [],
-      exampleArr2: [],
+      filteredProperties: [],
     };
   },
 
   beforeUpdate() {
-    this.exampleArr = this.exampleArr2;
-    // this.exampleArr.forEach((x) => this.exampleArr2.push(x));
-    console.log(this.exampleArr2);
+    this.store.filtersValues.value = [...this.filteredProperties];
+    console.log(this.store.filtersValues.value);
   },
 };
 </script>

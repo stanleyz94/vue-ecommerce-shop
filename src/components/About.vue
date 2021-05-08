@@ -166,7 +166,9 @@
 
     <AppliedFilters />
 
+    <ProductsList />
     <!-- Checkboxes-->
+
     <div class="flex mt-5 ">
       <label
         class="flex w-7 h-7 items-center mr-4 mb-2"
@@ -211,6 +213,7 @@
 import BaseIcon from './BaseIcon';
 import ModalDropdown from './ModalDropdown';
 import AppliedFilters from './AppliedFilters';
+import ProductsList from './ProductsList';
 
 export default {
   inject: ['sortContainerVariables'],
@@ -316,6 +319,7 @@ export default {
     BaseIcon,
     ModalDropdown,
     AppliedFilters,
+    ProductsList,
   },
 
   provide: {

@@ -1,16 +1,4 @@
-import { createApp } from 'vue';
-
-import router from './router';
-import store from './storeVuex';
-import App from './App.vue';
-import './index.css';
-import { sortContainerVariables } from './variables.js';
-
-const app = createApp(App);
-
-app.provide('sortContainerVariables', sortContainerVariables);
-
-app.config.globalProperties.$globalVariable = [
+export const sortContainerVariables = [
   {
     text: 'Najbardziej pasuje',
     id: 'radio1',
@@ -63,6 +51,18 @@ app.config.globalProperties.$globalVariable = [
   },
 ];
 
-app.use(router);
-app.use(store);
-app.mount('#app');
+export const filtersValuesArray = [];
+
+export const testingPurposes = false;
+
+const items = [
+  {
+    id: 1,
+    name: 'PAX / FORSAND/VIKEDAL',
+    description: 'Kombinacja szafy',
+    measurement: '75x60x236 cm',
+    price: 12.0,
+  },
+];
+
+export default items;

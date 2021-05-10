@@ -202,6 +202,37 @@
     KLIKNIJ MNIE
   </button>
 
+  <div :style="{ color: $store.state.colorCode }" class="vuex-testing">
+    {{ $store.state.counter }}
+
+    {{ $store.state.counter }}
+    <sup>2</sup> = {{ $store.getters.counterSquared }}
+
+    <div class="space-x-2">
+      <button
+        class="bg-green-500 w-8 h-8"
+        @click="$store.dispatch('increaseCounter')"
+      >
+        +
+      </button>
+      <button
+        class="bg-red-500 w-8 h-8"
+        @click="$store.dispatch('decreaseCounter')"
+      >
+        -
+      </button>
+      <div>
+        <!-- <input
+          v-model="$store.state.colorCode"
+          placeholder="Type color"
+          type="text"
+        /> -->
+
+        <input v-model="colorCode" placeholder="Type color" type="text" />
+      </div>
+    </div>
+  </div>
+
   <div>
     <div v-for="(item, i) in 100" :key="i">
       <button>make item active</button>
@@ -368,6 +399,14 @@ export default {
   computed: {
     message() {
       return '$' + this.message2;
+    },
+    colorCode: {
+      get() {
+        return this.$store.state.colorCode;
+      },
+      set(newValue) {
+        this.$store.dispatch('setColorCode', newValue);
+      },
     },
   },
 

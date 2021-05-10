@@ -124,6 +124,12 @@ export default {
   beforeUpdate() {
     this.store.filtersValues.value = [...this.filteredProperties];
     console.log(this.store.filtersValues.value);
+    //testing
+    localStorage.setItem(
+      'filtersValues',
+      JSON.stringify(this.filteredProperties)
+    );
+    //testing
   },
 };
 </script>

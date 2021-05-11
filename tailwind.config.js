@@ -21,6 +21,7 @@ module.exports = {
       ringOffsetWidth: ['hover', 'checked'],
       ringColor: ['hover', 'checked'],
       borderWidth: ['even'],
+      display: ['hover'],
     },
   },
 };

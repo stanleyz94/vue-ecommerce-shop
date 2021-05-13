@@ -1,9 +1,24 @@
 import { createStore } from 'vuex';
+import { items } from '../data/variables';
+import { getByProperty2 } from './filters.js';
 
 export default createStore({
   state: {
     counter: 0,
-    colorCode: 'blue',
+    colorCode: 'bluse',
+    cart: [],
+    items: items,
+    filtersValues: [],
+
+    filteredValues: {
+      color: [],
+      doorType: [],
+      propertyType: [],
+      materialType: [],
+      saleOnline: false,
+      newest: false,
+      rating: 5,
+    },
   },
   mutations: {
     decreaseCounter(state, randomNumber) {
@@ -14,6 +29,16 @@ export default createStore({
     },
     setColorCode(state, newValue) {
       state.colorCode = newValue;
+    },
+    setFiltersValues(state, newValues) {
+      state.filtersValues = [...newValues];
+    },
+    setFiltersValues2(state, newValues, objectKey) {
+      if (Array.isArray(newValues[objectKey])) {
+        state.filteredValues[objectKey] = [...newValues];
+      } else {
+        state.filteredValues[objectKey] = newValues;
+      }
     },
   },
   //async
@@ -37,11 +62,23 @@ export default createStore({
     setColorCode({ commit }, newValue) {
       commit('setColorCode', newValue);
     },
+    setFiltersValues({ commit }, newValue) {
+      commit('setFiltersValues', newValue);
+    },
+    setFiltersValues2({ commit }, newValue, objectKey) {
+      commit('setFiltersValues2', newValue, objectKey);
+    },
   },
   //get data from state
   getters: {
     counterSquared(state) {
       return state.counter * state.counter;
+    },
+    loadItems(state) {
+      return state.items;
+    },
+    loadFilters(state) {
+      return getByProperty2(state.items, state.filtersValues);
     },
   },
 

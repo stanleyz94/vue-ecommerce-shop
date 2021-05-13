@@ -58,7 +58,9 @@
         </span>
       </div>
       <div class="flex flex-col mt-5">
-        <span :class="{ invisible: true }" class="font-bold text-yellow-600	"
+        <span
+          :class="{ invisible: !item.newest }"
+          class="font-bold text-yellow-600 "
           >Nowość</span
         >
         <span class="font-bold">{{ item.name }}</span>
@@ -66,6 +68,7 @@
         <span class="font-bold md:text-2xl">{{ item.price }},-</span>
         <button
           class="bg-blue-700 rounded-full w-6 h-6 p-6 flex justify-center items-center self-end hover:bg-blue-800	"
+          @click="clickTest(item)"
         >
           <span>
             <BaseIcon class="text-white" imageUrl="add-item" />
@@ -76,7 +79,14 @@
     <!-- flex (item #1-->
 
     <!-- flex (item #2) -->
-    <div></div>
+    <div>{{ $store.state.filteredValues }}</div>
+    <div>
+      {{ $store.state.filtersValues }}
+    </div>
+    <div>
+      <p>{{ $store.getters.loadFilters }}</p>
+    </div>
+    <!-- <div>{{ $store.state.items }}</div> -->
     <!-- flex (item #2) -->
   </div>
   <!--grid -->
@@ -84,15 +94,20 @@
 
 <script>
 import BaseIcon from './BaseIcon';
-import variables from '../data/variables';
+import { items } from '../data/variables';
 export default {
   components: {
     BaseIcon,
   },
   data() {
     return {
-      test: variables,
+      test: items,
     };
+  },
+  methods: {
+    clickTest(i) {
+      console.log(i);
+    },
   },
 };
 </script>

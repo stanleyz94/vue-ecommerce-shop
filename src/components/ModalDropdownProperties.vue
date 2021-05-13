@@ -36,7 +36,7 @@
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Półki"
-        v-model="filteredProperties"
+        v-model="filteredProperties2"
         value="Półki"
       />
       <BaseCheckbox
@@ -79,25 +79,26 @@
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Regulowane stopki"
-        v-model="filteredProperties"
+        v-model="filteredProperties3"
         value="Regulowane stopki"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Nogi"
-        v-model="filteredProperties"
+        v-model="filteredProperties3"
         value="Nogi"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Regulowane drązki na ubrania"
-        v-model="filteredProperties"
+        v-model="filteredProperties2"
         value="Regulowane drązki na ubrania"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Regulowane nóżki"
-        v-model="filteredProperties"
+        v-model="filteredProperties2"
+        @input="onChange()"
         value="Regulowane nóżki"
       />
     </div>
@@ -121,15 +122,56 @@ export default {
     };
   },
 
+  mounted() {
+    // this.filteredProperties.push('Możliwość dostosowania');
+  },
   beforeUpdate() {
     this.store.filtersValues.value = [...this.filteredProperties];
-    console.log(this.store.filtersValues.value);
+    console.log();
+    // console.log(this.store.filtersValues.value);
     //testing
-    localStorage.setItem(
-      'filtersValues',
-      JSON.stringify(this.filteredProperties)
-    );
+
+    // this.$store.dispatch('setFiltersValues', this.filteredProperties);
+    // console.log(this.$store.state.filtersValues);
     //testing
+  },
+
+  methods: {
+    onChange() {
+      //   this.$store.dispatch('setFiltersValues', this.filteredProperties);
+      console.log(
+        'store.state.filtersValues: ' + this.$store.state.filtersValues
+      );
+      console.log('filteredProperties: ' + this.filteredProperties);
+      //   localStorage.setItem(
+      //     'filtersValues',
+      //     JSON.stringify(this.filteredProperties)
+      //   );
+    },
+  },
+  computed: {
+    filteredProperties2: {
+      get() {
+        return this.$store.state.filtersValues;
+      },
+      set(value) {
+        this.$store.dispatch('setFiltersValues', value);
+
+        // this.$store.dispatch('setFiltersValues', val);
+        // localStorage.setItem('filtersValues', JSON.stringify(val));
+      },
+    },
+    filteredProperties3: {
+      get() {
+        return this.$store.state.filteredValues.propertyType;
+      },
+      set(value) {
+        this.$store.dispatch('setFiltersValues', value, 'propertyType');
+
+        // this.$store.dispatch('setFiltersValues', val);
+        // localStorage.setItem('filtersValues', JSON.stringify(val));
+      },
+    },
   },
 };
 </script>

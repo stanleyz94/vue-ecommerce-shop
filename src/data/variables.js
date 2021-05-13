@@ -55,7 +55,7 @@ export const filtersValuesArray = [];
 
 export const testingPurposes = false;
 
-const items = [
+export const items = [
   {
     //Drzwi, Wlasciwwosci i Szerokosc
     id: 1,
@@ -70,6 +70,13 @@ const items = [
     height: 236,
     depth: 60,
     price: 1180,
+    color: 'bialy',
+    doorType: 'Drzwi na zawiasach',
+    propertyType: 'Możliwość dostosowania',
+    materialType: 'Drewno (łączne z płytą)',
+    saleOnline: false,
+    newest: true,
+    rating: 4,
   },
 
   {
@@ -85,6 +92,13 @@ const items = [
     height: 236,
     depth: 66,
     price: 3445,
+    color: 'bialy',
+    doorType: 'Drzwi przesuwane',
+    propertyType: 'Półki',
+    materialType: 'Drewno (łączne z płytą)',
+    saleOnline: false,
+    newest: false,
+    rating: 3,
   },
   {
     id: 3,
@@ -99,7 +113,7 @@ const items = [
     height: 236,
     depth: 60,
     price: 5700,
-    color: 'white',
+    color: 'bialy',
     doorType: 'Drzwi na zawiasach',
     propertyType: 'Możliwość dostosowania',
     materialType: 'Drewno (łączne z płytą)',
@@ -120,13 +134,20 @@ const items = [
     height: 236,
     depth: 60,
     price: 5465,
+    color: 'bialy',
+    doorType: 'Drzwi przesuwane',
+    propertyType: 'Możliwość dostosowania',
+    materialType: 'Drewno (łączne z płytą)',
+    saleOnline: true,
+    newest: false,
+    rating: 5,
   },
   {
     id: 5,
     img:
-      'https://www.ikea.com/pl/pl/images/products/pax-tyssedal-kombinacja-szafy-bialy-bialy__0780670_pe760168_s5.jpg',
+      'https://www.ikea.com/pl/pl/images/products/platsa-kombinacja-6-drzwi-3-szuflady-bialy-fonnes-bialy__0793265_pe766240_s5.jpg',
     img2:
-      'https://www.ikea.com/pl/pl/images/products/pax-tyssedal-kombinacja-szafy-bialy-bialy__0780668_pe760173_s5.jpg',
+      'https://www.ikea.com/pl/pl/images/products/platsa-kombinacja-6-drzwi-3-szuflady-bialy-fonnes-bialy__0793264_pe766239_s5.jpg',
     name: 'PLATSA',
     description: 'Kombinacja 6 drzwi+3 szuflady',
     measurement: '420x42x241 cm',
@@ -134,6 +155,13 @@ const items = [
     height: 241,
     depth: 42,
     price: 2825,
+    color: 'bialy',
+    doorType: 'Drzwi na zawiasach',
+    propertyType: 'Możliwość dostosowania',
+    materialType: 'Drewno (łączne z płytą)',
+    saleOnline: true,
+    newest: false,
+    rating: 5,
   },
 
   //Wysokosc
@@ -150,6 +178,13 @@ const items = [
     height: 133,
     depth: 42,
     price: 1350,
+    color: 'bialy',
+    doorType: 'Drzwi na zawiasach',
+    propertyType: 'Możliwość dostosowania',
+    materialType: 'Drewno (łączne z płytą)',
+    saleOnline: false,
+    newest: false,
+    rating: 5,
   },
 
   {
@@ -165,6 +200,13 @@ const items = [
     height: 181,
     depth: 42,
     price: 1135,
+    color: 'szary',
+    doorType: 'Drzwi na zawiasach',
+    propertyType: 'Możliwość dostosowania',
+    materialType: 'Drewno (łączne z płytą)',
+    saleOnline: false,
+    newest: false,
+    rating: 5,
   },
   //Glebokosc
   {
@@ -180,6 +222,13 @@ const items = [
     height: 236,
     depth: 38,
     price: 1135,
+    color: 'bialy',
+    doorType: 'Drzwi na zawiasach',
+    propertyType: 'Możliwość dostosowania',
+    materialType: 'Drewno (łączne z płytą)',
+    saleOnline: false,
+    newest: false,
+    rating: 3,
   },
 
   //Kolor
@@ -197,7 +246,13 @@ const items = [
     height: 236,
     depth: 60,
     price: 1135,
-    color: 'green',
+    color: 'zielony',
+    doorType: 'Drzwi na zawiasach',
+    propertyType: 'Możliwość dostosowania',
+    materialType: 'Drewno (łączne z płytą)',
+    saleOnline: false,
+    newest: false,
+    rating: 3,
   },
 
   {
@@ -213,8 +268,12 @@ const items = [
     height: 236,
     depth: 66,
     price: 4930,
-    color: 'brown',
+    color: 'brazowy',
+    doorType: 'Drzwi na zawiasach',
+    propertyType: 'Możliwość dostosowania',
+    materialType: 'Drewno (łączne z płytą)',
+    saleOnline: false,
+    newest: true,
+    rating: 4,
   },
 ];
-
-export default items;

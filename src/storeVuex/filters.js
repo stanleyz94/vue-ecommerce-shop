@@ -70,19 +70,13 @@ export function getByProperty3(wardrobes, filteredValues, objectKey) {
 }
 
 export function filterValues(wardrobes, filteredValues, objectKey) {
-  if (!filteredValues.length || !filteredValues) {
+  if (!filteredValues[objectKey] || filteredValues[objectKey].length === 0)
     return wardrobes;
-  } else {
-    return wardrobes.filter((wardrobe) => {
-      if (Array.isArray(filteredValues[objectKey])) {
-        if (filteredValues[objectKey].includes(wardrobe[objectKey])) {
-          return wardrobe;
-        }
-      } else {
-        if (filteredValues[objectKey] === wardrobe[objectKey]) {
-          return wardrobe;
-        }
-      }
-    });
-  }
+  return wardrobes.filter((wardrobe) => {
+    if (Array.isArray(filteredValues[objectKey])) {
+      return filteredValues[objectKey].includes(wardrobe[objectKey]);
+    } else {
+      return filteredValues[objectKey] === wardrobe[objectKey];
+    }
+  });
 }

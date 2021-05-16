@@ -6,10 +6,10 @@
     <span class="flex flex-col items-start  flex-wrap	">
       <span>Właściwości</span>
       <span
-        v-if="filteredProperties.length >= 1"
+        v-if="$store.state.filteredValues.propertyType.length >= 1"
         class="text-xs text-left	break-words	"
       >
-        {{ filteredProperties.join(', ') }}</span
+        {{ $store.state.filteredValues.propertyType.join(', ') }}</span
       >
     </span>
     <BaseIcon
@@ -36,7 +36,7 @@
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Półki"
-        v-model="filteredProperties2"
+        v-model="filteredProperties"
         value="Półki"
       />
       <BaseCheckbox
@@ -79,26 +79,25 @@
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Regulowane stopki"
-        v-model="filteredProperties3"
+        v-model="filteredProperties"
         value="Regulowane stopki"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Nogi"
-        v-model="filteredProperties3"
+        v-model="filteredProperties"
         value="Nogi"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Regulowane drązki na ubrania"
-        v-model="filteredProperties2"
+        v-model="filteredProperties"
         value="Regulowane drązki na ubrania"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Regulowane nóżki"
-        v-model="filteredProperties2"
-        @input="onChange()"
+        v-model="filteredProperties"
         value="Regulowane nóżki"
       />
     </div>
@@ -118,55 +117,17 @@ export default {
   data() {
     return {
       isListActive: false,
-      filteredProperties: [],
+      filteredProperties3: [],
     };
   },
 
-  mounted() {
-    // this.filteredProperties.push('Możliwość dostosowania');
-  },
-  beforeUpdate() {
-    this.store.filtersValues.value = [...this.filteredProperties];
-    console.log();
-    // console.log(this.store.filtersValues.value);
-    //testing
-
-    // this.$store.dispatch('setFiltersValues', this.filteredProperties);
-    // console.log(this.$store.state.filtersValues);
-    //testing
-  },
-
-  methods: {
-    onChange() {
-      //   this.$store.dispatch('setFiltersValues', this.filteredProperties);
-      console.log(
-        'store.state.filtersValues: ' + this.$store.state.filtersValues
-      );
-      console.log('filteredProperties: ' + this.filteredProperties);
-      //   localStorage.setItem(
-      //     'filtersValues',
-      //     JSON.stringify(this.filteredProperties)
-      //   );
-    },
-  },
   computed: {
-    filteredProperties2: {
-      get() {
-        return this.$store.state.filtersValues;
-      },
-      set(value) {
-        this.$store.dispatch('setFiltersValues', value);
-
-        // this.$store.dispatch('setFiltersValues', val);
-        // localStorage.setItem('filtersValues', JSON.stringify(val));
-      },
-    },
-    filteredProperties3: {
+    filteredProperties: {
       get() {
         return this.$store.state.filteredValues.propertyType;
       },
       set(value) {
-        this.$store.dispatch('setFiltersValues', value, 'propertyType');
+        this.$store.dispatch('setFiltersValues2', value, 'propertyType');
 
         // this.$store.dispatch('setFiltersValues', val);
         // localStorage.setItem('filtersValues', JSON.stringify(val));

@@ -1,6 +1,6 @@
 import { createStore } from 'vuex';
 import { items } from '../data/variables';
-import { getByProperty2 } from './filters.js';
+import { filterValues } from './filters.js';
 
 export default createStore({
   state: {
@@ -68,6 +68,10 @@ export default createStore({
     setFiltersValues2({ commit }, newValue, objectKey) {
       commit('setFiltersValues2', newValue, objectKey);
     },
+
+    filterItems() {
+      //z filtrowac w actions , nowa liste umiescic w state
+    },
   },
   //get data from state
   getters: {
@@ -78,7 +82,7 @@ export default createStore({
       return state.items;
     },
     loadFilters(state) {
-      return getByProperty2(state.items, state.filtersValues);
+      return filterValues(state.items, state.filteredValues);
     },
   },
 

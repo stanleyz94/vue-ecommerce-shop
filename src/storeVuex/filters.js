@@ -69,7 +69,7 @@ export function getByProperty3(wardrobes, filteredValues, objectKey) {
   }
 }
 
-export function filterValues(wardrobes, filteredValues, objectKey) {
+export function filterValues2(wardrobes, filteredValues, objectKey) {
   if (!filteredValues[objectKey] || filteredValues[objectKey].length === 0)
     return wardrobes;
   return wardrobes.filter((wardrobe) => {
@@ -80,3 +80,23 @@ export function filterValues(wardrobes, filteredValues, objectKey) {
     }
   });
 }
+
+export const filterValues = (wardrobes, filteredValues) => {
+  const objectKeys = Object.keys(filteredValues);
+
+  const result = wardrobes.filter((wardrobe) => {
+    return objectKeys.every((objectKey) => {
+      if (
+        !filteredValues[objectKey] ||
+        filteredValues[objectKey].length === 0
+      ) {
+        return wardrobes;
+      } else if (Array.isArray(filteredValues[objectKey])) {
+        return filteredValues[objectKey].includes(wardrobe[objectKey]);
+      } else {
+        return filteredValues[objectKey] === wardrobe[objectKey];
+      }
+    });
+  });
+  return result;
+};

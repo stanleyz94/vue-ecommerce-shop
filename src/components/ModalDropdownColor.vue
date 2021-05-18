@@ -5,8 +5,8 @@
   >
     <span class="flex flex-col items-start">
       <span>Kolor</span>
-      <span v-if="testing.length >= 1" class="text-xs text-left	">
-        {{ testing.join(', ') }}
+      <span v-if="filteredColors.length >= 1" class="text-xs text-left	">
+        {{ filteredColors.join(', ') }}
       </span>
     </span>
 
@@ -206,7 +206,7 @@
       <!---  Color without loop  -->
       <div
         v-for="colorItem in colorItems"
-        :key="colorItem"
+        :key="colorItem.color"
         class="flex flex-col items-center p-5"
       >
         <label
@@ -215,10 +215,10 @@
           class="flex justify-between items-center relative  w-16 h-16  hover:ring-1 hover:ring-gray-400 hover:ring-offset-2 rounded-full "
         >
           <input
-            :id="colorItem.color"
             type="checkbox"
             :value="colorItem.color"
-            v-model="testing"
+            v-model="filteredColors"
+            @change="onChange()"
             class="rounded-color flex opacity-0 absolute h-full w-full cursor-pointer"
           />
           <span
@@ -238,7 +238,7 @@
       </div>
     </div>
 
-    <span class="block">{{ testing }}</span>
+    <span class="block">{{ filteredColors }}</span>
   </div>
 </template>
 
@@ -251,7 +251,7 @@ export default {
   data() {
     return {
       isListActive: false,
-      testing: [],
+      filteredColors: [],
       colorItems: [
         {
           color: 'bialy',
@@ -290,6 +290,13 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    onChange() {
+      let checked = [...this.filteredColors];
+
+      this.$store.commit('setFiltersValues3', { color: checked });
+    },
   },
 };
 </script>

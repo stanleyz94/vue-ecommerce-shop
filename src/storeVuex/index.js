@@ -40,6 +40,22 @@ export default createStore({
         state.filteredValues[objectKey] = newValues;
       }
     },
+    setFiltersValues3(state, newValues) {
+      console.log('newValeues: ' + newValues);
+      console.log('state: ' + state.filteredValues['color']);
+
+      const key = Object.keys(state.filteredValues).find((key) => {
+        if (Object.keys(newValues).includes(key)) {
+          return key;
+        }
+      });
+
+      const values = Object.values(newValues);
+
+      const [extractedValue] = values;
+
+      state.filteredValues[key] = extractedValue;
+    },
   },
   //async
   actions: {
@@ -65,8 +81,12 @@ export default createStore({
     setFiltersValues({ commit }, newValue) {
       commit('setFiltersValues', newValue);
     },
-    setFiltersValues2({ commit }, newValue, objectKey) {
-      commit('setFiltersValues2', newValue, objectKey);
+    setFiltersValues2({ commit }, newValues, objectKey) {
+      commit('setFiltersValues2', newValues, objectKey);
+    },
+
+    setFiltersValues3({ commit }, newValues) {
+      commit('setFiltersValues2', newValues);
     },
 
     filterItems() {

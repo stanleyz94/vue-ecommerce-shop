@@ -43,7 +43,7 @@
     </div> -->
 
     <div
-      v-for="item in test"
+      v-for="item in listItems"
       :key="item.id"
       class="flex flex-col py-9 px-5  border-b even:border-l md:border-l-0  cursor-pointer"
     >
@@ -107,6 +107,11 @@ export default {
   methods: {
     clickTest(i) {
       console.log(i);
+    },
+  },
+  computed: {
+    listItems() {
+      return this.$store.getters.loadFilters;
     },
   },
 };

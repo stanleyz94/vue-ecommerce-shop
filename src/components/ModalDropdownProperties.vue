@@ -32,48 +32,56 @@
         label="Możliwość dostosowania"
         v-model="filteredProperties"
         value="Możliwość dostosowania"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Półki"
         v-model="filteredProperties"
         value="Półki"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Miękkie domykanie"
         v-model="filteredProperties"
         value="Miękkie domykanie"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Kosze druciane i siatkowe"
         v-model="filteredProperties"
         value="Kosze druciane i siatkowe"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Szuflady"
         v-model="filteredProperties"
         value="Szuflady"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Półki szklane"
         v-model="filteredProperties"
         value="Półki szklane"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Szuflady szklane"
         v-model="filteredProperties"
         value="Szuflady szklane"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Półki na buty"
         v-model="filteredProperties"
         value="Półki na buty"
+        @change="onChange()"
       />
 
       <BaseCheckbox
@@ -81,24 +89,28 @@
         label="Regulowane stopki"
         v-model="filteredProperties"
         value="Regulowane stopki"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Nogi"
         v-model="filteredProperties"
         value="Nogi"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Regulowane drązki na ubrania"
         v-model="filteredProperties"
         value="Regulowane drązki na ubrania"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Regulowane nóżki"
         v-model="filteredProperties"
         value="Regulowane nóżki"
+        @change="onChange()"
       />
     </div>
   </div>
@@ -117,21 +129,16 @@ export default {
   data() {
     return {
       isListActive: false,
-      filteredProperties3: [],
+      filteredProperties: [],
     };
   },
+  methods: {
+    onChange() {
+      let checked = [...this.filteredProperties];
 
-  computed: {
-    filteredProperties: {
-      get() {
-        return this.$store.state.filteredValues.propertyType;
-      },
-      set(value) {
-        this.$store.dispatch('setFiltersValues2', value, 'propertyType');
-
-        // this.$store.dispatch('setFiltersValues', val);
-        // localStorage.setItem('filtersValues', JSON.stringify(val));
-      },
+      this.$store.commit('setFiltersValues3', {
+        propertyType: checked,
+      });
     },
   },
 };

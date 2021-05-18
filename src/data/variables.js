@@ -116,7 +116,7 @@ export const items = [
     color: 'bialy',
     doorType: 'Drzwi na zawiasach',
     propertyType: 'Możliwość dostosowania',
-    materialType: 'Drewno (łączne z płytą)',
+    materialType: 'Metal',
     saleOnline: false,
     newest: false,
     rating: 5,

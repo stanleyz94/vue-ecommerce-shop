@@ -2,8 +2,9 @@
   <BaseCheckbox
     :availableProducts="this.testNumberOfProducts"
     label="Nowość"
-    v-model="exampleArr"
     value="Nowość"
+    v-model="filteredNewest"
+    @change="onChange($event)"
   />
 </template>
 
@@ -18,8 +19,13 @@ export default {
   data() {
     return {
       isListActive: false,
-      exampleArr: [],
+      filteredNewest: [],
     };
+  },
+  methods: {
+    onChange(e) {
+      this.$store.commit('setFiltersValues3', { newest: e.target.checked });
+    },
   },
 };
 </script>

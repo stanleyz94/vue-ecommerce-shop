@@ -5,8 +5,11 @@
   >
     <span class="flex flex-col items-start  flex-wrap	">
       <span>Materiał</span>
-      <span v-if="exampleArr.length >= 1" class="text-xs text-left	break-words	">
-        {{ exampleArr.join(', ') }}</span
+      <span
+        v-if="filteredMaterials.length >= 1"
+        class="text-xs text-left	break-words	"
+      >
+        {{ filteredMaterials.join(', ') }}</span
       >
     </span>
     <BaseIcon
@@ -26,15 +29,17 @@
     <div class="space-y-5">
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
-        label="Drewno (łacznie z płytą)"
-        v-model="exampleArr"
-        value="Drewno (łacznie z płytą)"
+        label="Drewno (łączne z płytą)"
+        v-model="filteredMaterials"
+        value="Drewno (łączne z płytą)"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="Metal"
-        v-model="exampleArr"
+        v-model="filteredMaterials"
         value="Metal"
+        @change="onChange()"
       />
     </div>
   </div>
@@ -53,8 +58,14 @@ export default {
   data() {
     return {
       isListActive: false,
-      exampleArr: [],
+      filteredMaterials: [],
     };
+  },
+  methods: {
+    onChange() {
+      let checked = [...this.filteredMaterials];
+      this.$store.commit('setFiltersValues3', { materialType: checked });
+    },
   },
 };
 </script>

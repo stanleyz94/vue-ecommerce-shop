@@ -5,8 +5,11 @@
   >
     <span class="flex flex-col items-start  flex-wrap	">
       <span>Ocena</span>
-      <span v-if="exampleArr.length >= 1" class="text-xs text-left	break-words	">
-        {{ exampleArr.join(', ') }}</span
+      <span
+        v-if="filteredRatings.length >= 1"
+        class="text-xs text-left	break-words	"
+      >
+        {{ filteredRatings.join(', ') }}</span
       >
     </span>
     <BaseIcon
@@ -72,10 +75,11 @@
 
       <BaseCheckbox
         v-for="(rating, index) in ratings"
-        :key="index"
+        :key="index + 1"
         :availableProducts="this.testNumberOfProducts"
-        v-model="exampleArr"
+        v-model="filteredRatings"
         :value="rating"
+        @change="onChange()"
       >
         <span class="flex">
           <BaseIcon
@@ -104,9 +108,20 @@ export default {
   data() {
     return {
       isListActive: false,
-      exampleArr: [],
+      filteredRatings: [],
       ratings: [5, 4, 3],
     };
+  },
+  methods: {
+    onChange() {
+      let checked = [...this.filteredRatings];
+
+      if (checked.length <= 1) {
+        this.$store.commit('setFiltersValues3', { rating: checked.join() });
+      } else {
+        this.$store.commit('setFiltersValues3', { rating: checked });
+      }
+    },
   },
 };
 </script>

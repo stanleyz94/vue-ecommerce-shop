@@ -2,8 +2,9 @@
   <BaseCheckbox
     :availableProducts="this.testNumberOfProducts"
     label="W sprzedaży przez internet"
-    v-model="exampleArr"
+    v-model="onSaleOnline"
     value="W sprzedaży przez internet"
+    @change="onChange($event)"
   />
 </template>
 
@@ -18,8 +19,13 @@ export default {
   data() {
     return {
       isListActive: false,
-      exampleArr: [],
+      onSaleOnline: [],
     };
+  },
+  methods: {
+    onChange(e) {
+      this.$store.commit('setFiltersValues3', { saleOnline: e.target.checked });
+    },
   },
 };
 </script>

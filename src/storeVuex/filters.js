@@ -81,8 +81,10 @@ export function filterValues2(wardrobes, filteredValues, objectKey) {
   });
 }
 
-export const filterValues = (wardrobes, filteredValues) => {
-  const objectKeys = Object.keys(filteredValues);
+export const filterByValues = (wardrobes, filteredValues) => {
+  const objectKeys = Object.keys(filteredValues).filter(
+    (key) => key !== 'price'
+  );
 
   const result = wardrobes.filter((wardrobe) => {
     return objectKeys.every((objectKey) => {
@@ -99,4 +101,32 @@ export const filterValues = (wardrobes, filteredValues) => {
     });
   });
   return result;
+};
+
+export const filterByPrice = (wardrobes, filteredValues) => {
+  const filtersAsNumbers = {
+    '0 - 499 zł': [0, 499],
+    '500 - 999 zł': [500, 999],
+    '1 000 - 1 499 zł': [1000, 1499],
+    '1 500 - 1 999 zł': [1500, 1999],
+    '2 000+ zł': [2000, 10000],
+  };
+
+  return wardrobes.filter((wardrobe) => {
+    if (filteredValues.price.length < 1) {
+      return wardrobe;
+    } else {
+      let result;
+      Object.keys(filtersAsNumbers)
+        .filter((priceRange) => filteredValues.price.includes(priceRange))
+        .filter((priceRangeFiltered) => {
+          let min = filtersAsNumbers[priceRangeFiltered][0];
+          let max = filtersAsNumbers[priceRangeFiltered][1];
+          if (wardrobe.price >= min && wardrobe.price <= max) {
+            result = wardrobe;
+          }
+        });
+      return result;
+    }
+  });
 };

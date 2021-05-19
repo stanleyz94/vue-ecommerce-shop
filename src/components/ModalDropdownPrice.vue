@@ -5,8 +5,11 @@
   >
     <span class="flex flex-col items-start  flex-wrap	">
       <span>Cena</span>
-      <span v-if="exampleArr.length >= 1" class="text-xs text-left	break-words	">
-        {{ exampleArr.join(', ') }}</span
+      <span
+        v-if="filteredPrice.length >= 1"
+        class="text-xs text-left	break-words	"
+      >
+        {{ filteredPrice.join(', ') }}</span
       >
     </span>
     <BaseIcon
@@ -27,32 +30,37 @@
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="0 - 499 zł"
-        v-model="exampleArr"
+        v-model="filteredPrice"
         value="0 - 499 zł"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="500 - 999 zł"
-        v-model="exampleArr"
+        v-model="filteredPrice"
         value="500 - 999 zł"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="1 000 - 1 499 zł"
-        v-model="exampleArr"
+        v-model="filteredPrice"
         value="1 000 - 1 499 zł"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="1 500 - 1 999 zł"
-        v-model="exampleArr"
+        v-model="filteredPrice"
         value="1 500 - 1 999 zł"
+        @change="onChange()"
       />
       <BaseCheckbox
         :availableProducts="this.testNumberOfProducts"
         label="2 000+ zł"
-        v-model="exampleArr"
+        v-model="filteredPrice"
         value="2 000+ zł"
+        @change="onChange()"
       />
     </div>
   </div>
@@ -71,8 +79,14 @@ export default {
   data() {
     return {
       isListActive: false,
-      exampleArr: [],
+      filteredPrice: [],
     };
+  },
+  methods: {
+    onChange() {
+      let checked = [...this.filteredPrice];
+      this.$store.commit('setFiltersValues3', { price: checked });
+    },
   },
 };
 </script>

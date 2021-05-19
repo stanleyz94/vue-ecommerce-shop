@@ -1,6 +1,6 @@
 import { createStore } from 'vuex';
 import { items } from '../data/variables';
-import { filterValues } from './filters.js';
+import { filterByValues, filterByPrice } from './filters.js';
 
 export default createStore({
   state: {
@@ -18,6 +18,7 @@ export default createStore({
       saleOnline: false,
       newest: false,
       rating: 5,
+      price: [],
     },
   },
   mutations: {
@@ -102,7 +103,10 @@ export default createStore({
       return state.items;
     },
     loadFilters(state) {
-      return filterValues(state.items, state.filteredValues);
+      return filterByValues(
+        filterByPrice(state.items, state.filteredValues),
+        state.filteredValues
+      );
     },
   },
 

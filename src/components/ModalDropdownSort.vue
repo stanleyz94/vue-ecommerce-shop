@@ -22,7 +22,14 @@
       :for="item.id"
     >
       <span>{{ item.text }}</span>
-      <input class="hidden" :id="item.id" name="radioSort" type="radio" />
+      <input
+        class="hidden"
+        :id="item.id"
+        name="radioSort"
+        :value="item.text"
+        v-model="sortValue"
+        type="radio"
+      />
       <div
         class="flex ml-auto w-5 h-5  border border-gray-600 rounded-full "
       ></div>
@@ -41,6 +48,7 @@ export default {
     return {
       isListActive: false,
       sortModalContainerItems: this.sortContainerVariables,
+      sortValue: '',
     };
   },
 };

@@ -29,6 +29,7 @@
         :value="item.text"
         v-model="sortValue"
         type="radio"
+        @change="onChange()"
       />
       <div
         class="flex ml-auto w-5 h-5  border border-gray-600 rounded-full "
@@ -50,6 +51,12 @@ export default {
       sortModalContainerItems: this.sortContainerVariables,
       sortValue: '',
     };
+  },
+  methods: {
+    onChange() {
+      let checked = this.sortValue;
+      this.$store.commit('setFiltersValues3', { sortedValue: checked });
+    },
   },
 };
 </script>

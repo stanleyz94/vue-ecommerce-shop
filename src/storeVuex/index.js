@@ -1,6 +1,11 @@
 import { createStore } from 'vuex';
 import { items } from '../data/variables';
-import { filterByValues, filterByPrice } from './filters.js';
+import {
+  filterByValues,
+  filterByPrice,
+  sortItems,
+  resetValues,
+} from './filters.js';
 
 export default createStore({
   state: {
@@ -19,6 +24,7 @@ export default createStore({
       newest: false,
       rating: 5,
       price: [],
+      sortedValue: '',
     },
   },
   mutations: {
@@ -56,6 +62,10 @@ export default createStore({
       const [extractedValue] = values;
 
       state.filteredValues[key] = extractedValue;
+    },
+    clearFilters(state) {
+      resetValues(state.filteredValues);
+      console.log('test');
     },
   },
   //async
@@ -104,9 +114,15 @@ export default createStore({
     },
     loadFilters(state) {
       return filterByValues(
-        filterByPrice(state.items, state.filteredValues),
+        filterByPrice(
+          sortItems(state.items, state.filteredValues),
+          state.filteredValues
+        ),
         state.filteredValues
       );
+    },
+    getItemsLength(state, getters) {
+      return getters.loadFilters.length;
     },
   },
 

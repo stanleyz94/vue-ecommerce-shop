@@ -60,7 +60,7 @@
           </div>
           <div class="flex w-auto justify-around py-2.5  border-t-2">
             <button
-              disabled
+              @click="resetFilters"
               class="bg-gray-100 hover:bg-gray-200 disabled:bg-gray-300 disabled:opacity-50 rounded-full font-bold text-xs px-9 py-2.5"
             >
               Wyczyść wszystko
@@ -68,7 +68,7 @@
             <button
               class="bg-black text-white hover:opacity-80  rounded-full font-bold text-xs px-9 py-2.5 "
             >
-              144 wyświetleń
+              {{ visibleAmountOfProduct }} wyświetleń
             </button>
           </div>
         </div>
@@ -173,6 +173,14 @@ export default {
       //   this.sortContainerItems = !this.sortContainerItems;
       console.log(this.sortContainerVariables);
       //   console.log(this.$globalVariable);
+    },
+    resetFilters() {
+      this.$store.commit('clearFilters');
+    },
+  },
+  computed: {
+    visibleAmountOfProduct() {
+      return this.$store.getters.getItemsLength;
     },
   },
   components: {

@@ -83,7 +83,7 @@ export function filterValues2(wardrobes, filteredValues, objectKey) {
 
 export const filterByValues = (wardrobes, filteredValues) => {
   const objectKeys = Object.keys(filteredValues).filter(
-    (key) => key !== 'price'
+    (key) => key !== 'price' && key !== 'sortedValue'
   );
 
   const result = wardrobes.filter((wardrobe) => {
@@ -129,4 +129,51 @@ export const filterByPrice = (wardrobes, filteredValues) => {
       return result;
     }
   });
+};
+
+export const sortItems = (wardrobes, filteredValues) => {
+  const sortedResult = wardrobes.sort((a, b) => {
+    switch (filteredValues.sortedValue) {
+      case 'Od najniższej ceny':
+        return a.price - b.price;
+      case 'Od najwyższej ceny':
+        return b.price - a.price;
+      case 'Najnowszy':
+        return b.newest - a.newest;
+      case 'Ocena':
+        return b.rating - a.rating;
+      case 'Nazwa':
+        return a.name < b.name ? -1 : 1;
+      case 'Szerokość':
+        return b.width - a.width;
+      case 'Wysokość':
+        return b.height - a.height;
+      case 'Głębokość':
+        return b.depth - a.depth;
+      default:
+        return wardrobes;
+    }
+  });
+  return sortedResult;
+};
+
+export const resetValues = (current) => {
+  for (let key in current) {
+    let propType = typeof current[key];
+    switch (propType) {
+      case 'number':
+        current[key] = [3, 4, 5];
+        break;
+      case 'string':
+        current[key] = '';
+        break;
+      case 'boolean':
+        current[key] = false;
+        break;
+      case 'object':
+        current[key] = [];
+        break;
+    }
+  }
+  return current;
 };

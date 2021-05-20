@@ -237,8 +237,6 @@
         </div>
       </div>
     </div>
-
-    <span class="block">{{ filteredColors }}</span>
   </div>
 </template>
 

@@ -27,11 +27,11 @@
               </li>
 
               <li class="py-6">
-                <ModalDropdownColor />
+                <ModalDropdownColor ref="colorRef" @clicked="resetItemsModal" />
               </li>
 
               <li class="py-6">
-                <ModalDropdownDoors />
+                <ModalDropdownDoors ref="colorRef" />
               </li>
 
               <li class="py-6">
@@ -60,7 +60,7 @@
           </div>
           <div class="flex w-auto justify-around py-2.5  border-t-2">
             <button
-              @click="resetFilters"
+              @click="resetItemsModal"
               class="bg-gray-100 hover:bg-gray-200 disabled:bg-gray-300 disabled:opacity-50 rounded-full font-bold text-xs px-9 py-2.5"
             >
               Wyczyść wszystko
@@ -175,9 +175,14 @@ export default {
       //   console.log(this.$globalVariable);
     },
     resetFilters() {
+      console.log(this.$children[1]);
       this.$store.commit('clearFilters');
     },
+    resetItemsModal(payload) {
+      console.log(payload.message);
+    },
   },
+
   computed: {
     visibleAmountOfProduct() {
       return this.$store.getters.getItemsLength;

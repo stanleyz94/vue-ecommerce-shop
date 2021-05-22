@@ -112,6 +112,9 @@ export default createStore({
     loadItems(state) {
       return state.items;
     },
+    loadItemById: (state) => (id) => {
+      return state.items.find((item) => item.id == id);
+    },
     loadFilters(state) {
       return filterByValues(
         filterByPrice(

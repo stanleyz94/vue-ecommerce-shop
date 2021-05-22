@@ -237,6 +237,8 @@
         </div>
       </div>
     </div>
+    <button @click="removeItems">TESTING SHIT</button>
+    {{ testing }}
   </div>
 </template>
 
@@ -248,8 +250,9 @@ export default {
   },
   data() {
     return {
+      testing: 'lol',
       isListActive: false,
-      filteredColors: [],
+      filteredColors: ['bialy'],
       colorItems: [
         {
           color: 'bialy',
@@ -294,6 +297,13 @@ export default {
       let checked = [...this.filteredColors];
 
       this.$store.commit('setFiltersValues3', { color: checked });
+    },
+    removeItems() {
+      if (Array.isArray(this.filteredColors)) return (this.filteredColors = []);
+      return (this.filteredColors = '');
+    },
+    testingsomesht() {
+      this.$emit('clicked', { message: 'My custom message' });
     },
   },
 };

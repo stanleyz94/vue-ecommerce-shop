@@ -6,23 +6,25 @@
   <h5>{{ loadItem.img }}</h5>
 
   <!--- Grid grid grid-cols-2 md:divide-x-0 md:grid-cols-3 lg:grid-cols-4   --->
-  <div class="">
-    <div>
+  <div class="md:grid  gap-10 md:grid-cols-3 lg:grid-cols-4 ">
+    <div class="md:col-span-2 lg:col-span-3">
       <img :src="loadItem.img" alt="" />
     </div>
-    <div>
-      <div class="flex flex-row justify-between mb-7">
+    <div class="md:col-span-1 lg:col-span-1 	md:sticky md:top-0 lg:self-start	">
+      <div class="flex flex-row justify-between mb-7 ">
         <div class="space-y-2">
-          <h2 class="font-bold text-lg">PAX</h2>
-          <span class="text-sm">Szafa, biały/ Bergso biały, 150x60x236 cm</span>
-          <div class="flex flex-row space-x-2 items-center">
+          <h2 class="font-bold text-xl md:text-2xl	">PAX</h2>
+          <span class="text-sm lg:text-base	"
+            >Szafa, biały/ Bergso biały, 150x60x236 cm</span
+          >
+          <div class="flex flex-row space-x-2 items-center ">
             <img
               class="self-center"
               src="https://ikea-imgsrv.loyaltypoint.pl/behtar/pip-badge/ikeafamily.png"
               alt=""
             />
 
-            <span class="text-sm"
+            <span class="text-xs tracking-tight	"
               ><b>10%</b> kwoty wydanej na zakupy <b>powyżej 400,-</b> zwracamy
               na karte rabatową. <b class="underline">Sprawdź.</b></span
             >
@@ -33,18 +35,20 @@
               src="https://ikea-imgsrv.loyaltypoint.pl/behtar/installments/na-raty.png"
               alt=""
             />
-            <span class="text-sm underline font-bold"
+            <span class="text-xs underline font-bold text-left tracking-tighter"
               >Raty 18 x 86,35 <br />RRSO 18.22% - Sprawdź</span
             >
           </div>
 
-          <div class="flex flex-row space-x-4 items-center">
+          <div class="flex flex-row   space-x-4 items-center">
             <img
-              class="w-12 h-8"
+              class="w-12 h-8 self-center flex-shrink-0	flex-grow-0"
               src="https://ikea-imgsrv.loyaltypoint.pl/behtar/installments/briefcase.svg"
               alt=""
             />
-            <span class="text-sm underline font-bold"
+
+            <span
+              class="flex-grow text-xs underline font-bold text-left tracking-tighter"
               >Leasing dla firm. Sprawdź</span
             >
           </div>
@@ -65,7 +69,7 @@
           </div>
         </div>
         <div class="flex">
-          <span class="font-bold text-lg">1365,-</span>
+          <span class="font-bold text-xl md:text-2xl">1365,-</span>
         </div>
       </div>
       <div class="mb-7 flex space-x-2 ">
@@ -86,11 +90,11 @@
           <BaseIcon imageUrl="chevron-right" class=" w-5 h-5" />
         </button>
       </div>
-      <div class="mb-7 flex justify-between items-center">
-        <button
-          class="bg-blue-600 hover:bg-blue-700 rounded-full font-bold text-sm px-40 py-4"
-        >
-          <span class="text-white">Dodaj do koszyka</span>
+      <div class="mb-7 flex gap-2 justify-between items-center">
+        <button class="flex-grow bg-blue-600 hover:bg-blue-700 rounded-full  ">
+          <span class="inline-flex items-center px-8 h-12">
+            <span class="text-white font-bold text-sm ">Dodaj do koszyka</span>
+          </span>
         </button>
         <button
           class="bg-white hover:bg-gray-200 border border-gray-200 rounded-full font-bold text-sm px-3.5 py-3.5"
@@ -123,7 +127,7 @@
         </div>
       </div>
     </div>
-    <div>
+    <div class="md:col-span-2 lg:col-span-3">
       <div class="flex flex-col space-y-1 py-12">
         <span class=" text-xs">Numer produktu</span>
         <span class=" bg-black font-bold text-xs text-white w-20 h-6 px-2 py-1"

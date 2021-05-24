@@ -7,8 +7,8 @@
 
   <!--- Grid grid grid-cols-2 md:divide-x-0 md:grid-cols-3 lg:grid-cols-4   --->
   <div class="md:grid  gap-10 md:grid-cols-3 lg:grid-cols-4 ">
-    <div class="md:col-span-2 lg:col-span-3">
-      <img :src="loadItem.img" alt="" />
+    <div class="md:col-span-2 lg:col-span-3 ">
+      <img class="h-full w-full  object-cover" :src="loadItem.img" alt="" />
     </div>
     <div class="md:col-span-1 lg:col-span-1 	md:sticky md:top-0 lg:self-start	">
       <div class="flex flex-row justify-between mb-7 ">

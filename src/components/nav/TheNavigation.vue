@@ -52,9 +52,15 @@
             :key="index"
             class="navbar-li"
           >
-            <a :href="item.url">
-              <BaseIcon :imageUrl="item.svgName" />
-            </a>
+            <router-link
+              :to="{
+                name: item.routeName,
+              }"
+            >
+              <a :href="item.url">
+                <BaseIcon :imageUrl="item.svgName" />
+              </a>
+            </router-link>
           </li>
         </ul>
       </nav>
@@ -78,7 +84,7 @@ export default {
         { text: 'Nowości', url: '#' },
       ],
       navbarRightItems: [
-        { svgName: 'cart', url: '#' },
+        { svgName: 'cart', url: '#', routeName: 'ItemShopCart' },
         { svgName: 'truck', url: '#' },
         { svgName: 'profile', url: '#' },
         { svgName: 'heart', url: '#' },

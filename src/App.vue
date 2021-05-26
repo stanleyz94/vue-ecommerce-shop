@@ -27,6 +27,9 @@ export default {
     // provide('filtersValues', filtersValues);
     provide('store', store);
   },
+  mounted() {
+    this.$store.commit('updateCartFromLocalStorage');
+  },
 };
 </script>
 

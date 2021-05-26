@@ -45,7 +45,7 @@
     <div
       v-for="item in listItems"
       :key="item.id"
-      class="flex flex-col py-9 px-5  border-b even:border-l md:border-l-0  cursor-pointer"
+      class="flex flex-col py-9 px-5 border-b even:border-l md:border-l-0  cursor-pointer"
     >
       <router-link
         :to="{
@@ -72,16 +72,19 @@
           <span class="font-bold">{{ item.name }}</span>
           <span>{{ item.description }}, {{ item.measurement }}</span>
           <span class="font-bold md:text-2xl">{{ item.price }},-</span>
-          <button
-            class="bg-blue-700 rounded-full w-6 h-6 p-6 flex justify-center items-center self-end hover:bg-blue-800	"
-            @click="clickTest(item)"
-          >
-            <span>
-              <BaseIcon class="text-white" imageUrl="add-item" />
-            </span>
-          </button>
         </div>
       </router-link>
+
+      <div class="self-end">
+        <button
+          class="bg-blue-700 rounded-full w-6 h-6 p-6 flex justify-center items-center  hover:bg-blue-800	"
+          @click="addToCart(item)"
+        >
+          <span>
+            <BaseIcon class="text-white" imageUrl="add-item" />
+          </span>
+        </button>
+      </div>
     </div>
     <!-- flex (item #1-->
 
@@ -114,6 +117,9 @@ export default {
   methods: {
     clickTest(i) {
       console.log(i);
+    },
+    addToCart(item) {
+      this.$store.commit('addToCart', item);
     },
   },
   computed: {

@@ -91,7 +91,10 @@
         </button>
       </div>
       <div class="mb-7 flex gap-2 justify-between items-center">
-        <button class="flex-grow bg-blue-600 hover:bg-blue-700 rounded-full  ">
+        <button
+          @click="addToCart()"
+          class="flex-grow bg-blue-600 hover:bg-blue-700 rounded-full  "
+        >
           <span class="inline-flex items-center px-8 h-12">
             <span class="text-white font-bold text-sm ">Dodaj do koszyka</span>
           </span>
@@ -214,6 +217,13 @@ export default {
     return {
       ratings: [],
     };
+  },
+
+  methods: {
+    addToCart() {
+      this.$store.commit('addToCart', this.loadItem);
+      console.log(this.$store.state.cart);
+    },
   },
 
   computed: {

@@ -45,8 +45,14 @@
               class="flex  w-24 items-center border hover:border-gray-700  rounded-full py-1.5 px-4 relative"
             >
               <select class="w-full appearance-none outline-none">
-                <optgroup v-for="option in 100" :key="option">
-                  <option :value="option">{{ option }}</option>
+                <optgroup>
+                  <option
+                    v-for="option in 100"
+                    :key="option"
+                    :selected="option == product.quantity"
+                    :value="option"
+                    >{{ option }}</option
+                  >
                 </optgroup>
               </select>
               <BaseIcon

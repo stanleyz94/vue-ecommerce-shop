@@ -89,7 +89,7 @@ export default {
         { svgName: 'profile', url: '#' },
         { svgName: 'heart', url: '#' },
         { svgName: 'menu-navbar', url: '#' },
-        { svgName: 'cart', url: '#' },
+        { svgName: 'cart', url: '#', routeName: 'ItemShopCart' },
       ],
     };
   },

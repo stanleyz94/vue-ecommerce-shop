@@ -75,7 +75,7 @@
         </div>
       </router-link>
 
-      <div class="self-end">
+      <div class="self-end mt-auto">
         <button
           class="bg-blue-700 rounded-full w-6 h-6 p-6 flex justify-center items-center  hover:bg-blue-800	"
           @click="addToCart(item)"
@@ -93,9 +93,7 @@
     <div>
       {{ $store.state.filtersValues }}
     </div>
-    <div>
-      <p>{{ $store.getters.loadFilters }}</p>
-    </div>
+
     <!-- <div>{{ $store.state.items }}</div> -->
     <!-- flex (item #2) -->
   </div>

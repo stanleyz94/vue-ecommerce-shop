@@ -5,7 +5,7 @@
   <h4>{{ $store.getters.loadItemById(`${id}`) }}</h4>
   <h5>{{ loadItem.img }}</h5>
 
-  <!--- Grid grid grid-cols-2 md:divide-x-0 md:grid-cols-3 lg:grid-cols-4   --->
+  <!--- Grid    --->
   <div class="md:grid  gap-10 md:grid-cols-3 lg:grid-cols-4 ">
     <div class="md:col-span-2 lg:col-span-3 ">
       <img class="h-full w-full  object-cover" :src="loadItem.img" alt="" />

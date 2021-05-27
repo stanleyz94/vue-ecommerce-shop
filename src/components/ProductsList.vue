@@ -97,9 +97,12 @@
     <!-- <div>{{ $store.state.items }}</div> -->
     <!-- flex (item #2) -->
   </div>
+  <ModalAddedToCart
+    v-if="isModalAddedVisible"
+    name="lol"
+    @hide-modal-added="hideModal"
+  />
   <!--grid -->
-
-  <ModalAddedToCart />
 </template>
 
 <script>
@@ -114,6 +117,7 @@ export default {
   data() {
     return {
       test: items,
+      isModalAddedVisible: false,
     };
   },
   methods: {
@@ -122,6 +126,13 @@ export default {
     },
     addToCart(item) {
       this.$store.commit('addToCart', item);
+      if (!this.isModalAddedVisible) {
+        this.isModalAddedVisible = true;
+      }
+    },
+
+    hideModal() {
+      this.isModalAddedVisible = false;
     },
   },
   computed: {

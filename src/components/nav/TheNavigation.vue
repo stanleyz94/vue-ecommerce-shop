@@ -50,7 +50,7 @@
           <li
             v-for="(item, index) in navbarRightItems"
             :key="index"
-            class="navbar-li"
+            class="navbar-li relative"
           >
             <router-link
               :to="{
@@ -60,6 +60,10 @@
               <a :href="item.url">
                 <BaseIcon :imageUrl="item.svgName" />
               </a>
+              <div
+                v-if="cartLength >= 1 && item.svgName == 'cart'"
+                class="bg-blue-900 border border-white rounded-full w-3 h-3 absolute bottom-0 right-0"
+              ></div>
             </router-link>
           </li>
         </ul>
@@ -92,6 +96,11 @@ export default {
         { svgName: 'cart', url: '#', routeName: 'ItemShopCart' },
       ],
     };
+  },
+  computed: {
+    cartLength() {
+      return this.$store.getters.getCartLength;
+    },
   },
 };
 </script>

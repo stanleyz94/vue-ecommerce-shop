@@ -98,14 +98,18 @@
     <!-- flex (item #2) -->
   </div>
   <!--grid -->
+
+  <ModalAddedToCart />
 </template>
 
 <script>
 import BaseIcon from './BaseIcon';
 import { items } from '../data/variables';
+import ModalAddedToCart from './ModalAddedToCart';
 export default {
   components: {
     BaseIcon,
+    ModalAddedToCart,
   },
   data() {
     return {

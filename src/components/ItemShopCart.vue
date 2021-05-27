@@ -1,5 +1,30 @@
 <template>
-  <div class="md:grid gap-5 md:grid-cols-3  place-content-start">
+  <!-- Empty Cart -->
+  <div v-if="cartLength == 0" class="space-y-10">
+    <div class="flex justify-between items-center">
+      <h1 class="font-bold text-2xl">Twój koszyk jest pusty</h1>
+      <button class="hover:bg-gray-200 rounded-full p-4">
+        <BaseIcon imageUrl="dots" class=" w-5 h-5" />
+      </button>
+    </div>
+
+    <div class="p-7 border rounded">
+      <div class="flex justify-between items-center">
+        <div>
+          <h2 class="block font-bold text-lg">Masz konto?</h2>
+          <h3 class="text-sm mr-2">
+            <a class="underline" href="#">Dołącz lub zaloguj się</a> aby szybko
+            i sprawnie dokonywać zakupów i uzyskać dostęp do historii zamówień.
+          </h3>
+        </div>
+        <div>
+          <BaseIcon class="h-8 w-8 " imageUrl="profile" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Cart -->
+  <div v-else class="md:grid gap-5 md:grid-cols-3  place-content-start">
     <div class="col-span-2 ">
       <!--Header  -->
       <div class=" space-y-5">
@@ -44,7 +69,11 @@
             <div
               class="flex  w-24 items-center border hover:border-gray-700  rounded-full py-1.5 px-4 relative"
             >
-              <select class="w-full appearance-none outline-none">
+              <select
+                class="w-full appearance-none outline-none "
+                @change="updateQuantity(product, parseInt($event.target.value))"
+                :key="product.id"
+              >
                 <optgroup>
                   <option
                     v-for="option in 100"
@@ -120,6 +149,7 @@
         </button>
       </div>
     </div>
+
     <!-- Summary -->
   </div>
 </template>
@@ -140,10 +170,16 @@ export default {
     cartTotal() {
       return this.$store.getters.cartTotal;
     },
+    cartLength() {
+      return this.$store.getters.getCartLength;
+    },
   },
   methods: {
     removeFromCart(product) {
       this.$store.commit('removeFromCart', product);
+    },
+    updateQuantity(product, value) {
+      this.$store.commit('updateCartQuantity', { product, value });
     },
   },
 };

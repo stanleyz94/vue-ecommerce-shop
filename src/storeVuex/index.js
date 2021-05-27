@@ -61,6 +61,16 @@ export default createStore({
         state.cart = JSON.parse(cart);
       }
     },
+
+    updateCartQuantity(state, { product, value }) {
+      const item = state.cart.find((i) => i.id === product.id);
+
+      if (item) {
+        item.quantity = value;
+      }
+      updateLocalStorage(state.cart);
+    },
+
     decreaseCounter(state, randomNumber) {
       state.counter -= randomNumber;
     },
@@ -171,6 +181,9 @@ export default createStore({
     },
     cartTotal: (state) => {
       return state.cart.reduce((a, b) => a + b.price * b.quantity, 0);
+    },
+    getCartLength(state) {
+      return state.cart.length;
     },
   },
 

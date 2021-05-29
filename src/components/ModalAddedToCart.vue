@@ -48,9 +48,6 @@ export default {
       productName: this.name,
     };
   },
-  created() {
-    console.log(this.productName);
-  },
 };
 </script>
 

@@ -5,8 +5,8 @@
   >
     <span class="flex flex-col items-start">
       <span>Kolor</span>
-      <span v-if="filteredColors.length >= 1" class="text-xs text-left	">
-        {{ filteredColors.join(', ') }}
+      <span v-if="colorTypeItems.length >= 1" class="text-xs text-left	">
+        {{ colorTypeItems.join(', ') }}
       </span>
     </span>
 
@@ -237,8 +237,6 @@
         </div>
       </div>
     </div>
-    <button @click="removeItems">TESTING SHIT</button>
-    {{ testing }}
   </div>
 </template>
 
@@ -252,7 +250,7 @@ export default {
     return {
       testing: 'lol',
       isListActive: false,
-      filteredColors: ['bialy'],
+      filteredColors: [],
       colorItems: [
         {
           color: 'bialy',
@@ -298,12 +296,22 @@ export default {
 
       this.$store.commit('setFiltersValues3', { color: checked });
     },
-    removeItems() {
-      if (Array.isArray(this.filteredColors)) return (this.filteredColors = []);
-      return (this.filteredColors = '');
+  },
+
+  computed: {
+    colorTypeItems() {
+      return this.$store.getters.getItemProperty('color');
     },
-    testingsomesht() {
-      this.$emit('clicked', { message: 'My custom message' });
+  },
+
+  watch: {
+    colorTypeItems: {
+      deep: true,
+      handler(value) {
+        if (value.length == 0) {
+          this.filteredColors = [];
+        }
+      },
     },
   },
 };

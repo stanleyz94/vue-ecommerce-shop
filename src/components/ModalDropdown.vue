@@ -23,19 +23,15 @@
               </li>
 
               <li class="py-6">
-                <ModalDropdownSize />
+                <ModalDropdownColor ref="colorRef" />
               </li>
 
               <li class="py-6">
-                <ModalDropdownColor ref="colorRef" @clicked="resetItemsModal" />
+                <ModalDropdownDoors ref="doorRef" />
               </li>
 
               <li class="py-6">
-                <ModalDropdownDoors ref="colorRef" />
-              </li>
-
-              <li class="py-6">
-                <ModalDropdownProperties />
+                <ModalDropdownProperties ref="propertiesRef" />
               </li>
 
               <li class="py-6">
@@ -60,7 +56,7 @@
           </div>
           <div class="flex w-auto justify-around py-2.5  border-t-2">
             <button
-              @click="resetItemsModal"
+              @click="resetFilters"
               class="bg-gray-100 hover:bg-gray-200 disabled:bg-gray-300 disabled:opacity-50 rounded-full font-bold text-xs px-9 py-2.5"
             >
               Wyczyść wszystko
@@ -81,7 +77,7 @@
 import BaseIcon from './BaseIcon';
 
 import ModalDropdownSort from './ModalDropdownSort';
-import ModalDropdownSize from './ModalDropdownSize';
+
 import ModalDropdownColor from './ModalDropdownColor';
 import ModalDropdownDoors from './ModalDropdownDoors';
 import ModalDropdownProperties from './ModalDropdownProperties';
@@ -175,11 +171,14 @@ export default {
       //   console.log(this.$globalVariable);
     },
     resetFilters() {
-      console.log(this.$children[1]);
+      console.log('test');
       this.$store.commit('clearFilters');
+      console.log('test2');
     },
-    resetItemsModal(payload) {
-      console.log(payload.message);
+    resetItemsModal() {
+      this.$refs.colorRef.removeItems();
+      this.$refs.doorRef.removeItems();
+      this.$refs.propertiesRef.removeItems();
     },
   },
 
@@ -192,7 +191,7 @@ export default {
     BaseIcon,
 
     ModalDropdownSort,
-    ModalDropdownSize,
+
     ModalDropdownColor,
     ModalDropdownDoors,
     ModalDropdownProperties,

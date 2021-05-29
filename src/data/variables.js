@@ -256,7 +256,7 @@ export const items = [
   },
 
   {
-    id: 9,
+    id: 10,
     img:
       'https://www.ikea.com/pl/pl/images/products/pax-hokksund-kombinacja-szafy-dab-bejcowany-na-bialo-wysoki-polysk-jasnoszary__0816549_pe773524_s5.jpg',
     img2:

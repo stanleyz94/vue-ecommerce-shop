@@ -6,10 +6,10 @@
     <span class="flex flex-col items-start  flex-wrap	">
       <span>Właściwości</span>
       <span
-        v-if="$store.state.filteredValues.propertyType.length >= 1"
+        v-if="propertyTypeItems.length >= 1"
         class="text-xs text-left	break-words	"
       >
-        {{ $store.state.filteredValues.propertyType.join(', ') }}</span
+        {{ propertyTypeItems.join(', ') }}</span
       >
     </span>
     <BaseIcon
@@ -139,6 +139,22 @@ export default {
       this.$store.commit('setFiltersValues3', {
         propertyType: checked,
       });
+    },
+  },
+  computed: {
+    propertyTypeItems() {
+      return this.$store.getters.getItemProperty('propertyType');
+    },
+  },
+
+  watch: {
+    propertyTypeItems: {
+      deep: true,
+      handler(value) {
+        if (value.length == 0) {
+          this.filteredProperties = [];
+        }
+      },
     },
   },
 };

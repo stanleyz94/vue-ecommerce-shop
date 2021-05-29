@@ -6,10 +6,10 @@
     <span class="flex flex-col items-start  flex-wrap	">
       <span>Materiał</span>
       <span
-        v-if="filteredMaterials.length >= 1"
+        v-if="materialTypeItems.length >= 1"
         class="text-xs text-left	break-words	"
       >
-        {{ filteredMaterials.join(', ') }}</span
+        {{ materialTypeItems.join(', ') }}</span
       >
     </span>
     <BaseIcon
@@ -65,6 +65,23 @@ export default {
     onChange() {
       let checked = [...this.filteredMaterials];
       this.$store.commit('setFiltersValues3', { materialType: checked });
+    },
+  },
+
+  computed: {
+    materialTypeItems() {
+      return this.$store.getters.getItemProperty('materialType');
+    },
+  },
+
+  watch: {
+    materialTypeItems: {
+      deep: true,
+      handler(value) {
+        if (value.length == 0) {
+          this.filteredMaterials = [];
+        }
+      },
     },
   },
 };

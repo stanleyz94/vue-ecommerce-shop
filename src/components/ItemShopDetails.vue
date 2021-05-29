@@ -1,10 +1,4 @@
 <template>
-  <h1>Shop</h1>
-  <h2>{{ id }}</h2>
-
-  <h4>{{ $store.getters.loadItemById(`${id}`) }}</h4>
-  <h5>{{ loadItem.img }}</h5>
-
   <!--- Grid    --->
   <div class="md:grid  gap-10 md:grid-cols-3 lg:grid-cols-4 ">
     <div class="md:col-span-2 lg:col-span-3 ">
@@ -13,10 +7,11 @@
     <div class="md:col-span-1 lg:col-span-1 	md:sticky md:top-0 lg:self-start	">
       <div class="flex flex-row justify-between mb-7 ">
         <div class="space-y-2">
-          <h2 class="font-bold text-xl md:text-2xl	">PAX</h2>
+          <h2 class="font-bold text-xl md:text-2xl	">{{ loadItem.name }}</h2>
           <span class="text-sm lg:text-base	"
-            >Szafa, biały/ Bergso biały, 150x60x236 cm</span
-          >
+            >{{ loadItem.description }}, {{ loadItem.color }},
+            {{ loadItem.measurement }}
+          </span>
           <div class="flex flex-row space-x-2 items-center ">
             <img
               class="self-center"
@@ -69,7 +64,9 @@
           </div>
         </div>
         <div class="flex">
-          <span class="font-bold text-xl md:text-2xl">1365,-</span>
+          <span class="font-bold text-xl md:text-2xl"
+            >{{ loadItem.price }},-</span
+          >
         </div>
       </div>
       <div class="mb-7 flex space-x-2 ">
@@ -84,7 +81,7 @@
         <button class="flex w-full flex-row items-center justify-between mt-5">
           <span class="flex flex-col items-start">
             <span class="font-bold">Rozmiar</span>
-            <span class="text-sm">150x60x236 cm</span>
+            <span class="text-sm"> {{ loadItem.measurement }}</span>
           </span>
 
           <BaseIcon imageUrl="chevron-right" class=" w-5 h-5" />
@@ -96,7 +93,16 @@
           class="flex-grow bg-blue-600 hover:bg-blue-700 rounded-full  "
         >
           <span class="inline-flex items-center px-8 h-12">
-            <span class="text-white font-bold text-sm ">Dodaj do koszyka</span>
+            <span v-if="!isClicked" class="text-white font-bold text-sm "
+              >Dodaj do koszyka</span
+            >
+            <div v-else class=" inline-flex  items-center">
+              <span class="text-white font-bold text-sm ">Dodano</span>
+              <BaseIcon
+                imageUrl="check"
+                class="w-4 h-4 ml-2 pointer-events-none"
+              />
+            </div>
           </span>
         </button>
         <button
@@ -216,12 +222,14 @@ export default {
   data() {
     return {
       ratings: [],
+      isClicked: false,
     };
   },
 
   methods: {
     addToCart() {
       this.$store.commit('addToCart', this.loadItem);
+      this.isClicked = true;
       console.log(this.$store.state.cart);
     },
   },

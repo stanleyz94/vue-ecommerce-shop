@@ -99,7 +99,7 @@
   </div>
   <ModalAddedToCart
     v-if="isModalAddedVisible"
-    name="lol"
+    :name="itemName"
     @hide-modal-added="hideModal"
   />
   <!--grid -->
@@ -118,6 +118,8 @@ export default {
     return {
       test: items,
       isModalAddedVisible: false,
+      itemName: '',
+      itemNames: [],
     };
   },
   methods: {
@@ -126,6 +128,8 @@ export default {
     },
     addToCart(item) {
       this.$store.commit('addToCart', item);
+      this.itemNames.push(item.name);
+      this.itemName = this.itemNames.pop();
       if (!this.isModalAddedVisible) {
         this.isModalAddedVisible = true;
       }

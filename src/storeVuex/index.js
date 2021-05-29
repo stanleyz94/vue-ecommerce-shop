@@ -26,7 +26,7 @@ export default createStore({
       materialType: [],
       saleOnline: false,
       newest: false,
-      rating: 5,
+      rating: '',
       price: [],
       sortedValue: '',
     },
@@ -184,6 +184,11 @@ export default createStore({
     },
     getCartLength(state) {
       return state.cart.length;
+    },
+    getItemProperty: (state) => (propertyName) => {
+      const item = state.filteredValues[propertyName];
+      if (item) return item;
+      else return null;
     },
   },
 

@@ -6,10 +6,14 @@
     <span class="flex flex-col items-start  flex-wrap	">
       <span>Ocena</span>
       <span
-        v-if="filteredRatings.length >= 1"
+        v-if="filteredRatings.length >= 1 || ratingTypeItems !== ''"
         class="text-xs text-left	break-words	"
       >
-        {{ filteredRatings.join(', ') }}</span
+        {{
+          Array.isArray(ratingTypeItems)
+            ? ratingTypeItems.join(', ')
+            : ratingTypeItems
+        }}</span
       >
     </span>
     <BaseIcon
@@ -121,6 +125,28 @@ export default {
       } else {
         this.$store.commit('setFiltersValues3', { rating: checked });
       }
+    },
+  },
+
+  computed: {
+    ratingTypeItems() {
+      return this.$store.getters.getItemProperty('rating');
+    },
+  },
+
+  watch: {
+    ratingTypeItems: {
+      deep: true,
+      handler(value) {
+        if (Array.isArray(value)) {
+          if (value.length == 0) {
+            this.filteredRatings = [];
+          }
+        }
+        if (!value) {
+          this.filteredRatings = [];
+        }
+      },
     },
   },
 };

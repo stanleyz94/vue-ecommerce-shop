@@ -58,6 +58,22 @@ export default {
       this.$store.commit('setFiltersValues3', { sortedValue: checked });
     },
   },
+  computed: {
+    sortedValueItems() {
+      return this.$store.getters.getItemProperty('sortedValue');
+    },
+  },
+
+  watch: {
+    sortedValueItems: {
+      deep: true,
+      handler(value) {
+        if (!value) {
+          this.sortValue = '';
+        }
+      },
+    },
+  },
 };
 </script>
 

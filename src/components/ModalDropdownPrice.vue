@@ -6,10 +6,10 @@
     <span class="flex flex-col items-start  flex-wrap	">
       <span>Cena</span>
       <span
-        v-if="filteredPrice.length >= 1"
+        v-if="priceTypeItems.length >= 1"
         class="text-xs text-left	break-words	"
       >
-        {{ filteredPrice.join(', ') }}</span
+        {{ priceTypeItems.join(', ') }}</span
       >
     </span>
     <BaseIcon
@@ -86,6 +86,23 @@ export default {
     onChange() {
       let checked = [...this.filteredPrice];
       this.$store.commit('setFiltersValues3', { price: checked });
+    },
+  },
+
+  computed: {
+    priceTypeItems() {
+      return this.$store.getters.getItemProperty('price');
+    },
+  },
+
+  watch: {
+    priceTypeItems: {
+      deep: true,
+      handler(value) {
+        if (value.length == 0) {
+          this.filteredPrice = [];
+        }
+      },
     },
   },
 };

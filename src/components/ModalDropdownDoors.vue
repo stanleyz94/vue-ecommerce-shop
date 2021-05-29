@@ -5,8 +5,8 @@
   >
     <span class="flex flex-col items-start">
       <span>Drzwi</span>
-      <span v-if="filteredDoorType.length >= 1" class="text-xs text-left	">
-        {{ filteredDoorType.join(', ') }}</span
+      <span v-if="doorTypeItems.length >= 1" class="text-xs text-left	">
+        {{ doorTypeItems.join(', ') }}</span
       >
     </span>
     <BaseIcon
@@ -86,6 +86,23 @@ export default {
       this.$store.commit('setFiltersValues3', {
         doorType: checked,
       });
+    },
+  },
+
+  computed: {
+    doorTypeItems() {
+      return this.$store.getters.getItemProperty('doorType');
+    },
+  },
+
+  watch: {
+    doorTypeItems: {
+      deep: true,
+      handler(value) {
+        if (value.length == 0) {
+          this.filteredDoorType = [];
+        }
+      },
     },
   },
 };

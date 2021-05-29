@@ -23,15 +23,15 @@
               </li>
 
               <li class="py-6">
-                <ModalDropdownColor ref="colorRef" />
+                <ModalDropdownColor />
               </li>
 
               <li class="py-6">
-                <ModalDropdownDoors ref="doorRef" />
+                <ModalDropdownDoors />
               </li>
 
               <li class="py-6">
-                <ModalDropdownProperties ref="propertiesRef" />
+                <ModalDropdownProperties />
               </li>
 
               <li class="py-6">
@@ -171,14 +171,7 @@ export default {
       //   console.log(this.$globalVariable);
     },
     resetFilters() {
-      console.log('test');
       this.$store.commit('clearFilters');
-      console.log('test2');
-    },
-    resetItemsModal() {
-      this.$refs.colorRef.removeItems();
-      this.$refs.doorRef.removeItems();
-      this.$refs.propertiesRef.removeItems();
     },
   },
 

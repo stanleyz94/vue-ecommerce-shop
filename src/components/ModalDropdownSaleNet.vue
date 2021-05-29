@@ -27,6 +27,22 @@ export default {
       this.$store.commit('setFiltersValues3', { saleOnline: e.target.checked });
     },
   },
+  computed: {
+    onSaleOnlineItems() {
+      return this.$store.getters.getItemProperty('saleOnline');
+    },
+  },
+
+  watch: {
+    onSaleOnlineItems: {
+      deep: true,
+      handler(value) {
+        if (!value) {
+          this.onSaleOnline = [];
+        }
+      },
+    },
+  },
 };
 </script>
 

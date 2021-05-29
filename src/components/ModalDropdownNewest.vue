@@ -27,6 +27,23 @@ export default {
       this.$store.commit('setFiltersValues3', { newest: e.target.checked });
     },
   },
+
+  computed: {
+    newestItems() {
+      return this.$store.getters.getItemProperty('newest');
+    },
+  },
+
+  watch: {
+    newestItems: {
+      deep: true,
+      handler(value) {
+        if (!value) {
+          this.filteredNewest = [];
+        }
+      },
+    },
+  },
 };
 </script>
 

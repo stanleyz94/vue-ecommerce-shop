@@ -249,7 +249,7 @@ export default {
   data() {
     return {
       testing: 'lol',
-      isListActive: false,
+      isListActive: this.$store.getters.getIsListActive.ModalDropdownColor,
       filteredColors: [],
       colorItems: [
         {

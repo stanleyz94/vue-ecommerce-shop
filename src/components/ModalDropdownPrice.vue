@@ -78,7 +78,7 @@ export default {
   inject: ['testNumberOfProducts'],
   data() {
     return {
-      isListActive: false,
+      isListActive: this.$store.getters.getIsListActive.ModalDropdownPrice,
       filteredPrice: [],
     };
   },

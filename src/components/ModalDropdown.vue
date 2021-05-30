@@ -23,7 +23,7 @@
               </li>
 
               <li class="py-6">
-                <ModalDropdownColor />
+                <ModalDropdownColor ref="colorRef" />
               </li>
 
               <li class="py-6">

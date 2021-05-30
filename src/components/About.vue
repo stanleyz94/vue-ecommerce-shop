@@ -53,52 +53,43 @@
             <span> Porównaj</span>
           </button>
           <button
-            @click="isSortContainerVisible = !isSortContainerVisible"
+            @click="showModalWithDropdown('ModalDropdownSort')"
             aria-label="Pokaż opcje sortowania moda"
-            :class="{
-              'bg-gray-900': isSortContainerVisible,
-              'hover:bg-gray-900': isSortContainerVisible,
-              'text-white': isSortContainerVisible,
-            }"
-            class="inline-flex items-center  bg-gray-100 hover:bg-gray-200   rounded-full font-bold text-xs px-4 py-2.5"
+            class="  bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
           >
             <span>Sortuj</span>
-            <BaseIcon
-              class="h-5 w-5 ml-1.5"
-              :imageUrl="isSortContainerVisible ? 'chevron-up' : 'chevron-down'"
-            />
           </button>
+
           <button
-            aria-label="Pokaż okno filtrów"
-            class="   bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
-          >
-            <span>Rozmiar</span>
-          </button>
-          <button
+            @click="showModalWithDropdown('ModalDropdownColor')"
             aria-label="Aktywuj wybór porównania produktów"
             class="   bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
           >
             <span>Kolor</span>
           </button>
           <button
+            @click="showModalWithDropdown('ModalDropdownDoors')"
             aria-label="Aktywuj wybór porównania produktów"
             class="  bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
           >
             <span>Drzwi</span>
           </button>
           <button
+            @click="showModalWithDropdown('ModalDropdownProperties')"
             aria-label="Aktywuj wybór porównania produktów"
             class="  bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
           >
             <span>Właściwości</span>
           </button>
           <button
+            @click="showModalWithDropdown('ModalDropdownPrice')"
             aria-label="Aktywuj wybór porównania produktów"
             class=" bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
           >
             <span>Cena</span>
           </button>
           <button
+            @click="showModal()"
             aria-label="Aktywuj wybór porównania produktów"
             class=" inline-flex items-center whitespace-nowrap bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
           >
@@ -110,23 +101,7 @@
       <!-- Carousel buttons -->
 
       <!--- Sort dropdown --->
-      <div
-        v-if="isSortContainerVisible"
-        class="text-sm w-64 bg-white px-8 py-10 rounded-lg border border-gray-200 space-y-5 shadow-md absolute top-16 left-24 z-50"
-      >
-        <label
-          v-for="item in sortContainerItems"
-          :key="item.id"
-          class="flex cursor-pointer items-center"
-          :for="item.id"
-        >
-          <span>{{ item.text }}</span>
-          <input class="hidden" :id="item.id" name="radioSort" type="radio" />
-          <div
-            class="flex ml-auto w-5 h-5  border border-gray-600 rounded-full "
-          ></div>
-        </label>
-      </div>
+
       <!--- Sort dropdown --->
     </div>
 
@@ -201,37 +176,9 @@
   <button @click="showModal" class="bg-red-500 p-3 rounded">
     KLIKNIJ MNIE
   </button>
-
-  <div :style="{ color: $store.state.colorCode }" class="vuex-testing">
-    {{ $store.state.counter }}
-
-    {{ $store.state.counter }}
-    <sup>2</sup> = {{ $store.getters.counterSquared }}
-
-    <div class="space-x-2">
-      <button
-        class="bg-green-500 w-8 h-8"
-        @click="$store.dispatch('increaseCounter')"
-      >
-        +
-      </button>
-      <button
-        class="bg-red-500 w-8 h-8"
-        @click="$store.dispatch('decreaseCounter')"
-      >
-        -
-      </button>
-      <div>
-        <!-- <input
-          v-model="$store.state.colorCode"
-          placeholder="Type color"
-          type="text"
-        /> -->
-
-        <input v-model="colorCode" placeholder="Type color" type="text" />
-      </div>
-    </div>
-  </div>
+  <button @click="testcolorRef" class="bg-green-500 p-3 rounded">
+    TESTUJEMY
+  </button>
 
   <div>
     <div v-for="(item, i) in 100" :key="i">
@@ -271,7 +218,7 @@ export default {
         publishedAt: '2016-04-10',
       },
       isMobile: false,
-      message2: 'cena',
+
       navbarLeftItems: [
         { text: 'Produkty', url: '#' },
         { text: 'Pomieszczenia', url: '#' },
@@ -287,65 +234,11 @@ export default {
         { svgName: 'cart', url: '#' },
       ],
       isHidden: false,
-      isSortContainerVisible: false,
-      sortContainerItems: this.sortContainerVariables,
-      isModalVisible: false,
 
-      // accordionItems: [
-      //   {
-      //     span: 'Obsługa klienta',
-      //     isActive2: false,
-      //     nestedList: [
-      //       { text: 'Zaloguj się', url: '#' },
-      //       { text: 'Znajdź swoje zamówienie', url: '#' },
-      //       { text: 'Zmień datę dostawy zamówienia', url: '#' },
-      //       { text: 'Anuluj zamówienie', url: '#' },
-      //       { text: 'Faktury', url: '#' },
-      //     ],
-      //   },
-      //   {
-      //     span: 'Zakupy w IKEA',
-      //     isActive2: false,
-      //     nestedList: [
-      //       { text: 'Katalog i broszury', url: '#' },
-      //       { text: 'Centrum Urządzania Wnetrz', url: '#' },
-      //       { text: 'Narzędzia do planowania online', url: '#' },
-      //       { text: 'Sklepy IKEA', url: '#' },
-      //       { text: 'Oferty lokalne', url: '#' },
-      //     ],
-      //   },
-      //   {
-      //     span: 'Usługi',
-      //     isActive2: false,
-      //     nestedList: [
-      //       { text: 'Dostawa', url: '#' },
-      //       { text: 'Zamów i odbierz', url: '#' },
-      //       { text: 'Montaż i instalacja', url: '#' },
-      //       { text: 'Planowanie i doradztwo', url: '#' },
-      //       { text: 'Planowanie kuchni', url: '#' },
-      //     ],
-      //   },
-      //   {
-      //     span: 'O IKEA',
-      //     isActive2: false,
-      //     nestedList: [
-      //       { text: 'Informacje o IKEA', url: '#' },
-      //       { text: 'Biuro prasowe i aktualności', url: '#' },
-      //       { text: 'Aktualne informacje dot. COVID-19', url: '#' },
-      //       { text: 'IKEA dla planety', url: '#' },
-      //       { text: '60 lat IKEA w Polsce', url: '#' },
-      //     ],
-      //   },
-      // ],
+      isModalVisible: false,
     };
   },
 
-  // mounted() {
-  //   window.addEventListener('resize', this.test, { passive: true });
-  // },
-  // beforeUnmount() {
-  //   window.addEventListener('resize', this.test, { passive: true });
-  // },
   components: {
     BaseIcon,
     ModalDropdown,
@@ -356,12 +249,6 @@ export default {
   provide: {
     testNumberOfProducts: 2,
   },
-  // methods: {
-  //   selectItem(item, i) {
-  //     item.isActive2 = !item.isActive2;
-  //     this.activeItem = i;
-  //   },
-  // },
 
   methods: {
     handleScroll(e) {
@@ -391,15 +278,14 @@ export default {
       this.isModalVisible = false;
       document.body.classList.remove('modal-open');
     },
+    showModalWithDropdown(ModaldropdownType) {
+      this.isModalVisible = true;
+      document.body.classList.add('modal-open');
+      this.$store.commit('changeIsListActive', ModaldropdownType);
+    },
   },
 
-  mounted() {
-    console.log(this.$globalVariable);
-  },
   computed: {
-    message() {
-      return '$' + this.message2;
-    },
     colorCode: {
       get() {
         return this.$store.state.colorCode;
@@ -409,8 +295,6 @@ export default {
       },
     },
   },
-
-  watch: {},
 };
 </script>
 

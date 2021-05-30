@@ -47,7 +47,7 @@ export default {
   inject: ['sortContainerVariables'],
   data() {
     return {
-      isListActive: false,
+      isListActive: this.$store.getters.getIsListActive.ModalDropdownSort,
       sortModalContainerItems: this.sortContainerVariables,
       sortValue: '',
     };

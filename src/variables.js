@@ -42,6 +42,6 @@ export const sortContainerVariables = [
   },
 ];
 
-export const filtersValuesArray = [];
+export const filtersValuesArray = ['test'];
 
 export const testingPurposes = false;

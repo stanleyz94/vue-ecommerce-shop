@@ -128,7 +128,7 @@ export default {
   inject: ['testNumberOfProducts', 'store'],
   data() {
     return {
-      isListActive: false,
+      isListActive: this.$store.getters.getIsListActive.ModalDropdownProperties,
       filteredProperties: [],
     };
   },

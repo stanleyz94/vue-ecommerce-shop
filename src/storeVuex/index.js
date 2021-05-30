@@ -18,7 +18,15 @@ export default createStore({
     cart: [],
     items: items,
     filtersValues: [],
-
+    isListActive: {
+      ModalDropdownDoors: false,
+      ModalDropdownColor: false,
+      ModalDropdownSort: false,
+      ModalDropdownProperties: false,
+      ModalDropdownPrice: false,
+      ModalDropdownMaterial: false,
+      ModalDropdownRating: false,
+    },
     filteredValues: {
       color: [],
       doorType: [],
@@ -108,7 +116,9 @@ export default createStore({
     },
     clearFilters(state) {
       resetValues(state.filteredValues);
-      console.log('test');
+    },
+    changeIsListActive(state, propertyName) {
+      state.isListActive[propertyName] = true;
     },
   },
   //async
@@ -189,6 +199,9 @@ export default createStore({
       const item = state.filteredValues[propertyName];
       if (item) return item;
       else return null;
+    },
+    getIsListActive(state) {
+      return state.isListActive;
     },
   },
 

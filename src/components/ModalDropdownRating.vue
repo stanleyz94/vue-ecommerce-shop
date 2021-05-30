@@ -111,7 +111,7 @@ export default {
   inject: ['testNumberOfProducts'],
   data() {
     return {
-      isListActive: false,
+      isListActive: this.$store.getters.getIsListActive.ModalDropdownRating,
       filteredRatings: [],
       ratings: [5, 4, 3],
     };

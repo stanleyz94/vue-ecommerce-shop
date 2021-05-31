@@ -13,8 +13,6 @@ function updateLocalStorage(cart) {
 
 export default createStore({
   state: {
-    counter: 0,
-    colorCode: 'bluse',
     cart: [],
     items: items,
     filtersValues: [],
@@ -38,6 +36,7 @@ export default createStore({
       price: [],
       sortedValue: '',
     },
+    appliedFilters: [],
   },
   mutations: {
     addToCart(state, product) {
@@ -79,15 +78,6 @@ export default createStore({
       updateLocalStorage(state.cart);
     },
 
-    decreaseCounter(state, randomNumber) {
-      state.counter -= randomNumber;
-    },
-    increaseCounter(state, randomNumber) {
-      state.counter += randomNumber;
-    },
-    setColorCode(state, newValue) {
-      state.colorCode = newValue;
-    },
     setFiltersValues(state, newValues) {
       state.filtersValues = [...newValues];
     },
@@ -120,28 +110,33 @@ export default createStore({
     changeIsListActive(state, propertyName) {
       state.isListActive[propertyName] = true;
     },
+    updateAppliedFilters(state) {
+      const { newest, saleOnline, ...remainingVal } = state.filteredValues;
+
+      let remainingValues = [];
+
+      for (let key in remainingVal) {
+        let value = remainingVal[key];
+
+        if (Array.isArray(value)) {
+          remainingValues.push(...value);
+        } else {
+          remainingValues.push(value);
+        }
+      }
+
+      const appliedFilters = [
+        newest ? 'Najnowszy' : '',
+        saleOnline ? 'W sprzedaży przez internet' : '',
+        ...remainingValues,
+      ].filter((item) => item != '');
+
+      state.appliedFilters = appliedFilters;
+      console.log(state.appliedFilters);
+    },
   },
   //async
   actions: {
-    async increaseCounter({ commit }) {
-      const response = await fetch(
-        'https://www.random.org/integers/?num=1&min=1&max=6&col=1&base=10&format=plain&rnd=new'
-      );
-      const responseData = await response.json();
-      commit('increaseCounter', responseData);
-      //   console.log(responseData);
-    },
-    async decreaseCounter({ commit }) {
-      const response = await fetch(
-        'https://www.random.org/integers/?num=1&min=1&max=6&col=1&base=10&format=plain&rnd=new'
-      );
-      const responseData = await response.json();
-      commit('decreaseCounter', responseData);
-      //   console.log(responseData);
-    },
-    setColorCode({ commit }, newValue) {
-      commit('setColorCode', newValue);
-    },
     setFiltersValues({ commit }, newValue) {
       commit('setFiltersValues', newValue);
     },
@@ -151,10 +146,6 @@ export default createStore({
 
     setFiltersValues3({ commit }, newValues) {
       commit('setFiltersValues2', newValues);
-    },
-
-    filterItems() {
-      //z filtrowac w actions , nowa liste umiescic w state
     },
   },
   //get data from state
@@ -202,6 +193,10 @@ export default createStore({
     },
     getIsListActive(state) {
       return state.isListActive;
+    },
+
+    getFilteredValues(state) {
+      return state.filteredValues;
     },
   },
 

@@ -1,10 +1,12 @@
 <template>
-  <!-- //v-if="appliedFilters.length >= 1" -->
-  <div class="flex items-center  py-7 flex-wrap border-b-2 border-gray-100">
+  <div
+    v-if="appliedFilters.length >= 1"
+    class="flex items-center  py-7 flex-wrap border-b-2 border-gray-100"
+  >
     <button
-      v-for="(item, index) in appliedFilters3"
+      v-for="(item, index) in appliedFilters"
       :key="index"
-      @click="appliedFilters3.splice(index, 1)"
+      @click="$store.commit('clearSpecificValues', item)"
       class="inline-flex items-center whitespace-nowrap border border-black bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-7 py-2.5 mt-5 mr-5"
     >
       <BaseIcon class="h-4 w-4 mr-2.5" imageUrl="close" />
@@ -12,17 +14,12 @@
     </button>
 
     <button
-      v-if="appliedFilters3.length > 1"
-      @click="appliedFilters3.length = 0"
+      v-if="appliedFilters.length > 1"
+      @click="$store.commit('clearFilters')"
       class="inline-flex items-center whitespace-nowrap  bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-7 py-2.5 mt-5 mr-5"
     >
       <span class="text-sm">Usuń wszystko</span>
     </button>
-
-    <!-- {{ $store.getters.getAppliedFilters }}
-    {{ appliedFilters }}
-    {{ appliedFilters2 }} -->
-    {{ appliedFilters3 }}
   </div>
 </template>
 
@@ -46,7 +43,7 @@ export default {
         'Brązowy',
         'Szerokość 100 - 199 Cm',
       ],
-      appliedFilters3: [],
+      appliedFilters: [],
     };
   },
   setup() {
@@ -79,17 +76,14 @@ export default {
         }
 
         const appliedFilters = [
-          newest ? 'Najnowszy' : '',
+          newest ? 'Nowość' : '',
           saleOnline ? 'W sprzedaży przez internet' : '',
           ...remainingValues,
         ].filter((item) => item != '');
 
-        this.appliedFilters3 = appliedFilters;
+        this.appliedFilters = appliedFilters;
       },
     },
-  },
-  created() {
-    // this.$store.commit('updateAppliedFilters');
   },
 };
 </script>

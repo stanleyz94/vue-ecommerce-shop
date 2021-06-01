@@ -121,7 +121,10 @@ export default {
       let checked = [...this.filteredRatings];
 
       if (checked.length <= 1) {
-        this.$store.commit('setFiltersValues3', { rating: checked.join() });
+        this.$store.commit('setFiltersValues3', {
+          rating: Number(checked.join()),
+        });
+        console.log(checked);
       } else {
         this.$store.commit('setFiltersValues3', { rating: checked });
       }

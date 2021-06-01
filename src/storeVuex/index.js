@@ -134,6 +134,31 @@ export default createStore({
       state.appliedFilters = appliedFilters;
       console.log(state.appliedFilters);
     },
+    clearSpecificValues(state, value) {
+      const appliedFilter = value;
+      const filteredValues = Object.values(state.filteredValues);
+
+      const foundValues = filteredValues.find((el) => {
+        if (Array.isArray(el)) {
+          return el.includes(appliedFilter);
+        }
+      });
+      const isUndefined = typeof foundValues == 'undefined';
+
+      if (!isUndefined) {
+        foundValues.splice(foundValues.indexOf(appliedFilter), 1);
+      }
+      if (typeof appliedFilter == 'number' && isUndefined) {
+        state.filteredValues['rating'] = '';
+      }
+
+      if (appliedFilter == 'Nowość') {
+        state.filteredValues['newest'] = false;
+      }
+      if (appliedFilter == 'W sprzedaży przez internet') {
+        state.filteredValues['saleOnline'] = false;
+      }
+    },
   },
   //async
   actions: {

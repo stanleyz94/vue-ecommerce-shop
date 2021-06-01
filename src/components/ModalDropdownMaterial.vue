@@ -64,7 +64,7 @@ export default {
   methods: {
     onChange() {
       let checked = [...this.filteredMaterials];
-      this.$store.commit('setFiltersValues3', { materialType: checked });
+      this.$store.commit('setFiltersValues', { materialType: checked });
     },
   },
 

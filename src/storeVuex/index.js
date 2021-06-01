@@ -79,19 +79,6 @@ export default createStore({
     },
 
     setFiltersValues(state, newValues) {
-      state.filtersValues = [...newValues];
-    },
-    setFiltersValues2(state, newValues, objectKey) {
-      if (Array.isArray(newValues[objectKey])) {
-        state.filteredValues[objectKey] = [...newValues];
-      } else {
-        state.filteredValues[objectKey] = newValues;
-      }
-    },
-    setFiltersValues3(state, newValues) {
-      console.log('newValeues: ' + newValues);
-      console.log('state: ' + state.filteredValues['color']);
-
       const key = Object.keys(state.filteredValues).find((key) => {
         if (Object.keys(newValues).includes(key)) {
           return key;
@@ -110,30 +97,7 @@ export default createStore({
     changeIsListActive(state, propertyName) {
       state.isListActive[propertyName] = true;
     },
-    updateAppliedFilters(state) {
-      const { newest, saleOnline, ...remainingVal } = state.filteredValues;
 
-      let remainingValues = [];
-
-      for (let key in remainingVal) {
-        let value = remainingVal[key];
-
-        if (Array.isArray(value)) {
-          remainingValues.push(...value);
-        } else {
-          remainingValues.push(value);
-        }
-      }
-
-      const appliedFilters = [
-        newest ? 'Najnowszy' : '',
-        saleOnline ? 'W sprzedaży przez internet' : '',
-        ...remainingValues,
-      ].filter((item) => item != '');
-
-      state.appliedFilters = appliedFilters;
-      console.log(state.appliedFilters);
-    },
     clearSpecificValues(state, value) {
       const appliedFilter = value;
       const filteredValues = Object.values(state.filteredValues);
@@ -161,23 +125,9 @@ export default createStore({
     },
   },
   //async
-  actions: {
-    setFiltersValues({ commit }, newValue) {
-      commit('setFiltersValues', newValue);
-    },
-    setFiltersValues2({ commit }, newValues, objectKey) {
-      commit('setFiltersValues2', newValues, objectKey);
-    },
-
-    setFiltersValues3({ commit }, newValues) {
-      commit('setFiltersValues2', newValues);
-    },
-  },
+  actions: {},
   //get data from state
   getters: {
-    counterSquared(state) {
-      return state.counter * state.counter;
-    },
     loadItems(state) {
       return state.items;
     },

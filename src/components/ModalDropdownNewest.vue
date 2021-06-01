@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     onChange(e) {
-      this.$store.commit('setFiltersValues3', { newest: e.target.checked });
+      this.$store.commit('setFiltersValues', { newest: e.target.checked });
     },
   },
 

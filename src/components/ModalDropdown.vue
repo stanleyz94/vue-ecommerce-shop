@@ -23,7 +23,7 @@
               </li>
 
               <li class="py-6">
-                <ModalDropdownColor ref="colorRef" />
+                <ModalDropdownColor />
               </li>
 
               <li class="py-6">
@@ -164,12 +164,6 @@ export default {
   },
 
   methods: {
-    testowanko() {
-      //   this.$globalVariable = !this.$globalVariable;
-      //   this.sortContainerItems = !this.sortContainerItems;
-      console.log(this.sortContainerVariables);
-      //   console.log(this.$globalVariable);
-    },
     resetFilters() {
       this.$store.commit('clearFilters');
     },

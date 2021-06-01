@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     onChange(e) {
-      this.$store.commit('setFiltersValues3', { saleOnline: e.target.checked });
+      this.$store.commit('setFiltersValues', { saleOnline: e.target.checked });
     },
   },
   computed: {

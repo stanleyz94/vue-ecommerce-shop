@@ -55,7 +55,7 @@ export default {
   methods: {
     onChange() {
       let checked = this.sortValue;
-      this.$store.commit('setFiltersValues3', { sortedValue: checked });
+      this.$store.commit('setFiltersValues', { sortedValue: checked });
     },
   },
   computed: {

@@ -83,7 +83,7 @@ export default {
     onChange() {
       let checked = [...this.filteredDoorType];
 
-      this.$store.commit('setFiltersValues3', {
+      this.$store.commit('setFiltersValues', {
         doorType: checked,
       });
     },

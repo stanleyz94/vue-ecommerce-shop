@@ -294,7 +294,7 @@ export default {
     onChange() {
       let checked = [...this.filteredColors];
 
-      this.$store.commit('setFiltersValues3', { color: checked });
+      this.$store.commit('setFiltersValues', { color: checked });
     },
   },
 

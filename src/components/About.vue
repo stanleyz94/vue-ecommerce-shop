@@ -284,17 +284,6 @@ export default {
       this.$store.commit('changeIsListActive', ModaldropdownType);
     },
   },
-
-  computed: {
-    colorCode: {
-      get() {
-        return this.$store.state.colorCode;
-      },
-      set(newValue) {
-        this.$store.dispatch('setColorCode', newValue);
-      },
-    },
-  },
 };
 </script>
 

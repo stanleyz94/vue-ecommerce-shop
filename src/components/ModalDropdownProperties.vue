@@ -136,7 +136,7 @@ export default {
     onChange() {
       let checked = [...this.filteredProperties];
 
-      this.$store.commit('setFiltersValues3', {
+      this.$store.commit('setFiltersValues', {
         propertyType: checked,
       });
     },

@@ -85,7 +85,7 @@ export default {
   methods: {
     onChange() {
       let checked = [...this.filteredPrice];
-      this.$store.commit('setFiltersValues3', { price: checked });
+      this.$store.commit('setFiltersValues', { price: checked });
     },
   },
 

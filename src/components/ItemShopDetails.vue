@@ -230,7 +230,6 @@ export default {
     addToCart() {
       this.$store.commit('addToCart', this.loadItem);
       this.isClicked = true;
-      console.log(this.$store.state.cart);
     },
   },
 

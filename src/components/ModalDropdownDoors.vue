@@ -25,35 +25,56 @@
   >
     <div class="space-y-5">
       <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
+        :class="{
+          'opacity-50':
+            wardrobeAmount('Drzwi na zawiasach') == 0 ? true : false,
+        }"
+        :disabled="wardrobeAmount('Drzwi na zawiasach') == 0"
+        :availableProducts="wardrobeAmount('Drzwi na zawiasach')"
         label="Drzwi na zawiasach"
         v-model="filteredDoorType"
         value="Drzwi na zawiasach"
         @change="onChange()"
       />
       <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
+        :class="{
+          'opacity-50': wardrobeAmount('Drzwi przesuwane') == 0 ? true : false,
+        }"
+        :disabled="wardrobeAmount('Drzwi przesuwane') == 0"
+        :availableProducts="wardrobeAmount('Drzwi przesuwane')"
         label="Drzwi przesuwane"
         v-model="filteredDoorType"
         value="Drzwi przesuwane"
         @change="onChange()"
       />
       <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
+        :class="{
+          'opacity-50': wardrobeAmount('Drzwi lustrzane') == 0 ? true : false,
+        }"
+        :disabled="wardrobeAmount('Drzwi lustrzane') == 0"
+        :availableProducts="wardrobeAmount('Drzwi lustrzane')"
         label="Drzwi lustrzane"
         v-model="filteredDoorType"
         value="Drzwi lustrzane"
         @change="onChange()"
       />
       <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
+        :class="{
+          'opacity-50': wardrobeAmount('Drzwi szklane') == 0 ? true : false,
+        }"
+        :disabled="wardrobeAmount('Drzwi szklane') == 0"
+        :availableProducts="wardrobeAmount('Drzwi szklane')"
         label="Drzwi szklane"
         v-model="filteredDoorType"
         value="Drzwi szklane"
         @change="onChange()"
       />
       <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
+        :class="{
+          'opacity-50': wardrobeAmount('Bez drzwi') == 0 ? true : false,
+        }"
+        :disabled="wardrobeAmount('Bez drzwi') == 0"
+        :availableProducts="wardrobeAmount('Bez drzwi')"
         label="Bez drzwi"
         v-model="filteredDoorType"
         value="Bez drzwi"
@@ -87,11 +108,21 @@ export default {
         doorType: checked,
       });
     },
+    wardrobeAmount(value) {
+      let searchedWardrobe = this.wardrobesFiltered.filter((wardrobe) => {
+        return wardrobe.doorType == value;
+      });
+      return searchedWardrobe.length;
+    },
   },
 
   computed: {
     doorTypeItems() {
       return this.$store.getters.getItemProperty('doorType');
+    },
+
+    wardrobesFiltered() {
+      return this.$store.getters.loadFilters;
     },
   },
 

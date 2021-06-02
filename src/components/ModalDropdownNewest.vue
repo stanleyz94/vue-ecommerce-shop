@@ -1,6 +1,10 @@
 <template>
   <BaseCheckbox
-    :availableProducts="this.testNumberOfProducts"
+    :class="{
+      'opacity-50': wardrobeAmount() == 0 ? true : false,
+    }"
+    :disabled="wardrobeAmount() == 0"
+    :availableProducts="wardrobeAmount()"
     label="Nowość"
     value="Nowość"
     v-model="filteredNewest"
@@ -26,11 +30,20 @@ export default {
     onChange(e) {
       this.$store.commit('setFiltersValues', { newest: e.target.checked });
     },
+    wardrobeAmount() {
+      let searchedWardrobe = this.wardrobesFiltered.filter((wardrobe) => {
+        return wardrobe.newest == true;
+      });
+      return searchedWardrobe.length;
+    },
   },
 
   computed: {
     newestItems() {
       return this.$store.getters.getItemProperty('newest');
+    },
+    wardrobesFiltered() {
+      return this.$store.getters.loadFilters;
     },
   },
 

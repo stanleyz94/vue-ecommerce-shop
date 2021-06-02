@@ -162,7 +162,7 @@ export const resetValues = (current) => {
     let propType = typeof current[key];
     switch (propType) {
       case 'number':
-        current[key] = [3, 4, 5];
+        current[key] = '';
         break;
       case 'string':
         current[key] = '';

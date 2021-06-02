@@ -28,14 +28,23 @@
   >
     <div class="space-y-5">
       <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
+        :class="{
+          'opacity-50':
+            wardrobeAmount('Drewno (łączne z płytą)') == 0 ? true : false,
+        }"
+        :disabled="wardrobeAmount('Drewno (łączne z płytą)') == 0"
+        :availableProducts="wardrobeAmount('Drewno (łączne z płytą)')"
         label="Drewno (łączne z płytą)"
         v-model="filteredMaterials"
         value="Drewno (łączne z płytą)"
         @change="onChange()"
       />
       <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
+        :class="{
+          'opacity-50': wardrobeAmount('Metal') == 0 ? true : false,
+        }"
+        :disabled="wardrobeAmount('Metal') == 0"
+        :availableProducts="wardrobeAmount('Metal')"
         label="Metal"
         v-model="filteredMaterials"
         value="Metal"
@@ -66,11 +75,20 @@ export default {
       let checked = [...this.filteredMaterials];
       this.$store.commit('setFiltersValues', { materialType: checked });
     },
+    wardrobeAmount(value) {
+      let searchedWardrobe = this.wardrobesFiltered.filter((wardrobe) => {
+        return wardrobe.materialType == value;
+      });
+      return searchedWardrobe.length;
+    },
   },
 
   computed: {
     materialTypeItems() {
       return this.$store.getters.getItemProperty('materialType');
+    },
+    wardrobesFiltered() {
+      return this.$store.getters.loadFilters;
     },
   },
 

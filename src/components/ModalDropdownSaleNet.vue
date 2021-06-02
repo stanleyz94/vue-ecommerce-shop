@@ -1,6 +1,10 @@
 <template>
   <BaseCheckbox
-    :availableProducts="this.testNumberOfProducts"
+    :class="{
+      'opacity-50': wardrobeAmount() == 0 ? true : false,
+    }"
+    :disabled="wardrobeAmount() == 0"
+    :availableProducts="wardrobeAmount()"
     label="W sprzedaży przez internet"
     v-model="onSaleOnline"
     value="W sprzedaży przez internet"
@@ -26,10 +30,19 @@ export default {
     onChange(e) {
       this.$store.commit('setFiltersValues', { saleOnline: e.target.checked });
     },
+    wardrobeAmount() {
+      let searchedWardrobe = this.wardrobesFiltered.filter((wardrobe) => {
+        return wardrobe.saleOnline == true;
+      });
+      return searchedWardrobe.length;
+    },
   },
   computed: {
     onSaleOnlineItems() {
       return this.$store.getters.getItemProperty('saleOnline');
+    },
+    wardrobesFiltered() {
+      return this.$store.getters.loadFilters;
     },
   },
 

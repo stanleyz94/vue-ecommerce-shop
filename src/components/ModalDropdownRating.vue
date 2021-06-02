@@ -31,56 +31,14 @@
     class="transition duration-500 ease-in-out text-sm  bg-white "
   >
     <div class="space-y-5">
-      <!-- <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
-        v-model="exampleArr"
-        value="5"
-      >
-        <span class="flex">
-          <BaseIcon
-            v-for="i in 5"
-            :class="i <= ratings[0] ? 'text-gray-900' : 'text-gray-300'"
-            class="fill-current w-7 h-7"
-            :key="i"
-            imageUrl="star"
-          />
-        </span>
-      </BaseCheckbox>
-      <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
-        v-model="exampleArr"
-        value="4"
-      >
-        <span class="flex">
-          <BaseIcon
-            v-for="i in 5"
-            :class="i <= ratings[1] ? 'text-gray-900' : 'text-gray-300'"
-            class="fill-current w-7 h-7"
-            :key="i"
-            imageUrl="star"
-          />
-        </span>
-      </BaseCheckbox>
-      <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
-        v-model="exampleArr"
-        value="3"
-      >
-        <span class="flex">
-          <BaseIcon
-            v-for="i in 5"
-            :class="i <= ratings[2] ? 'text-gray-900' : 'text-gray-300'"
-            class="fill-current w-7 h-7"
-            :key="i"
-            imageUrl="star"
-          />
-        </span>
-      </BaseCheckbox> -->
-
       <BaseCheckbox
         v-for="(rating, index) in ratings"
         :key="index + 1"
-        :availableProducts="this.testNumberOfProducts"
+        :class="{
+          'opacity-50': wardrobeAmount(rating) == 0 ? true : false,
+        }"
+        :disabled="wardrobeAmount(rating) == 0"
+        :availableProducts="wardrobeAmount(rating)"
         v-model="filteredRatings"
         :value="rating"
         @change="onChange()"
@@ -124,16 +82,24 @@ export default {
         this.$store.commit('setFiltersValues', {
           rating: Number(checked.join()),
         });
-        console.log(checked);
       } else {
         this.$store.commit('setFiltersValues', { rating: checked });
       }
+    },
+    wardrobeAmount(value) {
+      let searchedWardrobe = this.wardrobesFiltered.filter((wardrobe) => {
+        return wardrobe.rating == value;
+      });
+      return searchedWardrobe.length;
     },
   },
 
   computed: {
     ratingTypeItems() {
       return this.$store.getters.getItemProperty('rating');
+    },
+    wardrobesFiltered() {
+      return this.$store.getters.loadFilters;
     },
   },
 

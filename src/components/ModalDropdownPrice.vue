@@ -28,35 +28,55 @@
   >
     <div class="space-y-5">
       <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
+        :class="{
+          'opacity-50': wardrobeAmount(0, 499) == 0 ? true : false,
+        }"
+        :disabled="wardrobeAmount(0, 499) == 0"
+        :availableProducts="wardrobeAmount(0, 499)"
         label="0 - 499 zł"
         v-model="filteredPrice"
         value="0 - 499 zł"
         @change="onChange()"
       />
       <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
+        :class="{
+          'opacity-50': wardrobeAmount(500, 999) == 0 ? true : false,
+        }"
+        :disabled="wardrobeAmount(500, 999) == 0"
+        :availableProducts="wardrobeAmount(500, 999)"
         label="500 - 999 zł"
         v-model="filteredPrice"
         value="500 - 999 zł"
         @change="onChange()"
       />
       <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
+        :class="{
+          'opacity-50': wardrobeAmount(1000, 1499) == 0 ? true : false,
+        }"
+        :disabled="wardrobeAmount(1000, 1499) == 0"
+        :availableProducts="wardrobeAmount(1000, 1499)"
         label="1 000 - 1 499 zł"
         v-model="filteredPrice"
         value="1 000 - 1 499 zł"
         @change="onChange()"
       />
       <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
+        :class="{
+          'opacity-50': wardrobeAmount(1500, 1999) == 0 ? true : false,
+        }"
+        :disabled="wardrobeAmount(1500, 1999) == 0"
+        :availableProducts="wardrobeAmount(1500, 1999)"
         label="1 500 - 1 999 zł"
         v-model="filteredPrice"
         value="1 500 - 1 999 zł"
         @change="onChange()"
       />
       <BaseCheckbox
-        :availableProducts="this.testNumberOfProducts"
+        :class="{
+          'opacity-50': wardrobeAmount(2000, 100000) == 0 ? true : false,
+        }"
+        :disabled="wardrobeAmount(2000, 100000) == 0"
+        :availableProducts="wardrobeAmount(2000, 100000)"
         label="2 000+ zł"
         v-model="filteredPrice"
         value="2 000+ zł"
@@ -87,11 +107,20 @@ export default {
       let checked = [...this.filteredPrice];
       this.$store.commit('setFiltersValues', { price: checked });
     },
+    wardrobeAmount(minValue, maxValue) {
+      let searchedWardrobe = this.wardrobesFiltered.filter((wardrobe) => {
+        return wardrobe.price >= minValue && wardrobe.price <= maxValue;
+      });
+      return searchedWardrobe.length;
+    },
   },
 
   computed: {
     priceTypeItems() {
       return this.$store.getters.getItemProperty('price');
+    },
+    wardrobesFiltered() {
+      return this.$store.getters.loadFilters;
     },
   },
 

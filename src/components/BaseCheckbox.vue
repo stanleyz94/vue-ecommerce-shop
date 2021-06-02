@@ -10,6 +10,7 @@
       :checked="isChecked"
       :value="value"
       @change="onChange"
+      :disabled="disabled"
     />
 
     <div
@@ -38,6 +39,7 @@ export default {
     },
     modelValue: [Array],
     label: { type: String },
+    disabled: { defualt: false, type: Boolean },
     availableProducts: { default: null, type: Number },
   },
   computed: {

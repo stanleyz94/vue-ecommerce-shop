@@ -134,6 +134,9 @@ export default {
       },
     },
   },
+  created() {
+    this.filteredPrice = this.priceTypeItems;
+  },
 };
 </script>
 

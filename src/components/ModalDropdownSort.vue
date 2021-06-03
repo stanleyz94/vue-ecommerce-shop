@@ -74,6 +74,9 @@ export default {
       },
     },
   },
+  created() {
+    this.sortValue = this.sortedValueItems;
+  },
 };
 </script>
 

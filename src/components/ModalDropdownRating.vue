@@ -118,6 +118,11 @@ export default {
       },
     },
   },
+  created() {
+    if (typeof this.ratingTypeItems == 'number') {
+      this.filteredRatings.push(this.ratingTypeItems);
+    }
+  },
 };
 </script>
 

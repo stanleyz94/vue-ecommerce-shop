@@ -116,6 +116,10 @@ export default createStore({
         state.filteredValues['rating'] = '';
       }
 
+      if (typeof appliedFilter == 'string' && isUndefined) {
+        state.filteredValues['sortedValue'] = '';
+      }
+
       if (appliedFilter == 'Nowość') {
         state.filteredValues['newest'] = false;
       }

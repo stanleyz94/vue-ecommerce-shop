@@ -136,6 +136,9 @@ export default {
       },
     },
   },
+  created() {
+    this.filteredDoorType = this.doorTypeItems;
+  },
 };
 </script>
 

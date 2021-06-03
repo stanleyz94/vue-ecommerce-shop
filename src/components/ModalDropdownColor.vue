@@ -314,6 +314,9 @@ export default {
       },
     },
   },
+  created() {
+    this.filteredColors = this.colorTypeItems;
+  },
 };
 </script>
 

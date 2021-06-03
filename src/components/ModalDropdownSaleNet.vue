@@ -56,6 +56,11 @@ export default {
       },
     },
   },
+  created() {
+    if (this.onSaleOnlineItems) {
+      this.onSaleOnline.push('W sprzedaży przez internet');
+    }
+  },
 };
 </script>
 

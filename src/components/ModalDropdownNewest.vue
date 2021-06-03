@@ -57,6 +57,11 @@ export default {
       },
     },
   },
+  created() {
+    if (this.newestItems) {
+      this.filteredNewest.push('Nowość');
+    }
+  },
 };
 </script>
 

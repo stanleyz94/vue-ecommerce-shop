@@ -102,6 +102,9 @@ export default {
       },
     },
   },
+  created() {
+    this.filteredMaterials = this.materialTypeItems;
+  },
 };
 </script>
 

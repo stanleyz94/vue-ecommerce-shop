@@ -218,6 +218,9 @@ export default {
       },
     },
   },
+  created() {
+    this.filteredProperties = this.propertyTypeItems;
+  },
 };
 </script>
 

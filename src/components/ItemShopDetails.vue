@@ -238,6 +238,7 @@ export default {
       return this.$store.getters.loadItemById(this.id);
     },
   },
+  created() {},
 };
 </script>
 

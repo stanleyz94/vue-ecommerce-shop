@@ -8,14 +8,29 @@ export default createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', name: 'Home', component: Home },
-    { path: '/about', name: 'About', component: About },
+    {
+      path: '/about',
+      name: 'About',
+      component: About,
+      meta: { title: 'Szafy do zabudowy' },
+    },
     {
       path: '/about/:id',
       name: 'ItemShopDetails',
       component: ItemShopDetails,
       props: true,
     },
-    { path: '/cart', name: 'ItemShopCart', component: ItemShopCart },
-    { path: '/:catchAll(.*)', name: 'NotFound', component: NotFound },
+    {
+      path: '/cart',
+      name: 'ItemShopCart',
+      component: ItemShopCart,
+      meta: { title: 'Koszyk' },
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: 'NotFound',
+      component: NotFound,
+      meta: { title: '404 - Ups, Coś poszło nie tak' },
+    },
   ],
 });

@@ -27,6 +27,12 @@ export default {
     // provide('filtersValues', filtersValues);
     provide('store', store);
   },
+  watch: {
+    $route(to) {
+      document.title =
+        to.meta.title || `${to.params.name} - ${to.params.description}`;
+    },
+  },
   mounted() {
     this.$store.commit('updateCartFromLocalStorage');
   },

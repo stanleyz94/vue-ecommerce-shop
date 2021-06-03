@@ -50,7 +50,11 @@
       <router-link
         :to="{
           name: 'ItemShopDetails',
-          params: { id: item.id },
+          params: {
+            id: item.id,
+            name: item.name,
+            description: item.description,
+          },
         }"
       >
         <div class="relative">

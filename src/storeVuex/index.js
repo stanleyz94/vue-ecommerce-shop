@@ -147,6 +147,18 @@ export default createStore({
         state.filteredValues
       );
     },
+    loadFilters2(state) {
+      const filteredByValues = filterByValues(
+        state.items,
+        state.filteredValues
+      );
+      const filteredByPrice = filterByPrice(
+        filteredByValues,
+        state.filteredValues
+      );
+      const sortedItems = sortItems(filteredByPrice, state.filteredValues);
+      return sortedItems;
+    },
     getItemsLength(state, getters) {
       return getters.loadFilters.length;
     },

@@ -24,9 +24,3 @@ export default {
   filtersValues,
   updateLocalStorage,
 };
-
-//  setup() {
-//     const filtersValues = ref(filtersValuesArray);
-//     provide('filtersValues', filtersValues);
-//   },
-// };

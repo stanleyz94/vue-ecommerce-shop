@@ -15,7 +15,7 @@ export default createStore({
   state: {
     cart: [],
     items: items,
-    filtersValues: [],
+
     isListActive: {
       ModalDropdownDoors: false,
       ModalDropdownColor: false,
@@ -139,25 +139,37 @@ export default createStore({
       return state.items.find((item) => item.id == id);
     },
     loadFilters(state) {
-      return filterByValues(
-        filterByPrice(
-          sortItems(state.items, state.filteredValues),
-          state.filteredValues
-        ),
-        state.filteredValues
+      const compose = (a, b, c) => (arg1, arg2) =>
+        a(b(c(arg1, arg2), arg2), arg2);
+
+      const doFilterComposed = compose(
+        filterByValues,
+        filterByPrice,
+        sortItems
       );
+
+      return doFilterComposed(state.items, state.filteredValues);
     },
-    loadFilters2(state) {
-      const filteredByValues = filterByValues(
-        state.items,
-        state.filteredValues
-      );
-      const filteredByPrice = filterByPrice(
-        filteredByValues,
-        state.filteredValues
-      );
-      const sortedItems = sortItems(filteredByPrice, state.filteredValues);
-      return sortedItems;
+    loadFilters2() {
+      //#1
+      // return filterByValues(
+      //   filterByPrice(
+      //     sortItems(state.items, state.filteredValues),
+      //     state.filteredValues
+      //   ),
+      //   state.filteredValues
+      // );
+      //#2
+      // const filteredByValues = filterByValues(
+      //   state.items,
+      //   state.filteredValues
+      // );
+      // const filteredByPrice = filterByPrice(
+      //   filteredByValues,
+      //   state.filteredValues
+      // );
+      // const sortedItems = sortItems(filteredByPrice, state.filteredValues);
+      // return sortedItems;
     },
     getItemsLength(state, getters) {
       return getters.loadFilters.length;

@@ -23,8 +23,6 @@ export default {
   },
 
   setup() {
-    // const filtersValues = ref(filtersValuesArray);
-    // provide('filtersValues', filtersValues);
     provide('store', store);
   },
   watch: {

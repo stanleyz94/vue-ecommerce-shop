@@ -53,6 +53,14 @@
             <span> Porównaj</span>
           </button>
           <button
+            @click="showModal()"
+            aria-label="Aktywuj wybór porównania produktów"
+            class=" inline-flex items-center whitespace-nowrap bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
+          >
+            <span>Wszystkie filtry</span>
+            <BaseIcon class="h-4 w-4 ml-1" imageUrl="adjustments" />
+          </button>
+          <button
             @click="showModalWithDropdown('ModalDropdownSort')"
             aria-label="Pokaż opcje sortowania moda"
             class="  bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
@@ -87,14 +95,6 @@
             class=" bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
           >
             <span>Cena</span>
-          </button>
-          <button
-            @click="showModal()"
-            aria-label="Aktywuj wybór porównania produktów"
-            class=" inline-flex items-center whitespace-nowrap bg-gray-100 hover:bg-gray-200  rounded-full font-bold text-xs px-5 py-2.5"
-          >
-            <span>Wszystkie filtry</span>
-            <BaseIcon class="h-4 w-4 ml-1" imageUrl="adjustments" />
           </button>
         </div>
       </div>
@@ -176,15 +176,6 @@
   <button @click="showModal" class="bg-red-500 p-3 rounded">
     KLIKNIJ MNIE
   </button>
-  <button @click="testcolorRef" class="bg-green-500 p-3 rounded">
-    TESTUJEMY
-  </button>
-
-  <div>
-    <div v-for="(item, i) in 100" :key="i">
-      <button>make item active</button>
-    </div>
-  </div>
 </template>
 
 <script>

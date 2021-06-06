@@ -94,14 +94,9 @@
 
     <!-- flex (item #2) -->
     <div>{{ $store.state.filteredValues }}</div>
-    <div>
-      {{ $store.state.filtersValues }}
-    </div>
 
     <!-- <div>{{ $store.state.items }}</div> -->
     <!-- flex (item #2) -->
-
-    <div><strong>TEST</strong> {{ listItems2 }}</div>
   </div>
   <ModalAddedToCart
     v-if="isModalAddedVisible"
@@ -148,9 +143,6 @@ export default {
   computed: {
     listItems() {
       return this.$store.getters.loadFilters;
-    },
-    listItems2() {
-      return this.$store.getters.loadFilters2;
     },
   },
 };

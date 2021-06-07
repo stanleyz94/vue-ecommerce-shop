@@ -8,7 +8,7 @@ export default createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/',
+      path: '/about',
       name: 'Home',
       component: About,
       meta: { title: 'Szafy do zabudowy' },

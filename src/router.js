@@ -8,14 +8,14 @@ export default createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/about',
+      path: '/',
       name: 'Home',
       component: About,
       meta: { title: 'Szafy do zabudowy' },
     },
 
     {
-      path: '/about/:id',
+      path: '/:id',
       name: 'ItemShopDetails',
       component: ItemShopDetails,
       props: true,

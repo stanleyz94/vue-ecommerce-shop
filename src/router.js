@@ -9,7 +9,7 @@ export default createRouter({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'About',
       component: About,
       meta: { title: 'Szafy do zabudowy' },
     },

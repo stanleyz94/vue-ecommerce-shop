@@ -140,10 +140,6 @@
 
     <ProductsList />
   </div>
-
-  <button @click="showModal" class="bg-red-500 p-3 rounded">
-    KLIKNIJ MNIE
-  </button>
 </template>
 
 <script>

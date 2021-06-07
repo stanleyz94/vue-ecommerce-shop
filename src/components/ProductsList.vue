@@ -49,11 +49,6 @@
         </button>
       </div>
     </div>
-
-    <div>{{ $store.state.filteredValues }}</div>
-
-    <!-- <div>{{ $store.state.items }}</div> -->
-    <!-- flex (item #2) -->
   </div>
   <ModalAddedToCart
     v-if="isModalAddedVisible"

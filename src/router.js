@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from './components/Home.vue';
+
 import About from './components/About.vue';
 import ItemShopDetails from './components/ItemShopDetails.vue';
 import ItemShopCart from './components/ItemShopCart.vue';
@@ -7,13 +7,13 @@ import NotFound from './components/NotFound.vue';
 export default createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', name: 'Home', component: Home },
     {
-      path: '/about',
-      name: 'About',
+      path: '/',
+      name: 'Home',
       component: About,
       meta: { title: 'Szafy do zabudowy' },
     },
+
     {
       path: '/about/:id',
       name: 'ItemShopDetails',

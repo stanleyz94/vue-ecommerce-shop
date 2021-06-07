@@ -18,40 +18,15 @@
           </div>
           <div class="overflow-y-auto overflow-x-hidden flex-grow">
             <ul class="space-y-4 px-9">
-              <li class="py-6">
-                <ModalDropdownSort />
-              </li>
-
-              <li class="py-6">
-                <ModalDropdownColor />
-              </li>
-
-              <li class="py-6">
-                <ModalDropdownDoors />
-              </li>
-
-              <li class="py-6">
-                <ModalDropdownProperties />
-              </li>
-
-              <li class="py-6">
-                <ModalDropdownPrice />
-              </li>
-
-              <li class="py-6">
-                <ModalDropdownSaleNet />
-              </li>
-              <li class="py-6">
-                <ModalDropdownMaterial />
-              </li>
-
-              <li class="py-6">
-                <ModalDropdownNewest />
-              </li>
-
-              <li class="py-6">
-                <ModalDropdownRating />
-              </li>
+              <ModalDropdownSort />
+              <ModalDropdownColor />
+              <ModalDropdownDoors />
+              <ModalDropdownProperties />
+              <ModalDropdownPrice />
+              <ModalDropdownSaleNet />
+              <ModalDropdownMaterial />
+              <ModalDropdownNewest />
+              <ModalDropdownRating />
             </ul>
           </div>
           <div class="flex w-auto justify-around py-2.5  border-t-2">
@@ -87,15 +62,11 @@ import ModalDropdownMaterial from './ModalDropdownMaterial';
 import ModalDropdownNewest from './ModalDropdownNewest';
 import ModalDropdownRating from './ModalDropdownRating';
 export default {
-  inject: ['sortContainerVariables', 'testNumberOfProducts'],
-
   emits: ['hide-modal'],
   data() {
     return {
-      products: [],
-      exampleArr: [],
       isListActive: false,
-      sortModalContainerItems: this.sortContainerVariables,
+
       modalAccordionItems: [
         {
           span: 'Sortuj',

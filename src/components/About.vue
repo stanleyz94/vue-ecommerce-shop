@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="">
+    <div>
       <section class="space-y-2">
         <h1 class="text-2xl font-bold">Szafy do zabudowy</h1>
         <p>
@@ -134,43 +134,11 @@
     <!-- Compare container -->
 
     <!-- Modal dropdown for carousel buttons  --->
-
     <ModalDropdown v-if="isModalVisible" @hide-modal="hideModal" />
-
     <!-- Modal dropdown for carousel buttons  --->
-
     <AppliedFilters />
 
     <ProductsList />
-    <!-- Checkboxes-->
-
-    <div class="flex mt-5 ">
-      <label
-        class="flex w-7 h-7 items-center mr-4 mb-2"
-        v-for="item in items"
-        :key="item"
-        for=""
-      >
-        <input
-          type="checkbox"
-          class="w-7 h-7 opacity-0 absolute"
-          :value="item"
-          v-model="products"
-        />
-        <div
-          class="flex w-7 h-7 justify-center items-center border rounded-md border-gray-800 "
-        >
-          <BaseIcon
-            imageUrl="check"
-            class="h-4 w-4 fill-current hidden  text-white pointer-events-none "
-          />
-        </div>
-      </label>
-    </div>
-    <!-- Checkboxes-->
-    <div>
-      <p v-for="product in products" :key="product">{{ product }}</p>
-    </div>
   </div>
 
   <button @click="showModal" class="bg-red-500 p-3 rounded">
@@ -185,47 +153,12 @@ import AppliedFilters from './AppliedFilters';
 import ProductsList from './ProductsList';
 
 export default {
-  inject: ['sortContainerVariables'],
   data() {
     return {
       isContainerVisible: false,
       products: [],
-      // isActive: false,
-      items: ['test', 'test1', 'test2', 'test3'],
-      // activeItem: null,
-      navbarValues2: [
-        {
-          text: ['Produkty', 'Pomieszczenia', 'Usługi planowania', 'Nowości'],
-          svg: ['cart', 'truck', 'profile', 'heart', 'menu-navbar', 'cart'],
-        },
-      ],
-      navbarValues: {
-        text: ['Produkty', 'Pomieszczenia', 'Usługi planowania', 'Nowości'],
-        svg: ['cart', 'truck', 'profile', 'heart', 'menu-navbar', 'cart'],
-      },
-      object: {
-        title: 'How to do lists in Vue',
-        author: 'Jane Doe',
-        publishedAt: '2016-04-10',
-      },
       isMobile: false,
-
-      navbarLeftItems: [
-        { text: 'Produkty', url: '#' },
-        { text: 'Pomieszczenia', url: '#' },
-        { text: 'Usługi planowania', url: '#' },
-        { text: 'Nowości', url: '#' },
-      ],
-      navbarRightItems: [
-        { svgName: 'cart', url: '#' },
-        { svgName: 'truck', url: '#' },
-        { svgName: 'profile', url: '#' },
-        { svgName: 'heart', url: '#' },
-        { svgName: 'menu-navbar', url: '#' },
-        { svgName: 'cart', url: '#' },
-      ],
       isHidden: false,
-
       isModalVisible: false,
     };
   },
@@ -235,10 +168,6 @@ export default {
     ModalDropdown,
     AppliedFilters,
     ProductsList,
-  },
-
-  provide: {
-    testNumberOfProducts: 2,
   },
 
   methods: {

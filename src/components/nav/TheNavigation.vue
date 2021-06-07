@@ -105,8 +105,4 @@ export default {
 };
 </script>
 
-<style>
-.test {
-  flex-grow: 2;
-}
-</style>
+<style></style>

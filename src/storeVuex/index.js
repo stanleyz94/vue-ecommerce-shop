@@ -7,9 +7,9 @@ import {
   resetValues,
 } from './filters.js';
 
-function updateLocalStorage(cart) {
+const updateLocalStorage = (cart) => {
   localStorage.setItem('cart', JSON.stringify(cart));
-}
+};
 
 export default createStore({
   state: {
@@ -150,27 +150,7 @@ export default createStore({
 
       return doFilterComposed(state.items, state.filteredValues);
     },
-    loadFilters2() {
-      //#1
-      // return filterByValues(
-      //   filterByPrice(
-      //     sortItems(state.items, state.filteredValues),
-      //     state.filteredValues
-      //   ),
-      //   state.filteredValues
-      // );
-      //#2
-      // const filteredByValues = filterByValues(
-      //   state.items,
-      //   state.filteredValues
-      // );
-      // const filteredByPrice = filterByPrice(
-      //   filteredByValues,
-      //   state.filteredValues
-      // );
-      // const sortedItems = sortItems(filteredByPrice, state.filteredValues);
-      // return sortedItems;
-    },
+
     getItemsLength(state, getters) {
       return getters.loadFilters.length;
     },
@@ -202,7 +182,6 @@ export default createStore({
       return state.filteredValues;
     },
   },
-
   //breaking to different (states)
   modules: {},
 });

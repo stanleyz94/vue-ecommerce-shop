@@ -8,12 +8,10 @@
 </template>
 
 <script>
-import { provide } from 'vue';
 import TheNavigation from './components/nav/TheNavigation.vue';
 import BreadcrumbNavigation from './components/nav/BreadcrumbNavigation.vue';
 import TheFooter from './components/TheFooter.vue';
-import store from '@/store';
-// import { filtersValuesArray } from './variables.js';
+
 export default {
   name: 'App',
   components: {
@@ -22,9 +20,6 @@ export default {
     BreadcrumbNavigation,
   },
 
-  setup() {
-    provide('store', store);
-  },
   watch: {
     $route(to) {
       document.title =

@@ -25,33 +25,18 @@
 
 <script>
 import BaseIcon from './BaseIcon';
-import { inject } from 'vue';
+
 export default {
   components: {
     BaseIcon,
   },
 
-  //   inject: ['store'],
   data() {
     return {
-      testItems: [
-        'Drzwi Na Zawiasach',
-        'Drzwi Lustrzane',
-        'Drzwi Przesuwane',
-        'Ocena 5',
-        'Beżowy',
-        'Brązowy',
-        'Szerokość 100 - 199 Cm',
-      ],
       appliedFilters: [],
     };
   },
-  setup() {
-    const store = inject('store');
-    return {
-      store,
-    };
-  },
+
   computed: {
     filteredValues() {
       return this.$store.getters.getFilteredValues;

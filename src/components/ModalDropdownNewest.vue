@@ -1,15 +1,17 @@
 <template>
-  <BaseCheckbox
-    :class="{
-      'opacity-50': wardrobeAmount() == 0 ? true : false,
-    }"
-    :disabled="wardrobeAmount() == 0"
-    :availableProducts="wardrobeAmount()"
-    label="Nowość"
-    value="Nowość"
-    v-model="filteredNewest"
-    @change="onChange($event)"
-  />
+  <li class="py-6">
+    <BaseCheckbox
+      :class="{
+        'opacity-50': wardrobeAmount() == 0 ? true : false,
+      }"
+      :disabled="wardrobeAmount() == 0"
+      :availableProducts="wardrobeAmount()"
+      label="Nowość"
+      value="Nowość"
+      v-model="filteredNewest"
+      @change="onChange($event)"
+    />
+  </li>
 </template>
 
 <script>
@@ -19,7 +21,7 @@ export default {
   components: {
     BaseCheckbox,
   },
-  inject: ['testNumberOfProducts'],
+
   data() {
     return {
       isListActive: false,

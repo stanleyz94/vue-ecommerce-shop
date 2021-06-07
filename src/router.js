@@ -1,11 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 import About from './components/About.vue';
 import ItemShopDetails from './components/ItemShopDetails.vue';
 import ItemShopCart from './components/ItemShopCart.vue';
 import NotFound from './components/NotFound.vue';
 export default createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/',

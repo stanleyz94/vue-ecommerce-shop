@@ -6,7 +6,7 @@
 
     <p>Spróbuj pod linkiem poniżej.</p>
 
-    <router-link :to="{ name: 'Home' }"
+    <router-link :to="{ name: 'About' }"
       ><p class="underline">Wróć do strony głównej IKEA</p></router-link
     >
   </div>

@@ -15,7 +15,7 @@ export default createRouter({
     },
 
     {
-      path: '/:id',
+      path: '/about/:id',
       name: 'ItemShopDetails',
       component: ItemShopDetails,
       props: true,

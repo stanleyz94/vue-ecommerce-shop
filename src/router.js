@@ -27,7 +27,7 @@ export default createRouter({
       meta: { title: 'Koszyk' },
     },
     {
-      path: '/:pathMatch(.*)',
+      path: '/:catchAll(.*)',
       name: 'NotFound',
       component: NotFound,
       meta: { title: '404 - Ups, Coś poszło nie tak' },

@@ -66,7 +66,7 @@
 <script>
 import BaseIcon from './BaseIcon';
 
-import ModalAddedToCart from './ModalAddedToCart';
+import ModalAddedToCart from './modal/ModalAddedToCart';
 export default {
   components: {
     BaseIcon,

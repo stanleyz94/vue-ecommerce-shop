@@ -6,16 +6,16 @@
       }"
       :disabled="wardrobeAmount() == 0"
       :availableProducts="wardrobeAmount()"
-      label="Nowość"
-      value="Nowość"
-      v-model="filteredNewest"
+      label="W sprzedaży przez internet"
+      v-model="onSaleOnline"
+      value="W sprzedaży przez internet"
       @change="onChange($event)"
     />
   </li>
 </template>
 
 <script>
-import BaseCheckbox from './BaseCheckbox';
+import BaseCheckbox from '../BaseCheckbox';
 
 export default {
   components: {
@@ -25,24 +25,23 @@ export default {
   data() {
     return {
       isListActive: false,
-      filteredNewest: [],
+      onSaleOnline: [],
     };
   },
   methods: {
     onChange(e) {
-      this.$store.commit('setFiltersValues', { newest: e.target.checked });
+      this.$store.commit('setFiltersValues', { saleOnline: e.target.checked });
     },
     wardrobeAmount() {
       let searchedWardrobe = this.wardrobesFiltered.filter((wardrobe) => {
-        return wardrobe.newest == true;
+        return wardrobe.saleOnline == true;
       });
       return searchedWardrobe.length;
     },
   },
-
   computed: {
-    newestItems() {
-      return this.$store.getters.getItemProperty('newest');
+    onSaleOnlineItems() {
+      return this.$store.getters.getItemProperty('saleOnline');
     },
     wardrobesFiltered() {
       return this.$store.getters.loadFilters;
@@ -50,18 +49,18 @@ export default {
   },
 
   watch: {
-    newestItems: {
+    onSaleOnlineItems: {
       deep: true,
       handler(value) {
         if (!value) {
-          this.filteredNewest = [];
+          this.onSaleOnline = [];
         }
       },
     },
   },
   created() {
-    if (this.newestItems) {
-      this.filteredNewest.push('Nowość');
+    if (this.onSaleOnlineItems) {
+      this.onSaleOnline.push('W sprzedaży przez internet');
     }
   },
 };

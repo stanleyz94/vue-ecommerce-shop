@@ -148,7 +148,7 @@
 
 <script>
 import BaseIcon from './BaseIcon';
-import ModalDropdown from './ModalDropdown';
+import ModalDropdown from './modal/ModalDropdown';
 import AppliedFilters from './AppliedFilters';
 import ProductsList from './ProductsList';
 

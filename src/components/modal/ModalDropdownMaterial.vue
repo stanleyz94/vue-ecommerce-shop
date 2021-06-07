@@ -57,8 +57,8 @@
 </template>
 
 <script>
-import BaseIcon from './BaseIcon';
-import BaseCheckbox from './BaseCheckbox';
+import BaseIcon from '../BaseIcon';
+import BaseCheckbox from '../BaseCheckbox';
 
 export default {
   components: {

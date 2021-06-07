@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import BaseIcon from './BaseIcon';
+import BaseIcon from '../BaseIcon';
 
 import ModalDropdownSort from './ModalDropdownSort';
 

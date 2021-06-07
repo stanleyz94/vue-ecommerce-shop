@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import BaseIcon from './BaseIcon';
+import BaseIcon from '../BaseIcon';
 export default {
   components: {
     BaseIcon,
